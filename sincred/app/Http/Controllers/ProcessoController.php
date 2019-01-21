@@ -20,4 +20,11 @@ class ProcessoController extends Controller
         return view('processos.detalhes', ['processo' => $processo, 'documentos' => $documentos]);
     }
 
+    public function verificar($id){
+
+         $processo = Processo::findOrFail($id);
+        $documentos = Documento::where('processos_id', $id)->get();
+        return view('processos.verificar', ['processo' => $processo, 'documentos' => $documentos]);
+    }
+
 }
