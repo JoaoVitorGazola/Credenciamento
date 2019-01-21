@@ -75,36 +75,37 @@
 						<br>
               				<li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> </li>
               		<br>
-						<div class="table-responsive">
-							<table class="table table-hover table-bordered" style="text-align: center;"> 
+						<div class="table-responsive col-12">
+
+							<table class="table table-hover table-bordered" style="text-align: center;">
 								<thead style="background-color: rgba(0,0,0,.03);">
 								    <tr>
-								      <th scope="col-6">Tipo do Documento</th>
-								      <th scope="col-6">Detalhe</th>
-								      							     
+								      <th class="col-auto">Tipo do Documento</th>
+								      <th class="col-auto">Detalhe</th>
+
 								    </tr>
 							  </thead>
-							  
+							  @foreach($documentos as $documento)
 							  <tbody>
 								    <tr>
-								      <td> Exemple </td>
-								      <td> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt facilisis ante sed tempor. Lorem ipsum dolor sit amet.</td>
-								      
-								      
-								    </tr>
-							  
-							  </tbody>
+								      <td> {{$documento->tipo}} </td>
+								      <td> {{$documento->descrição}} </td>
 
+
+								    </tr>
+
+							  </tbody>
+							@endforeach
 							  
 						</table>
 					</div>
 
 					<br>	
 						<div class="float-right">
-							<button class="btn btn-primary"><a href="/processos">Voltar</a></button>
+							<button class="btn btn-primary"><a href="/processos" style="color: #fff; text-decoration: none;">Voltar</a></button>
 							<?php
 							if($processo->status == 1){
-							echo '<button class="btn btn-primary"><a href="#">Editar</a></button>';
+							echo '<button class="btn btn-primary"><a href="#" style="color: #fff; text-decoration: none;">Editar</a></button>';
 							}
 							?>
 						</div>

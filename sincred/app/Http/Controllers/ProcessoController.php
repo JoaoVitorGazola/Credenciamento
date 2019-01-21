@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Documento;
 use Illuminate\Http\Request;
 use App\Processo;
 
@@ -15,7 +16,8 @@ class ProcessoController extends Controller
     public function detalhes($id){
 
         $processo = Processo::findOrFail($id);
-        return view('processos.detalhes', ['processo' => $processo]);
+        $documentos = Documento::where('processos_id', $id)->get();
+        return view('processos.detalhes', ['processo' => $processo, 'documentos' => $documentos]);
     }
 
 }
