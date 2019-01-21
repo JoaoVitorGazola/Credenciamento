@@ -102,64 +102,50 @@
 							    </tr>
 							  </thead>
 							  <!--- Tabela Aguardando --->
+							@foreach($processos as $processo)
 							  <tbody>
 							    <tr>
-							      <th scope="row"></th>
-							      <td></td>
-							      <td></td>
-							      <td> 
-							      	<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
-									 <button class="btn btn-secondary" style="pointer-events: none;" type="button">Aguardando</button>
-									</span>
-							      </td>
+							      <th scope="row">{{$processo->nome}}</th>
+							      <td>{{date('d/m/y', strtotime($processo->inicio))}}</td>
+							      <td>{{date('d/m/y', strtotime($processo->final))}}</td>
 							      <td>
-							      	<button> <a href="#"> Detalhes </a></button>
+									  <?php
+									  if($processo->status == 1){
+
+									      echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
+									 <button class="btn btn-secondary" style="pointer-events: none;" type="button">Aguardando</button>
+									</span></td> <td>
+							      	<button> <a href="processos/'.$processo->id.'/detalhes"> Detalhes </a></button>
 							      	<button> <a href="#"> Excluir </a></button>
 
-							      </td>
-							    </tr>
-							  
-							  </tbody>
-
-							  <!--- Tabela Em Andamento --->
-							  <tbody>
-							    <tr>
-							      <th scope="row"></th>
-							      <td></td>
-							      <td></td>
-							      <td> 
-							      	<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
+							      </td>';
+									  }
+									  elseif($processo->status == 2){
+									      echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
 									 <button class="btn btn-warning" style="pointer-events: none;" type="button">Em Andamento</button>
-									</span>
-							      </td>
-							      <td>
-							      	<button> <a href="#"> Detalhes </a></button>
-							      
+									</span></td>							      <td>
+							      	<button> <a href="processos/'.$processo->id.'/detalhes"> Detalhes </a></button>
 
-							      </td>
-							    </tr>
-							  
-							  </tbody>
 
-							  <!--- Tabela Finalizado --->
-							  <tbody>
-							    <tr>
-							      <th scope="row"></th>
-							      <td></td>
-							      <td></td>
-							      <td> 
-							      	<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
+							      </td>';
+									  }
+									  else{
+									      echo '							      	<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
 									 <button class="btn btn-success" style="pointer-events: none;" type="button">Finalizado</button>
-									</span>
-							      </td>
-							      <td>
-							      	<button> <a href="#"> Verificar </a></button>
-							      	
+									</span></td>							      <td>
+							      	<button> <a href="processos/'.$processo->id.'/verificar"> Verificar </a></button>
 
-							      </td>
+
+							      </td>';
+									  }
+									  ?>
+
+
 							    </tr>
 							  
 							  </tbody>
+							@endforeach
+
 						</table>
 					</div>
 					</div>

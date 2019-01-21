@@ -36,13 +36,28 @@
 							  <!--- Tabela Aguardando --->
 							  <tbody>
 							    <tr>
-							      <td> Exemple </td>
-							      <td>00/00/0000</td>
-							      <td>00/00/0000</td>
-							      <td> 
-							      	<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
+							      <td>{{$processo->nome}}</td>
+							      <td>{{date('d/m/y', strtotime($processo->inicio))}}</td>
+							      <td>{{date('d/m/y', strtotime($processo->final))}}</td>
+							      <td>
+									  <?php
+									  if($processo->status == 1){
+									      echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
 									 <button class="btn btn-secondary" style="pointer-events: none;" type="button">Aguardando</button>
-									</span>
+									</span>';
+									  }
+									  elseif($processo->status == 2){
+									      echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
+									 <button class="btn btn-warning" style="pointer-events: none;" type="button">Em Andamento</button>
+									</span>';
+									  }
+									  else{
+									      echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
+									 <button class="btn btn-success" style="pointer-events: none;" type="button">Finalizado</button>
+									</span>';
+									  }
+									  ?>
+
 							      </td>
 							      
 							    </tr>
@@ -85,9 +100,13 @@
 					</div>
 
 					<br>	
-						<div class="float-right"> 
-							{!! Form::submit('Voltar', ['class'=>'btn btn-primary']) !!}
-							{!! Form::submit('Editar', ['class'=>'btn btn-primary']) !!}
+						<div class="float-right">
+							<button class="btn btn-primary"><a href="/processos">Voltar</a></button>
+							<?php
+							if($processo->status == 1){
+							echo '<button class="btn btn-primary"><a href="#">Editar</a></button>';
+							}
+							?>
 						</div>
                 </div>
             </div>
