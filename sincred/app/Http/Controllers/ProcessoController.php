@@ -10,6 +10,11 @@ class ProcessoController extends Controller
     {	
     	return view('processos.processo');
     }
+
+     public function detalhes()
+    {	
+    	return view('processos.detalhe');
+    }
    
   
 }
