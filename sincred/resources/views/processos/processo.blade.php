@@ -18,20 +18,35 @@
 
                     <div class="jumbotron jumbotron-fluid" style="background-color: rgba(0,0,0,.03);">
 					  <div class="container">
+					  	{!!Form::open(['url'=>'processos/busca'])!!}
 					  	<div class="row">
-							{!!Form::open(['url'=>'processos/busca'])!!}
+							
+							<div class="col-lg-3 col-sm-3 col-md-3">
 							{!! Form::label('nome', 'Nome') !!}
 							{!! Form::input('text', 'nome', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Nome do Processo']) !!}
-
-							{!! Form::label('inicio', 'Data Início') !!}
+							</div>
+							
+							<div class="col-sm-2 col-lg-2 col-md-2">
+								{!! Form::label('inicio', 'Data Início') !!}
 
 							{!! Form::date('inicio', null, ['class' => 'form-control', 'autofocus', 'placeholder' => '00/00/0000']) !!}
+							</div>
 
-							{!! Form::label('final', 'Data Final') !!}
+							<div class="col-sm-2 col-lg-2 col-md-2">
+								{!! Form::label('final', 'Data Final') !!}
 							{!! Form::date('final', null, ['class' => 'form-control', 'autofocus', 'placeholder' => '00/00/0000']) !!}
-							{!! Form::label('status', 'Status') !!}
+
+
+							</div>
+							<div class="col-sm-2 col-lg-2 col-md-2">
+								{!! Form::label('status', 'Status') !!}
 							{!! Form::select('status', ['1'=> 'Aguardando', '2'=>'Em Andamento', '3'=>'Finalizado'], null, ['class'=>'form-control', 'placeholder' => 'Selecione']) !!}
-							{!! Form::submit('Pesquisar', ['class'=>'btn btn-primary']) !!}
+
+							</div>
+							<div class="col-sm-33 col-lg-3 col-md-3" style="margin-top: 30px;">
+								{!! Form::submit('Pesquisar', ['class'=>'btn btn-primary']) !!}
+							</div>
+
 							{!! Form::close() !!}
                   	</div>
 
@@ -41,7 +56,7 @@
 
 								<div class="container">
 			                  	<div class="row">
-                                    <button class="btn btn-primary"><a href="#" style="text-decoration: none; color: #fff;">Novo registro</a> </button>
+                                    <button class="btn btn-primary"><a href="/processos/novo" style="text-decoration: none; color: #fff;">Novo registro</a> </button>
 
 			                  	</div>
 			                  </div>
