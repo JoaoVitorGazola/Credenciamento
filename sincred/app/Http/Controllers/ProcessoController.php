@@ -48,9 +48,4 @@ class ProcessoController extends Controller
         return view('processos.verificar', ['processo' => $processo, 'documentos' => $documentos]);
     }
 
-    public function novo()
-    {
-        return view('processos.cadastrar');
-    }
-
 }
