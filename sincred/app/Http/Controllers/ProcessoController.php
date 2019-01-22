@@ -40,6 +40,13 @@ class ProcessoController extends Controller
         $documentos = Documento::where('processos_id', $id)->get();
         return view('processos.detalhes', ['processo' => $processo, 'documentos' => $documentos]);
     }
+    public function excluir($id){
+
+        $processo = Processo::findOrFail($id);
+        \Session::flash('encontrado', $processo->nome.' excluido com sucesso');
+        $processo->delete();
+        return redirect()->back();
+    }
 
     public function verificar($id){
 
