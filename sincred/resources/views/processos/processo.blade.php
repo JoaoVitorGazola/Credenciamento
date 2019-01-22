@@ -18,55 +18,21 @@
 
                     <div class="jumbotron jumbotron-fluid" style="background-color: rgba(0,0,0,.03);">
 					  <div class="container">
-					  	<div class="row"> 
-					  		<div class="col-lg-4 col-sm-4 col-md-4">
+					  	<div class="row">
+							{!!Form::open(['url'=>'processos/busca'])!!}
+							{!! Form::label('nome', 'Nome') !!}
+							{!! Form::input('text', 'nome', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Nome do Processo']) !!}
 
-							  	<strong>
-							    
-							    {{ Form::label('nome', 'Nome') }}
-								</strong>
-		                 		{{ Form::input('text', 'tipodoc', null, ['class' => 'form-control', 'required', 'autofocus', 'placeholder' => 'Nome do Processo']) }}
+							{!! Form::label('inicio', 'Data Início') !!}
 
+							{!! Form::date('inicio', null, ['class' => 'form-control', 'autofocus', 'placeholder' => '00/00/0000']) !!}
 
-		                 		</div>
-		                 		<div class="col-lg-2 col-sm-2 col-md-2">
-
-							  	<strong>
-							    
-							    {{ Form::label('dataini', 'Data Início') }}
-								</strong>
-		                 		{{ Form::input('text', 'tipodoc', null, ['class' => 'form-control', 'required', 'autofocus', 'placeholder' => '00/00/0000']) }}
-
-		                 		
-		                 		</div>
-		                 		<div class="col-lg-2 col-sm-2 col-md-2">
-
-							  	<strong>
-							    
-							    {{ Form::label('dataend', 'Data Final') }}
-								</strong>
-		                 		{{ Form::input('text', 'tipodoc', null, ['class' => 'form-control', 'required', 'autofocus', 'placeholder' => '00/00/0000']) }}
-
-		                 		
-		                 		</div>
-		                 		<div class="col-lg-2 col-sm-2 col-md-2">
-
-							  	<strong>
-							    
-							    {{ Form::label('status', 'Status') }}
-								</strong>
-		                 		{{ Form::select('status', ['e1'=> 'Aguardando', 'e2'=>'Em Andamento', 'e3'=>'Finalizado'], null, ['class'=>'form-control', 'placeholder' => 'Selecione']) }}
-
-		                 		
-		                 		</div>
-
-		                 		<div class="col-lg-2 col-sm-2 col-md-2" style="margin-top: 30px;">
-
-							  	{!! Form::submit('Pesquisar', ['class'=>'btn btn-primary']) !!}
-		                 		
-		                 		</div>
-
-		                  		
+							{!! Form::label('final', 'Data Final') !!}
+							{!! Form::date('final', null, ['class' => 'form-control', 'autofocus', 'placeholder' => '00/00/0000']) !!}
+							{!! Form::label('status', 'Status') !!}
+							{!! Form::select('status', ['1'=> 'Aguardando', '2'=>'Em Andamento', '3'=>'Finalizado'], null, ['class'=>'form-control', 'placeholder' => 'Selecione']) !!}
+							{!! Form::submit('Pesquisar', ['class'=>'btn btn-primary']) !!}
+							{!! Form::close() !!}
                   	</div>
 
                   	<br>
@@ -75,8 +41,8 @@
 
 								<div class="container">
 			                  	<div class="row">
+                                    <button class="btn btn-primary"><a href="#" style="text-decoration: none; color: #fff;">Novo registro</a> </button>
 
-			                  		{!! Form::submit('Novo Registo', ['class'=>'btn btn-primary']) !!}
 			                  	</div>
 			                  </div>
 					    
