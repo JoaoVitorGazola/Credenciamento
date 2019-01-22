@@ -100,6 +100,7 @@
 							  
 						</table>
 					</div>
+					<br>
 
 					<h2> Envios </h2> 
 

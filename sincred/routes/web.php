@@ -26,3 +26,4 @@ Route::any('/processos/novo', 'ProcessoController@novo');
 
 
 Route::any('/documentos/novo', 'DocumentoController@novo');
+Route::any('/documentos/palavras', 'DocumentoController@palavras');

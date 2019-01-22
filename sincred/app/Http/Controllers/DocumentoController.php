@@ -10,4 +10,9 @@ class DocumentoController extends Controller
     {
         return view('documentos.docrequisitado');
     }
+
+    public function palavras()
+    {
+        return view('documentos.palavras');
+    }
 }

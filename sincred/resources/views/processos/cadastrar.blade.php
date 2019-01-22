@@ -86,7 +86,7 @@
 					
 					<br>	
 						<div class="float-right">
-                            <button class="btn btn-primary"><a href="#" style="color: #fff; text-decoration: none;">Cancelar</a></button>
+                            <button class="btn btn-primary"><a href="/processos" style="color: #fff; text-decoration: none;">Cancelar</a></button>
 							<button class="btn btn-primary"><a href="{{url('documentos/novo')}}" style="color: #fff; text-decoration: none;">Continuar</a></button>
 
 

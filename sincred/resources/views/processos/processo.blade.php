@@ -43,7 +43,7 @@
 							{!! Form::select('status', ['1'=> 'Aguardando', '2'=>'Em Andamento', '3'=>'Finalizado'], null, ['class'=>'form-control', 'placeholder' => 'Selecione']) !!}
 
 							</div>
-							<div class="col-sm-33 col-lg-3 col-md-3" style="margin-top: 30px;">
+							<div class="col-sm-1 col-lg-1 col-md-1" style="margin-top: 30px;">
 								{!! Form::submit('Pesquisar', ['class'=>'btn btn-primary']) !!}
 							</div>
 
