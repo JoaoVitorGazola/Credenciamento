@@ -5,15 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-12 col-sm-12 col-lg-12">
             <div class="card">
-                <div class="card-header"> <h2> Cadastrar Processo </h2>
+                <div class="card-header"> <h2>Cadastrar Documento Requisitado </h2>
                 	<br>
 
                 	<div class="panel with-nav-tabs panel-default">
 		                <div class="panel-heading">
 
 		                   <ul class="nav nav-tabs" style="margin-bottom: -13px;">
-		                     <li class="active nav-link">Processo</a></li>
-		                     <li class="disabled nav-link">Documentos Requisitados</a></li>
+		                     <li class="disabled  nav-link">Processo</a></li>
+		                     <li class="active nav-link">Documentos Requisitados</a></li>
 		                     <li class="disabled nav-link">Palavras</a></li>
 		                   </ul>
 
@@ -86,8 +86,8 @@
 					
 					<br>	
 						<div class="float-right">
-                            <button class="btn btn-primary"><a href="#" style="color: #fff; text-decoration: none;">Cancelar</a></button>
-							<button class="btn btn-primary"><a href="{{url('documentos/novo')}}" style="color: #fff; text-decoration: none;">Continuar</a></button>
+                            <button class="btn btn-primary"><a href="{{url('processos/novo')}}" style="color: #fff; text-decoration: none;">Voltar</a></button>
+							<button class="btn btn-primary"><a href="#" style="color: #fff; text-decoration: none;">Continuar</a></button>
 
 
 

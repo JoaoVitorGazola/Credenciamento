@@ -22,7 +22,7 @@
 					  	<div class="row">
 							
 							<div class="col-lg-3 col-sm-3 col-md-3">
-							{!! Form::label('nome', 'Nome') !!}
+							<strong>{!! Form::label('nome', 'Nome') !!}</strong>
 							{!! Form::input('text', 'nome', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Nome do Processo']) !!}
 							</div>
 							
