@@ -13,24 +13,24 @@ class ProcessoController extends Controller
         $processos = Processo::all();
         return view('processos.processo', ['processos' => $processos]);
     }
-    public function busca(Request $request, Processo $processo)
+    public function busca(Request $request)
     {
-        $processo = $processo->newQuery();
-            if ($request->has('tipo')) {
-                $processo->where('tipo', $request->input('tipo'));
+        $processo = Processo::query();
+            if ($request->nome != null) {
+                $processo->where('nome', $request->nome);
             }
-            if ($request->has('inicio')) {
-                $processo->where('inicio', $request->input('inicio'));
+            if ($request->inicio != null) {
+                $processo->where('inicio', $request->inicio);
             }
-            if ($request->has('final')) {
-                $processo->where('final', $request->input('final'));
+            if ($request->final !=null) {
+                $processo->where('final', $request->final);
             }
-            if ($request->has('status')) {
-                $processo->where('status', $request->input('status'));
+            if ($request->status != null) {
+                $processo->where('status', $request->status);
             }
         $processos = $processo->get();
 
-        \Session::flash('status', count($processos).' resultados encontrados');
+        \Session::flash('status', count($processos).' resultados encontrados ');
         return view('processos.processo', ['processos' => $processos]);
 
     }
