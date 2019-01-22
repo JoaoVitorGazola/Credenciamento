@@ -30,7 +30,7 @@ class ProcessoController extends Controller
             }
         $processos = $processo->get();
 
-        \Session::flash('status', count($processos).' resultados encontrados ');
+        \Session::flash('encontrado', count($processos).' resultados encontrados ');
         return view('processos.processo', ['processos' => $processos]);
 
     }

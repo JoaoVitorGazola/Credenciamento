@@ -9,9 +9,9 @@
                  <h2>Processos </h2></div>
 
                 <div class="card-body">
-                    @if (session('status'))
+                    @if (session('encontrado'))
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                            {{ session('encontrado') }}
                         </div>
                     @endif
 
