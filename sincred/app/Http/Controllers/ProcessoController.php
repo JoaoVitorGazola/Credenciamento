@@ -13,6 +13,27 @@ class ProcessoController extends Controller
         $processos = Processo::all();
         return view('processos.processo', ['processos' => $processos]);
     }
+    public function busca(Request $request, Processo $processo)
+    {
+        $processo = $processo->newQuery();
+            if ($request->has('tipo')) {
+                $processo->where('tipo', $request->input('tipo'));
+            }
+            if ($request->has('inicio')) {
+                $processo->where('inicio', $request->input('inicio'));
+            }
+            if ($request->has('final')) {
+                $processo->where('final', $request->input('final'));
+            }
+            if ($request->has('status')) {
+                $processo->where('status', $request->input('status'));
+            }
+        $processos = $processo->get();
+
+        \Session::flash('status', count($processos).' resultados encontrados');
+        return view('processos.processo', ['processos' => $processos]);
+
+    }
     public function detalhes($id){
 
         $processo = Processo::findOrFail($id);
