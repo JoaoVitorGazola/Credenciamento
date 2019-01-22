@@ -5,7 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12 col-sm-12 col-lg-12">
             <div class="card">
-                <div class="card-header"> <h2>Processos </h2></div>
+                <div class="card-header">
+                 <h2>Processos </h2></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -54,13 +55,7 @@
 							    
 							    {{ Form::label('status', 'Status') }}
 								</strong>
-		                 		<select class="form-control">
-		                 		  <option>Selecione </option>
-								  <option> Aguardando </option>
-								  <option > Em Andamento </option>
-								  <option >Finalizado </option>
-								 
-								</select>
+		                 		{{ Form::select('status', ['e1'=> 'Aguardando', 'e2'=>'Em Andamento', 'e3'=>'Finalizado'], null, ['class'=>'form-control', 'placeholder' => 'Selecione']) }}
 
 		                 		
 		                 		</div>
@@ -88,8 +83,13 @@
 					  </div>
 					</div>
 
-					<div class="card-header">
+					
 						<h2> Lista de Processos</h2>
+						
+              			<li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> 
+              			</li>
+              			<br>
+
 						<div class="table-responsive">
 						<table class="table table-hover table-bordered"> 
 							<thead style="background-color: rgba(0,0,0,.03);">
@@ -105,7 +105,7 @@
 							@foreach($processos as $processo)
 							  <tbody>
 							    <tr>
-							      <th scope="row">{{$processo->nome}}</th>
+							      <td scope="row">{{$processo->nome}}</td>
 							      <td>{{date('d/m/y', strtotime($processo->inicio))}}</td>
 							      <td>{{date('d/m/y', strtotime($processo->final))}}</td>
 							      <td>
@@ -148,7 +148,7 @@
 
 						</table>
 					</div>
-					</div>
+					
 
                 </div>
             </div>

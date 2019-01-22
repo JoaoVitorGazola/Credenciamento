@@ -18,7 +18,6 @@
                   
 						<h2> Processos </h2> 
 
-						<br>
               				<li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> </li>
               			<br>
 
@@ -72,23 +71,22 @@
 
 					<h2> Documentos do Processo </h2> 
 
-						<br>
-              				<li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> </li>
+              			<li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;">
+              			</li>
               		<br>
-						<div class="table-responsive col-12">
-
-							<table class="table table-hover table-bordered" style="text-align: center;">
+						<div class="table-responsive">
+							<table class="table table-hover table-bordered">
 								<thead style="background-color: rgba(0,0,0,.03);">
 								    <tr>
-								      <th class="col-auto">Tipo do Documento</th>
-								      <th class="col-auto">Detalhe</th>
+								      <th style="width: 50px;">Tipo do Documento</th>
+								      <th style="width: 150px;"> Detalhe </th>
 
 								    </tr>
-							  </thead>
+							 	 </thead>
 							  @foreach($documentos as $documento)
 							  <tbody>
 								    <tr>
-								      <td> {{$documento->tipo}} </td>
+								      <td class=""> {{$documento->tipo}} </td>
 								      <td> {{$documento->descrição}} </td>
 
 
@@ -97,8 +95,8 @@
 							  </tbody>
 							@endforeach
 							  
-						</table>
-					</div>
+							</table>
+						</div>
 
 					<br>	
 						<div class="float-right">

@@ -101,10 +101,9 @@
 						</table>
 					</div>
 
-					<h2> Envio </h2> 
+					<h2> Envios </h2> 
 
-						<br>
-              				<li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> </li>
+              		<li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> </li>
               		<br>
 
 					<div class="jumbotron jumbotron-fluid" style="background-color: rgba(0,0,0,.03);">
@@ -114,71 +113,76 @@
 
 							  	<strong>
 							    
-							    {{ Form::label('nome', 'Nome') }}
+							    {{ Form::label('farm', 'Farmácia') }}
 								</strong>
-		                 		{{ Form::input('text', 'tipodoc', null, ['class' => 'form-control', 'required', 'autofocus', 'placeholder' => 'Nome do Processo']) }}
-
-
-		                 		</div>
-		                 		<div class="col-lg-2 col-sm-2 col-md-2">
-
-							  	<strong>
-							    
-							    {{ Form::label('dataini', 'Data Início') }}
-								</strong>
-		                 		{{ Form::input('text', 'tipodoc', null, ['class' => 'form-control', 'required', 'autofocus', 'placeholder' => '00/00/0000']) }}
+		                 		{{ Form::select('farm', ['e1'=> 'exemplo1', 'e2'=>' exemplo2', 'e3'=>'exemplo3'], null, ['class'=>'form-control', 'placeholder' => 'Selecione']) }}
 
 		                 		
 		                 		</div>
-		                 		<div class="col-lg-2 col-sm-2 col-md-2">
-
-							  	<strong>
-							    
-							    {{ Form::label('dataend', 'Data Final') }}
-								</strong>
-		                 		{{ Form::input('text', 'tipodoc', null, ['class' => 'form-control', 'required', 'autofocus', 'placeholder' => '00/00/0000']) }}
-
-		                 		
-		                 		</div>
-		                 		<div class="col-lg-2 col-sm-2 col-md-2">
+		                 		<div class="col-lg-3 col-sm-3 col-md-3">
 
 							  	<strong>
 							    
 							    {{ Form::label('status', 'Status') }}
 								</strong>
-		                 		<select class="form-control">
-		                 		  <option>Selecione </option>
-								  <option> Aguardando </option>
-								  <option > Em Andamento </option>
-								  <option >Finalizado </option>
-								 
-								</select>
+		                 		{{ Form::select('status', ['e1'=> 'Aprovado', 'e2'=>'Reprovado', 'e3'=>'Erro'], null, ['class'=>'form-control', 'placeholder' => 'Selecione']) }}
 
 		                 		
 		                 		</div>
-
 		                 		<div class="col-lg-2 col-sm-2 col-md-2" style="margin-top: 30px;">
 
 							  	{!! Form::submit('Pesquisar', ['class'=>'btn btn-primary']) !!}
 		                 		
 		                 		</div>
-
 		                  		
-                  	</div>
+                  		</div>
 
-                  	<br>
-              				<li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> </li>
-              		<br>
-
-								<div class="container">
-			                  	<div class="row">
-
-			                  		{!! Form::submit('Novo Registo', ['class'=>'btn btn-primary']) !!}
-			                  	</div>
-			                  </div>
+                  		<br>
+	              				<li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> </li>
+	              		<br>
 					    
 					  </div>
 					</div>
+
+
+					<!-- -->
+
+					
+						
+						<div class="table-responsive">
+						<table class="table table-hover table-bordered"> 
+							<thead style="background-color: rgba(0,0,0,.03);">
+							    <tr>
+							      <th scope="col-6">Farmácia</th>
+							      <th scope="col-6">Responsável</th>
+							      <th scope="col-6">Status</th>
+							      <th scope="col-6">Ação</th>
+							    </tr>
+							  </thead>
+							  <!--- Tabela Aguardando --->
+							
+							  <tbody>
+							    <tr>
+							      <td scope="row"> exemple</td>
+							      <td> exemple</td>
+							      
+							      <td>Aprovado, Reprovado, erro </td>
+									
+									<td>
+										<button> 
+											<a href="#"> Verificar</a> 
+											
+										</button>
+									</td>	
+
+							    </tr>
+							  
+							  </tbody>
+						
+
+						</table>
+					</div>
+					
 
 					<br>	
 						<div class="float-right">
