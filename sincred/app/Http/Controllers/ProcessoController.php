@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Documento;
+use App\Farmacia;
 use Illuminate\Http\Request;
 use App\Processo;
 
@@ -50,9 +51,10 @@ class ProcessoController extends Controller
 
     public function verificar($id){
 
-         $processo = Processo::findOrFail($id);
+        $processo = Processo::findOrFail($id);
         $documentos = Documento::where('processos_id', $id)->get();
-        return view('processos.verificar', ['processo' => $processo, 'documentos' => $documentos]);
+        $farmacias = Farmacia::all();
+        return view('processos.verificar', ['processo' => $processo, 'documentos' => $documentos, 'farmacias'=>$farmacias]);
     }
 
     public function novo()

@@ -111,28 +111,28 @@
 					  	<div class="row"> 
 					  		<div class="col-lg-4 col-sm-4 col-md-4">
 
-							  	<strong>
-							    
-							    {{ Form::label('farm', 'Farmácia') }}
-								</strong>
-		                 		{{ Form::select('farm', ['e1'=> 'exemplo1', 'e2'=>' exemplo2', 'e3'=>'exemplo3'], null, ['class'=>'form-control', 'placeholder' => 'Selecione']) }}
+							    {!! Form::open([])!!}
+							    {!! Form::label('farm', 'Farmácia') !!}
+								<select name="farmacia" class="form-control">
+									<option value="">Selecione a farmácia</option>
+									@foreach($farmacias as $farmacia)
+										<option value="{{$farmacia->id}}">{{$farmacia->razaoSocial}}</option>
+										@endforeach
+								</select>
 
-		                 		
+
 		                 		</div>
 		                 		<div class="col-lg-3 col-sm-3 col-md-3">
-
-							  	<strong>
 							    
-							    {{ Form::label('status', 'Status') }}
-								</strong>
-		                 		{{ Form::select('status', ['e1'=> 'Aprovado', 'e2'=>'Reprovado', 'e3'=>'Erro'], null, ['class'=>'form-control', 'placeholder' => 'Selecione']) }}
+							    {!! Form::label('status', 'Status') !!}
+		                 		{!! Form::select('status', ['1'=> 'Aprovado', '2'=>'Reprovado', '3'=>'Erro'], null, ['class'=>'form-control', 'placeholder' => 'Selecione']) !!}
 
 		                 		
 		                 		</div>
 		                 		<div class="col-lg-2 col-sm-2 col-md-2" style="margin-top: 30px;">
 
 							  	{!! Form::submit('Pesquisar', ['class'=>'btn btn-primary']) !!}
-		                 		
+		                 		{!! Form::close() !!}
 		                 		</div>
 		                  		
                   		</div>

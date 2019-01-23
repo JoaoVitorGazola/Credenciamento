@@ -97,7 +97,7 @@
 									 <button class="btn btn-secondary" style="pointer-events: none;" type="button">Aguardando</button>
 									</span></td> <td>
 							      	<button> <a href="/processos/'.$processo->id.'/detalhes"> Detalhes </a></button>
-							      	<button> <a href="/processos/'.$processo->id.'/excluir"> Excluir </a></button>
+							      	<button> <a href="/processos/'.$processo->id.'/excluir" onclick="return confirm(\'Tem certeza que deseja excluir esse processo?\');"> Excluir </a></button>
 
 							      </td>';
 									  }
