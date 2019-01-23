@@ -7,19 +7,35 @@
             <div class="card">
                 <div class="card-header"> <h2> Cadastrar Processo </h2>
                 	<br>
+                   
+                    <div class="panel with-nav-tabs panel-primary">
+                        <div class="panel-heading">
+                            <ul class="nav nav-tabs" style="margin-bottom: -13px;">
+                                <li class="active nav-link">
+                            
+                                    <a href="{{url('processos/novo')}}" style="text-decoration: none; color: #212529;"> Processo </a>
+                            
+                                </li>
+                                <li class="nav-link">
+                                
+                                    <a href="{{url('documentos/novo')}}" style="text-decoration: none; color: #212529;">
+                                  Documento Requisitado   
+                                    </a>
 
-                	<div class="panel with-nav-tabs panel-default">
-		                <div class="panel-heading">
-
-		                   <ul class="nav nav-tabs" style="margin-bottom: -13px;">
-		                     <li class="active nav-link">Processo</a></li>
-		                     <li class="disabled nav-link">Documentos Requisitados</a></li>
-		                     <li class="disabled nav-link">Palavras</a></li>
-		                   </ul>
-
-		                </div>
-			               
-            </div>
+                                
+                                </li>
+                                <li class="nav-link">
+                                
+                                    <a href="{{url('documentos/palavras')}}" style="text-decoration: none; color: #212529;">
+                                        Palavras
+                                    </a>
+                               
+                                </li>
+                          
+                            </ul>
+                        </div>
+            
+                     </div>
 
                 </div>
 
@@ -87,7 +103,7 @@
 					<br>	
 						<div class="float-right">
                             <button class="btn btn-primary"><a href="/processos" style="color: #fff; text-decoration: none;">Cancelar</a></button>
-							<button class="btn btn-primary"><a href="{{url('documentos/novo')}}" style="color: #fff; text-decoration: none;">Continuar</a></button>
+							<button class="btn btn-primary"><a href="{{url('documentos/novo')}}" style="color: #fff; text-decoration: none;">Cadastrar</a></button>
 
 
 
@@ -98,4 +114,5 @@
         </div>
     </div>
 </div>
+
 @endsection

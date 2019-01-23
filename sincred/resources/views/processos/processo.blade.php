@@ -19,9 +19,9 @@
                     <div class="jumbotron jumbotron-fluid" style="background-color: rgba(0,0,0,.03);">
 					  <div class="container">
 					  	{!!Form::open(['url'=>'processos/busca'])!!}
-					  	<div class="row">
+					  	<div class="row col-12">
 							
-							<div class="col-lg-3 col-sm-3 col-md-3">
+							<div class="col-lg-4 col-sm-4 col-md-4">
 							<strong>{!! Form::label('nome', 'Nome') !!}</strong>
 							{!! Form::input('text', 'nome', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Nome do Processo']) !!}
 							</div>
@@ -38,7 +38,7 @@
 
 
 							</div>
-							<div class="col-sm-2 col-lg-2 col-md-2">
+							<div class="col-sm-3 col-lg-3 col-md-3">
 								{!! Form::label('status', 'Status') !!}
 							{!! Form::select('status', ['1'=> 'Aguardando', '2'=>'Em Andamento', '3'=>'Finalizado'], null, ['class'=>'form-control', 'placeholder' => 'Selecione']) !!}
 
@@ -55,7 +55,7 @@
               		<br>
 
 								<div class="container">
-			                  	<div class="row">
+			                  	<div class="row col-12">
                                     <button class="btn btn-primary"><a href="/processos/novo" style="text-decoration: none; color: #fff;">Novo registro</a> </button>
 
 			                  	</div>
