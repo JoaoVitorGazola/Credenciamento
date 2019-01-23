@@ -45,7 +45,7 @@ class ProcessoController extends Controller
         $processo = Processo::findOrFail($id);
         \Session::flash('encontrado', $processo->nome.' excluido com sucesso');
         $processo->delete();
-        return redirect()->back();
+        return redirect('/processos');
     }
 
     public function verificar($id){
