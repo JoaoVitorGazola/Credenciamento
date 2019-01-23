@@ -39,7 +39,7 @@
 
                         <li> <a class="nav-link" href="{{url('/processos/')}}"> Processos </a></li>
 
-                        <li> <a class="nav-link" href="{{url('/farmacia/novo')}}"> Farmácias </a></li>
+                        <li> <a class="nav-link" href="{{url('/farmacias')}}"> Farmácias </a></li>
 
                          <div class="btn-group">
                           <a  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

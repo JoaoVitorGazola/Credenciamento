@@ -18,18 +18,19 @@
 
                     <div class="jumbotron jumbotron-fluid" style="background-color: rgba(0,0,0,.03);">
 					  <div class="container">
-					  	{!!Form::open(['url'=>'/'])!!}
+					  	{!!Form::open(['url'=>'/farmacias/busca'])!!}
 					  	<div class="row col-12">
 							
 							<div class="col-lg-3 col-sm-3 col-md-3">
-							<strong>{!! Form::label('cnpj', 'CNPJ') !!}</strong>
-							{!! Form::input('text', 'nome', null, ['class' => 'form-control', 'autofocus', 'placeholder' => '00.000.000/0000-00']) !!}
-							</div>
-							
-							<div class="col-sm-3 col-lg-3 col-md-3">
 								{!! Form::label('razaoSocial', 'Nome / Razão Social') !!}
 								{!! Form::input('text', 'razaoSocial', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Razão Social']) !!}
 							</div>
+							
+							<div class="col-sm-3 col-lg-3 col-md-3">
+								{!! Form::label('cnpj', 'CNPJ') !!}
+								{!! Form::input('text', 'cnpj', null, ['class' => 'form-control', 'placeholder' => '00.000.000/0000-00']) !!}
+							</div>
+
 
 							<div class="col-sm-2 col-lg-2 col-md-2">
 								{!! Form::label('states', 'Estado') !!}
@@ -39,6 +40,7 @@
 							</div>
 							<div class="col-sm-3 col-lg-3 col-md-3">
 								{!! Form::label('cities', 'Cidade') !!}
+								
 							{!! Form::select('cities', ['1'=> 'exemplo 1', '2'=>'exemplo 2', '3'=>'exemplo 3'], null, ['class'=>'form-control', 'placeholder' => 'Selecione']) !!}
 
 							</div>
@@ -71,26 +73,26 @@
 							<table class="table table-hover table-bordered">
 								<thead style="background-color: rgba(0,0,0,.03);">
 								    <tr>
-								      <th> CNPJ </th>
 								      <th>Nome / Razão Social </th>
-								       <th>E-mail </th>
+										<th> CNPJ </th>
+										<th>E-mail </th>
 								        <th>Telefone </th>
 
 								    </tr>
 							 	 </thead>
-							 
+							 @foreach($farmacias as $farmacia)
 							  <tbody>
 								    <tr>
-								      <td scope="row"> 00.000.000/0000-00 </td>
-								      <td> Farmácia Popular </td>
-								      <td> farmaciapopular@gmail.com </td>
-								      <td>  (00) 0000-0000 </td>
+								      <td scope="row">{{$farmacia->razaoSocial}} </td>
+										<td >{{$farmacia->cnpj}}</td>
+										<td>{{$farmacia->email}}</td>
+								      <td>  {{$farmacia->fixo}} </td>
 
 
 								    </tr>
 
 							  </tbody>
-							
+							@endforeach
 							  
 							</table>
 						</div>

@@ -11,14 +11,15 @@ class ProcessoController extends Controller
 {
     public function index()
     {
-        $processos = Processo::all();
+        $processo = Processo::query();
+        $processos = $processo->orderBy('nome')->get();
         return view('processos.processo', ['processos' => $processos]);
     }
     public function busca(Request $request)
     {
         $processo = Processo::query();
             if ($request->nome != null) {
-                $processo->where('nome', $request->nome);
+                $processo->where('nome', 'like', '%'.$request->nome.'%');
             }
             if ($request->inicio != null) {
                 $processo->where('inicio', $request->inicio);
@@ -29,7 +30,7 @@ class ProcessoController extends Controller
             if ($request->status != null) {
                 $processo->where('status', $request->status);
             }
-        $processos = $processo->get();
+        $processos = $processo->orderBy('nome')->get();
 
         \Session::flash('encontrado', count($processos).' resultados encontrados ');
         return view('processos.processo', ['processos' => $processos]);
@@ -38,7 +39,7 @@ class ProcessoController extends Controller
     public function detalhes($id){
 
         $processo = Processo::findOrFail($id);
-        $documentos = Documento::where('processos_id', $id)->get();
+        $documentos = Documento::where('processos_id', $id)->orderBy('tipo')->get();
         return view('processos.detalhes', ['processo' => $processo, 'documentos' => $documentos]);
     }
     public function excluir($id){
