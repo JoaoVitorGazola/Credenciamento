@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="620d2f75-b91a-4128-99b9-25813176ace0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Citie.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Citie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FarmaciaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FarmaciaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/farmacia/farmacia.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/farmacia/farmacia.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +17,7 @@
     <session id="-2028657776">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.2" value="1" />
@@ -48,25 +45,25 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="php" value="8669" />
+          <entry key="php" value="8802" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Blade" value="6043" />
+          <entry key="Blade" value="6131" />
           <entry key="HTML" value="31" />
-          <entry key="PHP" value="2595" />
+          <entry key="PHP" value="2640" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FarmaciaController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="16" column="86" selection-start-line="16" selection-start-column="86" selection-end-line="16" selection-end-column="86" />
+            <state relative-caret-position="68">
+              <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
               <folding>
                 <element signature="e#40#57#0#PHP" expanded="true" />
               </folding>
@@ -74,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/farmacia/farmacia.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="66" column="63" selection-start-line="66" selection-start-column="63" selection-end-line="66" selection-end-column="63" />
+            <state relative-caret-position="119">
+              <caret line="43" column="49" lean-forward="true" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
               <folding>
                 <element signature="e#661#703#0#HTML" expanded="true" />
                 <element signature="e#1954#1979#0#HTML" expanded="true" />
@@ -139,8 +136,8 @@
         <option value="$PROJECT_DIR$/app/Citie.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CidadeController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/FarmaciaController.php" />
         <option value="$PROJECT_DIR$/resources/views/farmacia/farmacia.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/FarmaciaController.php" />
       </list>
     </option>
   </component>
@@ -341,16 +338,15 @@
       <workItem from="1548153484499" duration="4275000" />
       <workItem from="1548162744563" duration="3367000" />
       <workItem from="1548240440545" duration="7740000" />
-      <workItem from="1548328377957" duration="10156000" />
+      <workItem from="1548328377957" duration="11051000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40315000" />
+    <option name="totallyTimeSpent" value="41210000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27609682" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -572,6 +568,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/farmacia/farmacia.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="43" column="49" lean-forward="true" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
+          <folding>
+            <element signature="e#661#703#0#HTML" expanded="true" />
+            <element signature="e#1954#1979#0#HTML" expanded="true" />
+            <element signature="e#2170#2261#0#HTML" expanded="true" />
+            <element signature="e#2501#2544#0#HTML" expanded="true" />
+            <element signature="e#2814#2856#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CidadeController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -584,24 +594,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FarmaciaController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="16" column="86" selection-start-line="16" selection-start-column="86" selection-end-line="16" selection-end-column="86" />
+        <state relative-caret-position="68">
+          <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
           <folding>
             <element signature="e#40#57#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/farmacia/farmacia.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="66" column="63" selection-start-line="66" selection-start-column="63" selection-end-line="66" selection-end-column="63" />
-          <folding>
-            <element signature="e#661#703#0#HTML" expanded="true" />
-            <element signature="e#1954#1979#0#HTML" expanded="true" />
-            <element signature="e#2170#2261#0#HTML" expanded="true" />
-            <element signature="e#2501#2544#0#HTML" expanded="true" />
-            <element signature="e#2814#2856#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
