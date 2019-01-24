@@ -30,3 +30,5 @@ Route::any('/documentos/palavras', 'DocumentoController@palavras');
 
 Route::any('/farmacias', 'FarmaciaController@farmacia');
 Route::post('/farmacias/busca', 'FarmaciaController@busca');
+Route::any('/farmacias/novo', 'FarmaciaController@novo');
+Route::any('/farmacias/responsavel', 'FarmaciaController@responsavel');

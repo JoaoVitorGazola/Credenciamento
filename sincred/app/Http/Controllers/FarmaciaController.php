@@ -13,4 +13,14 @@ class FarmaciaController extends Controller
         $farmacias = $farmacia->orderBy('razaoSocial')->get();
     	return view('farmacia.farmacia', ['farmacias'=>$farmacias]);
     }
+
+    public function novo()
+    {
+        return view('farmacia.cadastrar');
+    }
+
+    public function responsavel()
+    {
+        return view('farmacia.responsavel');
+    }
 }

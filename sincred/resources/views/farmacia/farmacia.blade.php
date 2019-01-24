@@ -59,7 +59,7 @@
 								<div class="container">
 			                  	<div class="row col-12">
                                     <button class="btn btn-primary">
-                                    	<a href="/farcamia/novo" style="text-decoration: none; color: #fff;">Novo registro</a> 
+                                    	<a href="/farmacias/novo" style="text-decoration: none; color: #fff;">Novo registro</a> 
                                     </button>
 
 			                  	</div>
