@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Farmacia;
+use App\State;
 use Illuminate\Http\Request;
 
 class FarmaciaController extends Controller
@@ -11,7 +12,9 @@ class FarmaciaController extends Controller
     {
         $farmacia = Farmacia::query();
         $farmacias = $farmacia->orderBy('razaoSocial')->get();
-    	return view('farmacia.farmacia', ['farmacias'=>$farmacias]);
+        $estado = State::query();
+        $estados = $estado->orderBy('abbreviation')->get();
+    	return view('farmacia.farmacia', ['farmacias'=>$farmacias, 'estados'=>$estados]);
     }
 
     public function novo()
