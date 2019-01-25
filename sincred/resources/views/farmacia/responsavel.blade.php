@@ -32,9 +32,9 @@
                     <div class="panel with-nav-tabs panel-primary">
                         <div class="panel-heading">
                             <ul class="nav nav-tabs" style="margin-bottom: -13px;">
-                                <li class="nav-link">
+                                <li class="disabled nav-link">
                             
-                                    <a href="{{url('/farmacias/novo')}}" style="text-decoration: none; color: #212529;"> Farmácia </a>
+                                    Farmácia 
                             
                                 </li>
                                 <li class=" active nav-link">
@@ -205,8 +205,8 @@
 					
 					<br>	
 						<div class="float-right">
-                            <button class="btn btn-primary"><a href="{{url('/farmacias/novo')}}" style="color: #fff; text-decoration: none;">Voltar</a></button>
-							<button class="btn btn-primary"><a href="{{url('/farmacias')}}" style="color: #fff; text-decoration: none;">Cadastrar</a></button>
+                           
+							<button class="btn btn-primary"><a href="{{url('/farmacias')}}" style="color: #fff; text-decoration: none;">Finalizar</a></button>
 
 
 

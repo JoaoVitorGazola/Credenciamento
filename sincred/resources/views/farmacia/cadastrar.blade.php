@@ -37,11 +37,10 @@
                                     <a href="{{url('/farmacias/novo')}}" style="text-decoration: none; color: #212529;"> Farmácia </a>
                             
                                 </li>
-                                <li class="nav-link">
+                                <li class="disabled nav-link">
                                 
-                                    <a href="{{url('farmacias/responsavel')}}" style="text-decoration: none; color: #212529;">
                                   Responsável Legal   
-                                    </a>
+                                 
 
                                 
                                 </li>
@@ -185,7 +184,7 @@
 					<br>	
 						<div class="float-right">
                             <button class="btn btn-primary"><a href="/farmacias" style="color: #fff; text-decoration: none;">Cancelar</a></button>
-							{!! Form::submit('Continuar',['class'=>'btn btn-primary']) !!}
+							{!! Form::submit('Cadastrar',['class'=>'btn btn-primary']) !!}
                             {!! Form::close() !!}
 
 
