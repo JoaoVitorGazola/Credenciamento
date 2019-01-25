@@ -36,22 +36,24 @@
 
                         @if (!Auth::guest())
                         <li> <a class="nav-link" href="{{url('/home')}}"> Home </a> </li>
-
-                        <li> <a class="nav-link" href="{{url('/processos/')}}"> Processos </a></li>
-
-                        <li> <a class="nav-link" href="{{url('/farmacias')}}"> Farmácias </a></li>
-
-                         <div class="btn-group">
+                        <div class="btn-group">
                           <a  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            teste
+                           Processos
                           </a>
                           <div class="dropdown-menu">
-                            
-                           <li> <a class="dropdown-item" href="{{url('/')}}"> teste </a></li>
-                            <li> <a class="dropdown-item" href="{{url('/')}}"> teste </a> </li>
+                            <li> 
+                                <a class="nav-link" href="{{url('/processos/')}}"> Processos </a></li>
+                           
+                            <li> 
+                                <a class= "nav-link" href="{{url('/processos/andamento')}}"> Processos em Andamento </a> </li>
                             
                           </div>
                         </div>
+                        
+
+                        <li> <a class="nav-link" href="{{url('/farmacias')}}"> Farmácias </a></li>
+
+                         
                         @endif
 
                         

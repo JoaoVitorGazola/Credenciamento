@@ -26,6 +26,7 @@ Route::any('/processos/novo', 'ProcessoController@novo');
 
 
 Route::any('/documentos/novo', 'DocumentoController@novo');
+Route::any('/documentos/{Documento}/excluir', 'DocumentoController@excluir');
 Route::any('/documentos/palavras', 'DocumentoController@palavras');
 
 Route::any('/farmacias', 'FarmaciaController@farmacia');
@@ -36,3 +37,6 @@ Route::any('/farmacias/novo/salvar', 'FarmaciaController@farmacianovo');
 Route::any('/farmacias/{id}/responsavel', 'FarmaciaController@responsavel')->name('/farmacias/{id}/responsavel');
 Route::any('/farmacias/responsavel/novo', 'FarmaciaController@responsavelnovo');
 
+
+
+Route::any('/envios/novo', 'EnvioController@novo');

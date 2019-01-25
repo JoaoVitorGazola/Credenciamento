@@ -16,19 +16,19 @@
                                     <a href="{{url('processos/novo')}}" style="text-decoration: none; color: #212529;"> Processo </a>
                             
                                 </li>
-                                <li class="nav-link">
+                                <li class="disabled nav-link">
                                 
-                                    <a href="{{url('documentos/novo')}}" style="text-decoration: none; color: #212529;">
+                                    
                                   Documento Requisitado   
-                                    </a>
+                                    
 
                                 
                                 </li>
-                                <li class="nav-link">
+                                <li class="disabled nav-link">
                                 
-                                    <a href="{{url('documentos/palavras')}}" style="text-decoration: none; color: #212529;">
+                                    
                                         Palavras
-                                    </a>
+                                
                                
                                 </li>
                           

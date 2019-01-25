@@ -12,16 +12,16 @@
                     <div class="panel with-nav-tabs panel-primary">
                         <div class="panel-heading">
                             <ul class="nav nav-tabs" style="margin-bottom: -13px;">
-                                <li class="nav-link">
+                                <li class="disabled nav-link">
                             
-                                    <a href="{{url('processos/novo')}}" style="text-decoration: none; color: #212529;"> Processo </a>
-                            
+                                     Processo 
                                 </li>
-                                <li class="nav-link">
+
+                                <li class="disabled nav-link">
                                 
-                                    <a href="{{url('documentos/novo')}}" style="text-decoration: none; color: #212529;">
+                                    
                                   Documento Requisitado   
-                                    </a>
+                                    
 
                                 
                                 </li>
@@ -138,9 +138,8 @@
 					
 					<br>	
 						<div class="float-right">
-                           <button class="btn btn-primary"><a href="{{url('documentos/novo')}}" style="color: #fff; text-decoration: none;">Voltar</a>
-                            </button>
-							<button class="btn btn-primary"><a href="{{url('/processos')}}" style="color: #fff; text-decoration: none;">Cadastrar</a>
+                          
+							<button class="btn btn-primary"><a href="{{url('/processos')}}" style="color: #fff; text-decoration: none;">Finalizar</a>
 							</button>
 
 

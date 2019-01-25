@@ -12,12 +12,12 @@
                     <div class="panel with-nav-tabs panel-primary">
                         <div class="panel-heading">
                             <ul class="nav nav-tabs" style="margin-bottom: -13px;">
-                                <li class="nav-link">
+                                <li class="disabled nav-link">
                             
-                                    <a href="{{url('processos/novo')}}" style="text-decoration: none; color: #212529;"> Processo </a>
+                                    Processo 
                             
                                 </li>
-                                <li class="active  nav-link">
+                                <li class="active nav-link">
                                 
                                     <a href="{{url('documentos/novo')}}" style="text-decoration: none; color: #212529;">
                                   Documento Requisitado   
@@ -25,11 +25,11 @@
 
                                 
                                 </li>
-                                <li class="nav-link">
+                                <li class="disabled nav-link">
                                 
-                                    <a href="{{url('documentos/palavras')}}" style="text-decoration: none; color: #212529;">
+                                    
                                         Palavras
-                                    </a>
+                                    
                                
                                 </li>
                           
@@ -41,9 +41,9 @@
                 </div>
 
                 <div class="card-body">
-                    @if (session('status'))
+                    @if (session('excluir'))
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                            {{ session('excluir') }}
                         </div>
                     @endif
 
@@ -70,19 +70,23 @@
 
 								    </tr>
 							 	 </thead>
-							 
+							 @foreach($documentos as $documento)
 							  <tbody>
 								    <tr>
-								      <td class=""> exemplo </td>
-								      <td> exemplo </td>
-								      <td><button class="btn btn-danger">Excluir</button>
+								      <td class=""> {{$documento->tipo}} </td>
+								      <td> {{$documento->descrição}} </td>
+								      <td>
+                                       <?php 
+
+                                       echo '<button class="btn btn-danger"> <a href="/documentos/'.$documento->id.'/excluir" onclick="return confirm(\'Tem certeza que deseja excluir esse documento?\');"> Excluir </a></button>'
+                                       ?>
 								      </td>
 
 
 								    </tr>
 
 							  </tbody>
-						
+						@endforeach
 							  
 							</table>
 						</div>
@@ -102,7 +106,7 @@
                             
                             <div class="col-lg-5 col-sm-5 col-md-5">
                             {!! Form::label('tipodoc', 'Tipo do Documento *') !!}
-                            {!! Form::input('text', 'nome', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Nome do Processo']) !!}
+                            {!! Form::input('text', 'nome', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Tipo do Documento']) !!}
                             </div>
                             
                             <div class="col-sm-5 col-lg-5 col-md-5">
@@ -130,9 +134,8 @@
 					
 					<br>	
 						<div class="float-right">
-                           <button class="btn btn-primary"><a href="{{url('processos/novo')}}" style="color: #fff; text-decoration: none;">Voltar</a>
-                            </button>
-							<button class="btn btn-primary"><a href="{{url('documentos/palavras')}}" style="color: #fff; text-decoration: none;">Continuar</a>
+                          
+							<button class="btn btn-primary"><a href="{{url('documentos/palavras')}}" style="color: #fff; text-decoration: none;">Cadastrar</a>
 							</button>
 
 

@@ -63,4 +63,29 @@ class ProcessoController extends Controller
         return view('processos.cadastrar');
     }
 
+     public function andamento(Request $request)
+    {
+       $processo = Processo::query();
+       $processos = $processo->where('status', 2)->orderBy('nome')->get();
+        return view('processos.andamento', ['processos' => $processos]);
+    }
+
+    public function buscaAndamento(Request $request)
+    {
+        $processo = Processo::query();
+            if ($request->nome != null) {
+                $processo->where('nome', 'like', '%'.$request->nome.'%');
+            }
+            
+            if ($request->final !=null) {
+                $processo->where('final', $request->final);
+            }
+           
+        $processos = $processo->where('status', 2)->orderBy('nome')->get();
+
+        \Session::flash('achado', count($processos).' resultados encontrados ');
+        return view('processos.andamento', ['processos' => $processos]);
+
+    }
+
 }
