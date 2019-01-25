@@ -1,6 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <script>
+        function myFunction()
+        {
+            var value = $('#states').val();
+
+
+            $.ajax({
+                url:"{{url('/farmacias/fetch')}}",
+                method:"GET",
+                data:{value:value},
+                success:function (result) {
+                    $('#city').find("option").remove();
+                    $('#city').append(result);
+                },
+                error:function () {
+                    alert("erro")
+                }
+            })
+        }
+    </script>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12 col-sm-12 col-lg-12">
@@ -52,7 +73,7 @@
                     <br>
 
                      
-                        {!!Form::open(['url'=>'/'])!!}
+                        {!!Form::open(['url'=>'/farmacias/novo/salvar'])!!}
                         <div class="row">
                             
                             <div class="col-lg-4 col-sm-4 col-md-4">
@@ -81,15 +102,12 @@
                             </div>
 
                             <div class="col-sm-3 col-lg-3 col-md-3"> <br>
-                                {!! Form::label('fixo', 'N° Telefone Celular') !!}
+                                {!! Form::label('celular', 'N° Telefone Celular') !!}
                                {!! Form::input('number', 'celular', null, ['class' => 'form-control', 'autofocus', 'placeholder' => '(00)00000-0000']) !!}
                            
 
                             </div>
 
-                           
-
-                            {!! Form::close() !!}
                      </div>
                     <br>
                     <br>
@@ -99,8 +117,6 @@
                     <li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> </li>
                     <br>
 
-                     
-                        {!!Form::open(['url'=>'/'])!!}
                         <div class="row">
                             
                             <div class="col-lg-3 col-sm-3 col-md-3">
@@ -137,19 +153,25 @@
                             	{!! Form::input('text', 'complemento', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Complemento']) !!}
                             </div>
                             <div class="col-sm-3 col-lg-3 col-md-3">
-                               {!! Form::label('UF', 'Estado *') !!}
-								{!! Form::select('states', ['1'=> 'exemplo 1', '2'=>'exemplo 2', '3'=>'exemplo 3'], null, ['class'=>'form-control', 'placeholder' => 'UF']) !!}
-
+                               {!! Form::label('states_id', 'Estado *') !!}
+                                <select class="form-control" id="states" name="states_id" onchange="myFunction();">
+                                    <option value={{null}}>Selecione o estado</option>
+                                    @foreach($estados as $estado)
+                                        <option value="{{$estado->id}}">{{$estado->abbreviation}}</option>
+                                    @endforeach
+                                </select>
+                                {{csrf_field(['id'=>'token'])}}
 
                             </div>
 
                              <div class="col-sm-4 col-lg-4 col-md-4">
-                               {!! Form::label('cities', 'Cidade *') !!}
-								{!! Form::select('cities', ['1'=> 'exemplo 1', '2'=>'exemplo 2', '3'=>'exemplo 3'], null, ['class'=>'form-control', 'placeholder' => 'Selecione a Cidade']) !!}
-
+                                 {!! Form::label('cities_id', 'Cidade *') !!}
+                                 <select name="cities_id" id="city" class="form-control">
+                                     <option value="{{null}}">Selecione a cidade</option>
+                                 </select>
 
                             </div>
-                            {!! Form::close() !!}
+
                      </div>
                      <br>
     
@@ -163,8 +185,8 @@
 					<br>	
 						<div class="float-right">
                             <button class="btn btn-primary"><a href="/farmacias" style="color: #fff; text-decoration: none;">Cancelar</a></button>
-							<button class="btn btn-primary"><a href="{{url('farmacias/responsavel')}}" style="color: #fff; text-decoration: none;">Continuar</a></button>
-
+							{!! Form::submit('Continuar',['class'=>'btn btn-primary']) !!}
+                            {!! Form::close() !!}
 
 
 							

@@ -29,6 +29,10 @@ Route::any('/documentos/novo', 'DocumentoController@novo');
 Route::any('/documentos/palavras', 'DocumentoController@palavras');
 
 Route::any('/farmacias', 'FarmaciaController@farmacia');
+Route::get('farmacias/fetch', 'CidadeController@fetch');
 Route::post('/farmacias/busca', 'FarmaciaController@busca');
 Route::any('/farmacias/novo', 'FarmaciaController@novo');
-Route::any('/farmacias/responsavel', 'FarmaciaController@responsavel');
+Route::any('/farmacias/novo/salvar', 'FarmaciaController@farmacianovo');
+Route::any('/farmacias/{id}/responsavel', 'FarmaciaController@responsavel')->name('/farmacias/{id}/responsavel');
+Route::any('/farmacias/responsavel/novo', 'FarmaciaController@responsavelnovo');
+

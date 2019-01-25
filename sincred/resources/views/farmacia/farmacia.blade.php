@@ -1,7 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-	<script type="text/javascript">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+	<script>
+        function myFunction()
+        {
+            var value = $('#states').val();
+
+
+            $.ajax({
+                url:"{{url('/farmacias/fetch')}}",
+                method:"GET",
+                data:{value:value},
+                success:function (result) {
+                    $('#city').find("option").remove();
+                    $('#city').append(result);
+                },
+				error:function () {
+					alert("erro")
+                }
+            })
+        }
 	</script>
 	<div class="container">
 		<div class="row justify-content-center">
@@ -11,9 +30,9 @@
 						<h2>Farmácias </h2></div>
 
 					<div class="card-body">
-						@if (session('encontrado'))
+						@if (session('encontradofarma'))
 							<div class="alert alert-success" role="alert">
-								{{ session('encontrado') }}
+								{{ session('encontradofarma') }}
 							</div>
 						@endif
 
@@ -36,18 +55,20 @@
 
 									<div class="col-sm-2 col-lg-2 col-md-2">
 										{!! Form::label('states', 'Estado') !!}
-										<select class="form-control" id="id_estado" name="states" onchange="myFunction()">
-											<option>Selecione o estado</option>
+										<select class="form-control" id="states" name="states" onchange="myFunction();">
+											<option value={{null}}>Selecione o estado</option>
 											@foreach($estados as $estado)
 												<option value="{{$estado->id}}">{{$estado->abbreviation}}</option>
 											@endforeach
 										</select>
-
+									{{csrf_field(['id'=>'token'])}}
 									</div>
 									<div class="col-sm-3 col-lg-3 col-md-3">
-										{!! Form::label('id_cidade', 'Cidade') !!}
+										{!! Form::label('city', 'Cidade') !!}
 
-										<select name="id_cidade" id="id_cidade" class="form-control"></select>
+										<select name="city" id="city" class="form-control">
+											<option value="{{null}}">Selecione a cidade</option>
+										</select>
 									</div>
 
 									<div class="col-1" style="margin-top: 30px;">

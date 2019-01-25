@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Responsavei extends Model
 {
     protected $fillable = [
+        'farmacias_id',
         'nome',
         'cpf',
         'email',

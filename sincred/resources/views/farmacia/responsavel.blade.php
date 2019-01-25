@@ -1,6 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <script>
+        function myFunction()
+        {
+            var value = $('#states').val();
+
+
+            $.ajax({
+                url:"{{url('/farmacias/fetch')}}",
+                method:"GET",
+                data:{value:value},
+                success:function (result) {
+                    $('#city').find("option").remove();
+                    $('#city').append(result);
+                },
+                error:function () {
+                    alert("erro")
+                }
+            })
+        }
+    </script>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12 col-sm-12 col-lg-12">
@@ -60,19 +81,19 @@
 
 								    </tr>
 							 	 </thead>
-							 
+							 @foreach($responsaveis as $responsavel)
 							  <tbody>
 								    <tr>
-								      <td scope="row"> Luiz Marcelo</td>
-										<td >000.000.000-00</td>
-										<td> example@example.com</td>
-								      <td>  (00)00000-0000 </td>
+								      <td scope="row">{{$responsavel->nome}}</td>
+										<td >{{$responsavel->cpf}}</td>
+										<td> {{$responsavel->email}}</td>
+								      <td>  {{$responsavel->celular}} </td>
 
 
 								    </tr>
 
 							  </tbody>
-						
+						@endforeach
 							  
 							</table>
 						</div>
@@ -86,12 +107,13 @@
                     <br>
 
                      
-                        {!!Form::open(['url'=>'/'])!!}
+                        {!!Form::open(['url'=>'/farmacias/responsavel/novo'])!!}
                         <div class="row">
                             
                             <div class="col-lg-4 col-sm-4 col-md-4">
-                            {!! Form::label('nomeresponsavel', 'Nome Responsável *') !!}
-                            {!! Form::input('text', 'nomeresponsavel', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Nome Responsável']) !!}
+                                {!! Form::input('hidden', 'farmacias_id', $id,['class'=>'form-control']) !!}
+                            {!! Form::label('nome', 'Nome Responsável *') !!}
+                            {!! Form::input('text', 'nome', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Nome Responsável']) !!}
                             </div>
                             
                             <div class="col-sm-3 col-lg-3 col-md-3">
@@ -145,23 +167,27 @@
                             	{!! Form::input('text', 'complemento', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Complemento']) !!}
                             </div>
                             <div class="col-sm-3 col-lg-3 col-md-3">
-                               {!! Form::label('UF', 'Estado *') !!}
-								{!! Form::select('states', ['1'=> 'exemplo 1', '2'=>'exemplo 2', '3'=>'exemplo 3'], null, ['class'=>'form-control', 'placeholder' => 'UF']) !!}
-
+                                {!! Form::label('states_id', 'Estado *') !!}
+                                <select class="form-control" id="states" name="states_id" onchange="myFunction();">
+                                    <option value={{null}}>Selecione o estado</option>
+                                    @foreach($estados as $estado)
+                                        <option value="{{$estado->id}}">{{$estado->abbreviation}}</option>
+                                    @endforeach
+                                </select>
+                                {{csrf_field(['id'=>'token'])}}
 
                             </div>
 
                              <div class="col-sm-4 col-lg-4 col-md-4">
-                               {!! Form::label('cities', 'Cidade *') !!}
-								{!! Form::select('cities', ['1'=> 'exemplo 1', '2'=>'exemplo 2', '3'=>'exemplo 3'], null, ['class'=>'form-control', 'placeholder' => 'Selecione a Cidade']) !!}
-
+                                 {!! Form::label('cities_id', 'Cidade *') !!}
+                                 <select name="cities_id" id="city" class="form-control">
+                                     <option value="{{null}}">Selecione a cidade</option>
+                                 </select>
 
                             </div>
 
-
                             <div class="col-2" style="margin-top: 30px;">
-                            	<button class="btn btn-primary"><a href="#" style="color: #fff; text-decoration: none;">Adicionar Responsável</a>
-                            	 </button>
+                            	{!! Form::submit('Adicionar responsavel', ['class'=>'btn btn-primary']) !!}
 
                             </div>
 
