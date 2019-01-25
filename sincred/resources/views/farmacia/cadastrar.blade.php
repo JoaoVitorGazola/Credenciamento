@@ -95,14 +95,14 @@
 
                             <div class="col-sm-3 col-lg-3 col-md-3"> <br>
                                 {!! Form::label('fixo', 'N° Telefone Fixo *') !!}
-                               {!! Form::input('number', 'fixo', null, ['class' => 'form-control', 'autofocus', 'placeholder' => '(00)0000-0000']) !!}
+                               {!! Form::input('text', 'fixo', null, ['class' => 'form-control', 'autofocus', 'placeholder' => '(00)0000-0000']) !!}
                            
 
                             </div>
 
                             <div class="col-sm-3 col-lg-3 col-md-3"> <br>
                                 {!! Form::label('celular', 'N° Telefone Celular') !!}
-                               {!! Form::input('number', 'celular', null, ['class' => 'form-control', 'autofocus', 'placeholder' => '(00)00000-0000']) !!}
+                               {!! Form::input('text', 'celular', null, ['class' => 'form-control', 'autofocus', 'placeholder' => '(00)00000-0000']) !!}
                            
 
                             </div>
@@ -120,7 +120,7 @@
                             
                             <div class="col-lg-3 col-sm-3 col-md-3">
                             {!! Form::label('cep', 'CEP *') !!}
-                            {!! Form::input('number', 'cep', null, ['class' => 'form-control', 'autofocus', 'placeholder' => '00000-000', 'data-mask' => '00000-000']) !!}<a href="#">Não sei meu CEP</a>
+                            {!! Form::input('text', 'cep', null, ['class' => 'form-control', 'autofocus', 'placeholder' => '00000-000', 'data-mask' => '00000-000']) !!}<a href="#">Não sei meu CEP</a>
                             </div>
 
 
@@ -139,7 +139,7 @@
                             </div>
                             <div class="col-sm-1 col-lg-1 col-md-1">
                                 {!! Form::label('numero', 'N°') !!}
-                            {!! Form::input('number', 'numero', null, ['class' => 'form-control', 'autofocus']) !!}
+                            {!! Form::input('text', 'numero', null, ['class' => 'form-control', 'autofocus']) !!}
 
                             <br>
                             <br>
