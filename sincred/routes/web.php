@@ -15,7 +15,6 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::any('/processos', 'ProcessoController@index');
 Route::post('/processos/busca', 'ProcessoController@busca');
@@ -24,17 +23,14 @@ Route::any('/processos/{Processo}/excluir', 'ProcessoController@excluir');
 Route::any('/processos/{Processo}/verificar', 'ProcessoController@verificar');
 Route::any('/processos/{Processo}/verificar/{Envio}', 'ProcessoController@verificar');
 Route::any('/processos/novo', 'ProcessoController@novo');
-Route::any('/processos/novo/salvar', 'ProcessoController@salvar');
 Route::any('/processos/andamento', 'ProcessoController@andamento');
 Route::any('/processos/andamento/busca', 'ProcessoController@buscaAndamento');
+Route::any('/processos/relatorio', 'ProcessoController@relatorio');
 
 
-
-Route::any('/{id}/documentos/novo', 'DocumentoController@novo')->name('/{id}/documentos/novo');
-Route::any('/{id}/documentos/novo/salvar', 'DocumentoController@salvar');
+Route::any('/documentos/novo', 'DocumentoController@novo');
 Route::any('/documentos/{Documento}/excluir', 'DocumentoController@excluir');
-Route::any('{id}/documentos/palavras', 'DocumentoController@palavras');
-Route::any('/documentos/palavras/salvar', 'DocumentoController@palavrassalvar');
+Route::any('/documentos/palavras', 'DocumentoController@palavras');
 
 Route::any('/farmacias', 'FarmaciaController@farmacia');
 Route::get('farmacias/fetch', 'CidadeController@fetch');

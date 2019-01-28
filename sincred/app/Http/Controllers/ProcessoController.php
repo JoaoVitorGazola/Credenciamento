@@ -11,34 +11,33 @@ class ProcessoController extends Controller
 {
     public function index()
     {
-        $this->atualizarStatus();
         $processo = Processo::query();
         $processos = $processo->orderBy('nome')->get();
         return view('processos.processo', ['processos' => $processos]);
     }
     public function busca(Request $request)
     {
-        $this->atualizarStatus();
         $processo = Processo::query();
-        if ($request->nome != null) {
-            $processo->where('nome', 'like', '%'.$request->nome.'%');
-        }
-        if ($request->inicio != null) {
-            $processo->where('inicio', $request->inicio);
-        }
-        if ($request->final !=null) {
-            $processo->where('final', $request->final);
-        }
-        if ($request->status != null) {
-            $processo->where('status', $request->status);
-        }
+            if ($request->nome != null) {
+                $processo->where('nome', 'like', '%'.$request->nome.'%');
+            }
+            if ($request->inicio != null) {
+                $processo->where('inicio', $request->inicio);
+            }
+            if ($request->final !=null) {
+                $processo->where('final', $request->final);
+            }
+            if ($request->status != null) {
+                $processo->where('status', $request->status);
+            }
         $processos = $processo->orderBy('nome')->get();
+
         \Session::flash('encontrado', count($processos).' resultados encontrados ');
         return view('processos.processo', ['processos' => $processos]);
 
     }
     public function detalhes($id){
-        $this->atualizarStatus();
+
         $processo = Processo::findOrFail($id);
         $documentos = Documento::where('processos_id', $id)->orderBy('tipo')->get();
         return view('processos.detalhes', ['processo' => $processo, 'documentos' => $documentos]);
@@ -52,7 +51,7 @@ class ProcessoController extends Controller
     }
 
     public function verificar($id){
-        $this->atualizarStatus();
+
         $processo = Processo::findOrFail($id);
         $documentos = Documento::where('processos_id', $id)->get();
         $farmacias = Farmacia::all();
@@ -63,64 +62,34 @@ class ProcessoController extends Controller
     {
         return view('processos.cadastrar');
     }
-    public function salvar(Request $request){
-        $processo = new Processo();
-        $processo->nome = $request->nome;
-        $processo->descrição = $request->descrição;
-        $processo->inicio = implode("-",array_reverse(explode("/",$request->inicio)));
-        $processo->final = implode("-",array_reverse(explode("/",$request->final)));
-        $processo->status = 1;
-        $processo->save();
-        $this->atualizarStatus();
-        return redirect()->route('/{id}/documentos/novo', $processo->id);
-    }
 
-    public function andamento(Request $request)
+     public function andamento(Request $request)
     {
-        $this->atualizarStatus();
-        $processo = Processo::query();
-        $processos = $processo->where('status', 2)->orderBy('nome')->get();
+       $processo = Processo::query();
+       $processos = $processo->where('status', 2)->orderBy('nome')->get();
         return view('processos.andamento', ['processos' => $processos]);
     }
 
     public function buscaAndamento(Request $request)
     {
-        $this->atualizarStatus();
         $processo = Processo::query();
-        if ($request->nome != null) {
-            $processo->where('nome', 'like', '%'.$request->nome.'%');
-        }
-
-        if ($request->final !=null) {
-            $processo->where('final', $request->final);
-        }
-
+            if ($request->nome != null) {
+                $processo->where('nome', 'like', '%'.$request->nome.'%');
+            }
+            
+            if ($request->final !=null) {
+                $processo->where('final', $request->final);
+            }
+           
         $processos = $processo->where('status', 2)->orderBy('nome')->get();
 
         \Session::flash('achado', count($processos).' resultados encontrados ');
         return view('processos.andamento', ['processos' => $processos]);
 
     }
-    public function atualizarStatus(){
-        $processos = Processo::all();
-        $data = date('d/m/y');
-        $data = implode("-",array_reverse(explode("/",$data)));
-        foreach ($processos as $processo){
-            if(strtotime($processo->inicio) < strtotime($data)){
-                $processo->status = 1;
-                $processo->save();
-            }
-            else{
-                if(strtotime($processo->final)<=strtotime($data)){
-                    $processo->status = 2;
-                    $processo->save();
-                }
-                else{
-                    $processo->status = 3;
-                    $processo->save();
-                }
-            }
-        }
-    }
 
+    public function relatorio()
+    {
+        return view('processos.relatorio');
+    }
 }
