@@ -88,4 +88,8 @@ class ProcessoController extends Controller
 
     }
 
+    public function relatorio()
+    {
+        return view('processos.relatorio');
+    }
 }

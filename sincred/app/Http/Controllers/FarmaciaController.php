@@ -61,5 +61,6 @@ class FarmaciaController extends Controller
         $responsavel = new Responsavei($request->all());
         $responsavel->save();
         return redirect()->back();
+        
     }
 }

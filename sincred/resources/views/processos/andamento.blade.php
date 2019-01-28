@@ -35,7 +35,9 @@
 							</div>
 							
 							<div class="col-sm-1 col-lg-1 col-md-1" style="margin-top: 30px;">
-								{!! Form::submit('Pesquisar', ['class'=>'btn btn-primary']) !!}
+								<button type="submit" class="btn btn-primary btn-md">
+									Pesquisar <i class="fas fa-search"></i>
+								</button>
 							</div>
 
 							{!! Form::close() !!}
@@ -58,7 +60,7 @@
 
 						<div class="table-responsive">
 						<table class="table table-hover table-bordered"> 
-							<thead style="background-color: rgba(0,0,0,.03);">
+							<thead style="background-color: rgba(0,0,0,.03); text-align: center;">
 							    <tr>
 							      <th scope="col-6">Nome do Processo</th>
 							      <th scope="col-6">Descrição</th>
@@ -69,19 +71,20 @@
 							  </thead>
 							  <!--- Tabela Aguardando --->
 							@foreach($processos as $processo)
-							  <tbody>
+							  <tbody style="text-align: center;">
 							    <tr>
 							      <td scope="row">{{$processo->nome}}</td>
 							      <td>{{$processo->descrição}}</td>
 							      <td>{{date('d/m/y', strtotime($processo->final))}}</td>
 							      <td> 
-							      	<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
-									 <button class="btn btn-warning" style="pointer-events: none;" type="button">Em Andamento</button>
+							      	<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Em Andamento">
+									 <button class="btn btn-warning btn-sm" style="pointer-events: none;" type="button">Em Andamento</button>
 									</span>
 							      <td>
-							      		<button>
-							      			<a href="{{url('envios/novo')}}"> Enviar </a>
-							      		</button>
+							      		
+							      			<a href="{{url('envios/novo')}}" class="btn btn-primary btn-sm" title="Enviar">
+							      				<i class="fas fa-share-square"></i> </a>
+							      		
 							       </td>
 
 

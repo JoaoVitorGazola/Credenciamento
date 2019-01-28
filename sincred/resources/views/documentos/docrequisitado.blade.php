@@ -13,13 +13,14 @@
                         <div class="panel-heading">
                             <ul class="nav nav-tabs" style="margin-bottom: -13px;">
                                 <li class="disabled nav-link">
-                            
+                                <i class="fas fa-copy"></i>
                                     Processo 
                             
                                 </li>
                                 <li class="active nav-link">
                                 
                                     <a href="{{url('documentos/novo')}}" style="text-decoration: none; color: #212529;">
+                                        <i class="fas fa-file"></i>
                                   Documento Requisitado   
                                     </a>
 
@@ -27,7 +28,7 @@
                                 </li>
                                 <li class="disabled nav-link">
                                 
-                                    
+                                        <i class="fas fa-file-alt"></i>
                                         Palavras
                                     
                                
@@ -78,7 +79,9 @@
 								      <td>
                                        <?php 
 
-                                       echo '<button class="btn btn-danger"> <a href="/documentos/'.$documento->id.'/excluir" onclick="return confirm(\'Tem certeza que deseja excluir esse documento?\');"> Excluir </a></button>'
+                                       echo '<a href="/documentos/'.$documento->id.'/excluir" onclick="return confirm(\'Tem certeza que deseja excluir esse documento?\');" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash-alt" title="Excluir"></i>
+                                            </a>'
                                        ?>
 								      </td>
 
@@ -102,25 +105,28 @@
 
                      
                         {!!Form::open(['url'=>'/'])!!}
-                        <div class="row">
+                        <div class="row col-12">
                             
                             <div class="col-lg-5 col-sm-5 col-md-5">
-                            {!! Form::label('tipodoc', 'Tipo do Documento *') !!}
-                            {!! Form::input('text', 'nome', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Tipo do Documento']) !!}
+                            <strong>{!! Form::label('tipodoc', 'Tipo do Documento *') !!}
+                            </strong>
+                            {!! Form::input('text', 'nome', null, ['class' => 'form-control', 'required', 'placeholder' => 'Tipo do Documento']) !!}<small>Coloque qual o tipo do Documento.</small>
                             </div>
                             
-                            <div class="col-sm-5 col-lg-5 col-md-5">
-                                {!! Form::label('desc', 'Descrição *') !!}
-                            {!! Form::input('text', 'nome', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Descrição']) !!}
-                            </div>
-
-                            <div class="col-sm-2 col-lg-2 col-md-2">
-                                <button class="btn btn-success" style="margin-top: 30px; width: 100px;">Add</button>
-								
+                            <div class="col-sm-6 col-lg-6 col-md-5">
+                            <strong>{!! Form::label('desc', 'Descrição ') !!}</strong>    
+                            {!! Form::input('text', 'nome', null, ['class' => 'form-control', '', 'placeholder' => 'Descrição']) !!}<small>Descreva o Documento.</small>
 
                             </div>
+                                <div class="col-sm-1 col-lg-1 col-md-2">
 
-
+                                    <button type="submit" class="btn btn-success btn-md" style="margin-top: 30px; width: 85px;">
+                                     <i class="fas fa-plus" title="Adicionar"></i>
+                                </button>
+                                </div>
+                           
+                                
+                               
                             {!! Form::close() !!}
                      </div>
                     <br>
@@ -135,7 +141,7 @@
 					<br>	
 						<div class="float-right">
                           
-							<button class="btn btn-primary"><a href="{{url('documentos/palavras')}}" style="color: #fff; text-decoration: none;">Cadastrar</a>
+							<button class="btn btn-primary btn-md"><a href="{{url('documentos/palavras')}}" style="color: #fff; text-decoration: none;">Cadastrar</a>
 							</button>
 
 

@@ -19,12 +19,12 @@ class CreateFarmaciasTable extends Migration
             $table->string('razaoSocial');
             $table->string('email');
             $table->string('fixo');
-            $table->string('celular');
+            $table->string('celular')->nullable();
             $table->string('cep');
             $table->string('logradouro');
             $table->string('bairro');
-            $table->integer('numero');
-            $table->string('complemento');
+            $table->integer('numero')->nullable();
+            $table->string('complemento')->nullable();
             $table->unsignedInteger('states_id');
             $table->foreign('states_id')->references('id')->on('states')->onDelete('cascade');
             $table->unsignedInteger('cities_id');

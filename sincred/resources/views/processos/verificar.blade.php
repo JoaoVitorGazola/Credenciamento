@@ -170,10 +170,12 @@
 							      <td>Aprovado, Reprovado, erro </td>
 									
 									<td>
-										<button> 
-											<a href="#"> Verificar</a> 
+										<?php 
+										echo '<button> 
+											<a href="/processos/relatorio"> Verificar </a> 
 											
-										</button>
+										</button>'
+										?>
 									</td>	
 
 							    </tr>

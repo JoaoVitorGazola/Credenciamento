@@ -1,27 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-    <script>
-        function myFunction()
-        {
-            var value = $('#states').val();
-
-
-            $.ajax({
-                url:"{{url('/farmacias/fetch')}}",
-                method:"GET",
-                data:{value:value},
-                success:function (result) {
-                    $('#city').find("option").remove();
-                    $('#city').append(result);
-                },
-                error:function () {
-                    alert("erro")
-                }
-            })
-        }
-    </script>
+    
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12 col-sm-12 col-lg-12">
@@ -34,7 +14,9 @@
                             <ul class="nav nav-tabs" style="margin-bottom: -13px;">
                                 <li class="active nav-link">
                             
-                                    <a href="{{url('/')}}" style="text-decoration: none; color: #212529;"> Envio </a>
+                                    <a href="{{url('/')}}" style="text-decoration: none; color: #212529;"> 
+                                            <i class="fas fa-share-square"></i> 
+                                    Envio </a>
                             
                                 </li>
                                 
@@ -129,7 +111,7 @@
 					
 					<br>	
 						<div class="float-right">
-                            <button class="btn btn-primary"><a href="/farmacias" style="color: #fff; text-decoration: none;">Cancelar</a>
+                            <button class="btn btn-primary"><a href="/processos/andamento" style="color: #fff; text-decoration: none;">Cancelar</a>
                             </button>
 
                             <button type="submit" class="btn btn-primary"><a href="/processos/andamento" style="color: #fff; text-decoration: none;">Enviar

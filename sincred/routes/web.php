@@ -25,7 +25,7 @@ Route::any('/processos/{Processo}/verificar/{Envio}', 'ProcessoController@verifi
 Route::any('/processos/novo', 'ProcessoController@novo');
 Route::any('/processos/andamento', 'ProcessoController@andamento');
 Route::any('/processos/andamento/busca', 'ProcessoController@buscaAndamento');
-
+Route::any('/processos/relatorio', 'ProcessoController@relatorio');
 
 
 Route::any('/documentos/novo', 'DocumentoController@novo');

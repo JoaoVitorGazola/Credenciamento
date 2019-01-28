@@ -113,48 +113,49 @@
                             <div class="col-lg-4 col-sm-4 col-md-4">
                                 {!! Form::input('hidden', 'farmacias_id', $id,['class'=>'form-control']) !!}
                             {!! Form::label('nome', 'Nome Responsável *') !!}
-                            {!! Form::input('text', 'nome', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Nome Responsável']) !!}
+                            {!! Form::input('text', 'nome', null, ['class' => 'form-control', 'required', 'placeholder' => 'Nome Responsável']) !!}
                             </div>
                             
                             <div class="col-sm-3 col-lg-3 col-md-3">
                                 {!! Form::label('cpf', 'CPF *') !!}
 
-                            {!! Form::input('number', 'cpf', null, ['class' => 'form-control', 'autofocus', 'placeholder' => '000.000.000-00']) !!}
+                            {!! Form::input('text', 'cpf', null, ['class' => 'form-control', 'required', 'placeholder' => '000.000.000-00']) !!}
                             </div>
 
                             <div class="col-sm-3 col-lg-3 col-md-3">
                                 {!! Form::label('email', 'E-mail *') !!}
-                            {!! Form::input('text', 'email', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'example@example.com']) !!}
+                            {!! Form::input('text', 'email', null, ['class' => 'form-control', 'required', 'placeholder' => 'example@example.com']) !!}
 
 
                             </div>
 
                             <div class="col-sm-2 col-lg-2 col-md-2">
                                 {!! Form::label('celular', 'N° Telefone *') !!}
-                               {!! Form::input('number', 'celular', null, ['class' => 'form-control', 'autofocus', 'placeholder' => '(00)00000-0000']) !!}
+                               {!! Form::input('text', 'celular', null, ['class' => 'form-control', 'required', 'placeholder' => '(00)00000-0000']) !!}
                             <br>
                             </div>
 
                             <div class="col-lg-3 col-sm-3 col-md-3">
                             {!! Form::label('cep', 'CEP *') !!}
-                            {!! Form::input('number', 'cep', null, ['class' => 'form-control', 'autofocus', 'placeholder' => '00000-000', 'data-mask' => '00000-000']) !!}<a href="#">Não sei meu CEP</a>
+                            {!! Form::input('text', 'cep', null, ['class' => 'form-control', 'required', 'placeholder' => '00000-000', 'data-mask' => '00000-000']) !!}
+                            <a href="#">Não sei meu CEP</a>
                             </div>
 
                             <div class="col-sm-4 col-lg-4 col-md-4">
                                 {!! Form::label('logradouro', 'Logradouro *') !!}
 
-                            {!! Form::input('text', 'logradouro', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Logradouro']) !!}
+                            {!! Form::input('text', 'logradouro', null, ['class' => 'form-control', 'required', 'placeholder' => 'Logradouro']) !!}
                             </div>
 
                             <div class="col-sm-4 col-lg-4 col-md-4">
                                 {!! Form::label('bairro', 'Bairro *') !!}
-                            {!! Form::input('text', 'bairro', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Bairro']) !!}
+                            {!! Form::input('text', 'bairro', null, ['class' => 'form-control', 'required', 'placeholder' => 'Bairro']) !!}
 
 
                             </div>
                             <div class="col-sm-1 col-lg-1 col-md-1">
                                 {!! Form::label('numero', 'N°') !!}
-                            {!! Form::input('number', 'numero', null, ['class' => 'form-control', 'autofocus']) !!}
+                            {!! Form::input('number', 'numero', null, ['class' => 'form-control', 'required']) !!}
 
                             <br>
                             <br>
@@ -164,11 +165,11 @@
                              <div class="col-sm-5 col-lg-5 col-md-5">  
                                 {!! Form::label('complemento', 'Complemento') !!}
 
-                            	{!! Form::input('text', 'complemento', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Complemento']) !!}
+                            	{!! Form::input('text', 'complemento', null, ['class' => 'form-control', 'required', 'placeholder' => 'Complemento']) !!}
                             </div>
                             <div class="col-sm-3 col-lg-3 col-md-3">
                                 {!! Form::label('states_id', 'Estado *') !!}
-                                <select class="form-control" id="states" name="states_id" onchange="myFunction();">
+                                <select class="form-control" id="states" name="states_id" onchange="myFunction();" required>
                                     <option value={{null}}>Selecione o estado</option>
                                     @foreach($estados as $estado)
                                         <option value="{{$estado->id}}">{{$estado->abbreviation}}</option>
@@ -180,7 +181,7 @@
 
                              <div class="col-sm-4 col-lg-4 col-md-4">
                                  {!! Form::label('cities_id', 'Cidade *') !!}
-                                 <select name="cities_id" id="city" class="form-control">
+                                 <select name="cities_id" id="city" class="form-control" required> 
                                      <option value="{{null}}">Selecione a cidade</option>
                                  </select>
 
@@ -206,7 +207,7 @@
 					<br>	
 						<div class="float-right">
                            
-							<button class="btn btn-primary"><a href="{{url('/farmacias')}}" style="color: #fff; text-decoration: none;">Finalizar</a></button>
+						<button class="btn btn-primary"><a href="{{url('/farmacias')}}" style="color: #fff; text-decoration: none;">Finalizar</a></button>
 
 
 

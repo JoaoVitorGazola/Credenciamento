@@ -44,7 +44,10 @@
 
 							</div>
 							<div class="col-sm-1 col-lg-1 col-md-1" style="margin-top: 30px;">
-								{!! Form::submit('Pesquisar', ['class'=>'btn btn-primary']) !!}
+								
+								<button type="submit" class="btn btn-primary btn-md" title="Pesquisar">
+									Pesquisar <i class="fas fa-search"></i>
+								</button>
 							</div>
 
 							{!! Form::close() !!}
@@ -56,7 +59,7 @@
 
 								<div class="container">
 			                  	<div class="row col-12">
-                                    <button class="btn btn-primary"><a href="/processos/novo" style="text-decoration: none; color: #fff;">Novo registro</a> </button>
+                                    <button class="btn btn-primary btn-md"><a href="/processos/novo" style="text-decoration: none; color: #fff;" title="Novo Processo">Novo Registro</a> <i class="fas fa-plus-circle"></i> </button>
 
 			                  	</div>
 			                  </div>
@@ -73,7 +76,7 @@
 
 						<div class="table-responsive">
 						<table class="table table-hover table-bordered"> 
-							<thead style="background-color: rgba(0,0,0,.03);">
+							<thead style="background-color: rgba(0,0,0,.03); text-align: center;">
 							    <tr>
 							      <th scope="col-6">Nome</th>
 							      <th scope="col-6">Data Início</th>
@@ -84,7 +87,7 @@
 							  </thead>
 							  <!--- Tabela Aguardando --->
 							@foreach($processos as $processo)
-							  <tbody>
+							  <tbody style="text-align: center;">
 							    <tr>
 							      <td scope="row">{{$processo->nome}}</td>
 							      <td>{{date('d/m/y', strtotime($processo->inicio))}}</td>
@@ -93,28 +96,35 @@
 									  <?php
 									  if($processo->status == 1){
 
-									      echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
-									 <button class="btn btn-secondary" style="pointer-events: none;" type="button">Aguardando</button>
+									      echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Aguardando">
+									 <button class="btn btn-secondary btn-sm" style="pointer-events: none;" type="button">Aguardando</button>
 									</span></td> <td>
-							      	<button> <a href="/processos/'.$processo->id.'/detalhes"> Detalhes </a></button>
-							      	<button> <a href="/processos/'.$processo->id.'/excluir" onclick="return confirm(\'Tem certeza que deseja excluir esse processo?\');"> Excluir </a></button>
+				<a href="/processos/'.$processo->id.'/detalhes" class="btn btn-primary btn-sm">
+				<i class="fas fa-info-circle" title="Detalhes"></i>
+				</a>
+
+				<a href="/processos/'.$processo->id.'/excluir" onclick="return confirm(\'Tem certeza que deseja excluir esse processo?\');" class="btn btn-danger btn-sm">
+				<i class="fas fa-trash-alt" title="Excluir"></i>
+				 </a>
 
 							      </td>';
 									  }
 									  elseif($processo->status == 2){
-									      echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
-									 <button class="btn btn-warning" style="pointer-events: none;" type="button">Em Andamento</button>
+									      echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Em Andamento">
+									 <button class="btn btn-warning btn-sm" style="pointer-events: none;" type="button">Em Andamento</button>
 									</span></td>							      <td>
-							      	<button> <a href="/processos/'.$processo->id.'/detalhes"> Detalhes </a></button>
+				<a href="/processos/'.$processo->id.'/detalhes" class="btn btn-primary btn-sm">
+				<i class="fas fa-info-circle" title="Detalhes"></i>
+				</a>
 
 
 							      </td>';
 									  }
 									  else{
-									      echo '							      	<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
-									 <button class="btn btn-success" style="pointer-events: none;" type="button">Finalizado</button>
+									      echo '							      	<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Finalizado">
+									 <button class="btn btn-success btn-sm" style="pointer-events: none;" type="button">Finalizado</button>
 									</span></td>							      <td>
-							      	<button> <a href="/processos/'.$processo->id.'/verificar"> Verificar </a></button>
+							      	<a href="/processos/'.$processo->id.'/verificar" class="btn btn-success btn-sm"> <i class="fas fa-check" title="Verificar"></i> </a>
 
 
 							      </td>';

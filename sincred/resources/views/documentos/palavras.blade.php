@@ -13,13 +13,13 @@
                         <div class="panel-heading">
                             <ul class="nav nav-tabs" style="margin-bottom: -13px;">
                                 <li class="disabled nav-link">
-                            
+                            <i class="fas fa-copy"></i>
                                      Processo 
                                 </li>
 
                                 <li class="disabled nav-link">
                                 
-                                    
+                                    <i class="fas fa-file"></i>
                                   Documento Requisitado   
                                     
 
@@ -28,6 +28,7 @@
                                 <li class="active nav-link">
                                 
                                     <a href="{{url('documentos/palavras')}}" style="text-decoration: none; color: #212529;">
+                                        <i class="fas fa-file-alt"></i>
                                         Palavras
                                     </a>
                                
@@ -78,7 +79,11 @@
 								      <td class=""> exemplo </td>
 								      <td> exemplo </td>
 								      <td> 0 </td>
-								      <td><button class="btn btn-danger">Excluir</button>
+								      <td>
+                                    <a href="#" onclick="return confirm(\'Tem certeza que deseja excluir esse processo?\');" class="btn btn-danger btn-sm">
+                                     <i class="fas fa-trash-alt" title="Excluir"></i>
+                                    </a>
+
 								      </td>
 
 
@@ -101,28 +106,32 @@
 
                      
                         {!!Form::open(['url'=>'/'])!!}
-                        <div class="row">
+                        <div class="row col-12">
                             
-                            <div class="col-lg-5 col-sm-5 col-md-5">
-                            {!! Form::label('docrequi', 'Documento Requisitado *') !!}
-							{!! Form::select('docrequi', ['1'=> 'exemplo 1', '2'=>'exemplo 2', '3'=>'exemplo 3'], null, ['class'=>'form-control', 'placeholder' => 'Selecione']) !!}
+                            <div class="col-lg-5 col-sm-6 col-md-5">
+                           <strong> {!! Form::label('docrequi', 'Documento Requisitado *') !!}</strong>
+							{!! Form::select('docrequi', ['1'=> 'exemplo 1', '2'=>'exemplo 2', '3'=>'exemplo 3'], null, ['class'=>'form-control', 'placeholder' => 'Selecione', 'required']) !!}<small>Selecione o Documento Requisitado.</small>
                             </div>
                             
                             <div class="col-sm-4 col-lg-4 col-md-4">
-                                {!! Form::label('desc', 'Palavra-Chave *') !!}
-                            {!! Form::input('text', 'nome', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Palavra-Chave']) !!}
+                             <strong> {!! Form::label('desc', 'Palavra-Chave *') !!}</strong>  
+                            {!! Form::input('text', 'nome', null, ['class' => 'form-control', 'required', 'placeholder' => 'Palavra-Chave']) !!}<small>Adicione a palavra-chave a ser buscada.</small>
                             </div>
 
-                            <div class="col-sm-1 col-lg-1 col-md-1">
-                                {!! Form::label('quantidade', 'Qtde *') !!}
-                            {!! Form::number('number', null, ['class' => 'form-control']) !!}
-                            </div>
+                            <div class="col-sm-2 col-lg-2 col-md-3">
+                            <strong> {!! Form::label('quantidade', 'Qtde *') !!}</strong>
+                            {!! Form::number('number', null, ['class' => 'form-control', 'required']) !!}<small>Quantidade a ser buscada.</small>
 
-                            <div class="col-sm-2 col-lg-2 col-md-2">
-                                <button class="btn btn-success" style="margin-top: 30px; width: 100px;">Add</button>
-								
 
                             </div>
+                            <div class="col-md-12 col-sm-12 col-lg-1">
+                                
+                            <button type="submit" class="btn btn-success btn-md" 
+                            style="margin-top: 30px; width: 100px;">
+                            <i class="fas fa-plus" title="Adicionar"></i>
+                            </button>
+                            </div>
+
 
 
                             {!! Form::close() !!}
@@ -139,7 +148,7 @@
 					<br>	
 						<div class="float-right">
                           
-							<button class="btn btn-primary"><a href="{{url('/processos')}}" style="color: #fff; text-decoration: none;">Finalizar</a>
+							<button class="btn btn-primary btn-md"><a href="{{url('/processos')}}" style="color: #fff; text-decoration: none;">Finalizar</a>
 							</button>
 
 
