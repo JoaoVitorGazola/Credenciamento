@@ -5,7 +5,10 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-sm-12 col-lg-12">
                 <div class="card">
-                    <div class="card-header"> <h2> Cadastrar Processo </h2>
+                    <div class="card-header">
+                     <h2> 
+                        Cadastrar Processo 
+                    </h2>
                         <br>
 
                         <div class="panel with-nav-tabs panel-primary">
