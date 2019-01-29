@@ -109,12 +109,13 @@
                         <div class="row">
 
                             <div class="col-lg-5 col-sm-5 col-md-5">
-                                {!! Form::label('tipo', 'Tipo do Documento *') !!}
+                            <strong>{!! Form::label('tipo', 'Tipo do Documento *') !!}
+                            </strong>
                                 {!! Form::input('text', 'tipo', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Tipo do Documento']) !!}
                             </div>
 
                             <div class="col-sm-5 col-lg-5 col-md-5">
-                                {!! Form::label('descrição', 'Descrição *') !!}
+                            <strong>{!! Form::label('descrição', 'Descrição *') !!}</strong>
                                 {!! Form::input('text', 'descrição', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Descrição']) !!}
                             </div>
 

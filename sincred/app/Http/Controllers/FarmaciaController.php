@@ -63,4 +63,11 @@ class FarmaciaController extends Controller
         return redirect()->back();
         
     }
+    public function excluirResponsavel($id){
+
+        $responsavel = Responsavei::findOrFail($id);
+        \Session::flash('excluirrespon', $responsavel->nome.' excluido com sucesso');
+        $responsavel->delete();
+        return redirect()->back();
+    }
 }

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
     <script>
         function myFunction()
@@ -34,11 +35,13 @@
                             <ul class="nav nav-tabs" style="margin-bottom: -13px;">
                                 <li class="active nav-link">
                             
-                                    <a href="{{url('/farmacias/novo')}}" style="text-decoration: none; color: #212529;"> Farmácia </a>
+                                    <a href="{{url('/farmacias/novo')}}" style="text-decoration: none; color: #212529;"> 
+                                <i class="fas fa-hospital-alt"></i>
+                                    Farmácia </a>
                             
                                 </li>
                                 <li class="disabled nav-link">
-                                
+                                <i class="fas fa-id-card-alt"></i>
                                   Responsável Legal   
                                  
 
@@ -76,32 +79,33 @@
                         <div class="row">
                             
                             <div class="col-lg-4 col-sm-4 col-md-4">
-                            {!! Form::label('razaoSocial', 'Nome / Razão Social *') !!}
+                          <strong>  {!! Form::label('razaoSocial', 'Nome / Razão Social *') !!}</strong>
                            {!! Form::input('text', 'razaoSocial', null, ['class' => 'form-control', 'required', 'placeholder' => 'Nome']) !!}
                             </div>
                             
                             <div class="col-sm-4 col-lg-4 col-md-4">
-                            {!! Form::label('cnpj', 'CNPJ *') !!}
+                          <strong>  {!! Form::label('cnpj', 'CNPJ *') !!}</strong>
                              
-                             {!! Form::input('text', 'cnpj', null, ['class' => 'form-control', 'required', 'placeholder' => '00.000.000/0000-00']) !!}
+                             {!! Form::input('text', 'cnpj', null, ['class' => 'form-control', 'required', 'placeholder' => '00.000.000/0000-00', 'data-mask' => '00.000.000/0000-00']) !!}
                             </div>
+                          
 
                             <div class="col-sm-4 col-lg-4 col-md-4">
-                                {!! Form::label('email', 'E-mail *') !!}
-                            {!! Form::input('text', 'email', null, ['class' => 'form-control', 'required', 'placeholder' => 'example@example.com']) !!}
+                           <strong>     {!! Form::label('email', 'E-mail *') !!}</strong>
+                            {!! Form::input('email', 'email', null, ['class' => 'form-control', 'required', 'placeholder' => 'example@example.com']) !!}
 
 
                             </div>
 
                             <div class="col-sm-3 col-lg-3 col-md-3"> <br>
-                                {!! Form::label('fixo', 'N° Telefone Fixo *') !!}
+                             <strong>   {!! Form::label('fixo', 'N° Telefone Fixo *') !!} </strong>
                                {!! Form::input('text', 'fixo', null, ['class' => 'form-control', 'required', 'placeholder' => '(00)0000-0000']) !!}
                            
 
                             </div>
 
                             <div class="col-sm-3 col-lg-3 col-md-3"> <br>
-                                {!! Form::label('celular', 'N° Telefone Celular ') !!}
+                             <strong>   {!! Form::label('celular', 'N° Telefone Celular ') !!}</strong>
                                {!! Form::input('text', 'celular', null, ['class' => 'form-control', '', 'placeholder' => '(00)0000-0000']) !!}
                            
 
@@ -119,7 +123,7 @@
                         <div class="row">
                             
                             <div class="col-lg-3 col-sm-3 col-md-3">
-                            {!! Form::label('cep', 'CEP *') !!}
+                         <strong>  {!! Form::label('cep', 'CEP *') !!} </strong>
                             {!! Form::input('text', 'cep', null, ['class' => 'form-control', 'required', 'placeholder' => '00000-000']) !!}
                             <a href="#">Não sei meu CEP</a>
                             </div>
@@ -127,19 +131,20 @@
 
                             
                             <div class="col-sm-4 col-lg-4 col-md-4">
-                                {!! Form::label('logradouro', 'Logradouro *') !!}
+                            <strong> {!! Form::label('logradouro', 'Logradouro *') !!} 
+                            </strong>
 
                             {!! Form::input('text', 'logradouro', null, ['class' => 'form-control', 'required', 'placeholder' => 'Logradouro']) !!}
                             </div>
 
                             <div class="col-sm-4 col-lg-4 col-md-4">
-                                {!! Form::label('bairro', 'Bairro *') !!}
+                          <strong>{!! Form::label('bairro', 'Bairro *') !!}</strong>
                             {!! Form::input('text', 'bairro', null, ['class' => 'form-control', 'required', 'placeholder' => 'Bairro']) !!}
 
 
                             </div>
                             <div class="col-sm-1 col-lg-1 col-md-1">
-                                {!! Form::label('numero', 'N° ') !!}
+                            <strong> {!! Form::label('numero', 'N° ') !!} </strong>
                             {!! Form::input('text', 'numero', null, ['class' => 'form-control', 'autofocus', '']) !!}
 
                             <br>
@@ -148,12 +153,14 @@
 
 
                              <div class="col-sm-5 col-lg-5 col-md-5">  
-                                {!! Form::label('complemento', 'Complemento ') !!}
+                           <strong>{!! Form::label('complemento', 'Complemento ') !!}
+                           </strong>
 
                             	{!! Form::input('text', 'complemento', null, ['class' => 'form-control', '', 'placeholder' => 'Complemento']) !!}
                             </div>
                             <div class="col-sm-3 col-lg-3 col-md-3">
-                               {!! Form::label('states_id', 'Estado *') !!}
+                            <strong>   {!! Form::label('states_id', 'Estado *') !!}
+                            </strong>
                                 <select class="form-control" id="states" name="states_id" onchange="myFunction();" required>
                                     <option value={{null}}>Selecione o estado</option>
                                     @foreach($estados as $estado)
@@ -165,7 +172,8 @@
                             </div>
 
                              <div class="col-sm-4 col-lg-4 col-md-4">
-                                 {!! Form::label('cities_id', 'Cidade *') !!}
+                              <strong>   {!! Form::label('cities_id', 'Cidade *') !!}
+                              </strong>
                                  <select name="cities_id" id="city" class="form-control" required>
                                      <option value="{{null}}">Selecione a cidade</option>
                                  </select>
@@ -196,5 +204,17 @@
         </div>
     </div>
 </div>
+<!--JQUERY MASK --> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
+<script type="text/javascript">
+
+    
+   $('input[name="date"]').mask('00/00/0000');
+   $('.your-field').mask('00/00/0000', {'translation': {0: {pattern: /[0-9*]/}}});
+  </script>
+
+
+
+  
 @endsection

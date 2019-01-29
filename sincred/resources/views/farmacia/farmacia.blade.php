@@ -27,7 +27,8 @@
 			<div class="col-md-12 col-sm-12 col-lg-12">
 				<div class="card">
 					<div class="card-header">
-						<h2>Farmácias </h2></div>
+						<h2>Farmácias </h2>
+					</div>
 
 					<div class="card-body">
 						@if (session('encontradofarma'))
@@ -43,18 +44,19 @@
 								<div class="row col-12">
 
 									<div class="col-lg-3 col-sm-3 col-md-3">
-										{!! Form::label('razaoSocial', 'Nome / Razão Social') !!}
+									<strong>	{!! Form::label('razaoSocial', 'Nome / Razão Social') !!} </strong>
 										{!! Form::input('text', 'razaoSocial', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Razão Social']) !!}
 									</div>
 
 									<div class="col-sm-3 col-lg-3 col-md-3">
-										{!! Form::label('cnpj', 'CNPJ') !!}
+									<strong>{!! Form::label('cnpj', 'CNPJ') !!}</strong>
 										{!! Form::input('text', 'cnpj', null, ['class' => 'form-control', 'placeholder' => '00.000.000/0000-00']) !!}
 									</div>
 
 
 									<div class="col-sm-2 col-lg-2 col-md-2">
-										{!! Form::label('states', 'Estado') !!}
+									<strong>{!! Form::label('states', 'Estado') !!}
+									</strong>
 										<select class="form-control" id="states" name="states" onchange="myFunction();">
 											<option value={{null}}>Selecione o estado</option>
 											@foreach($estados as $estado)
@@ -64,7 +66,7 @@
 									{{csrf_field(['id'=>'token'])}}
 									</div>
 									<div class="col-sm-3 col-lg-3 col-md-3">
-										{!! Form::label('city', 'Cidade') !!}
+									<strong>{!! Form::label('city', 'Cidade') !!}</strong>
 
 										<select name="city" id="city" class="form-control">
 											<option value="{{null}}">Selecione a cidade</option>
@@ -72,7 +74,7 @@
 									</div>
 
 									<div class="col-1" style="margin-top: 30px;">
-										{!! Form::submit('Pesquisar', ['class'=>'btn btn-primary']) !!}
+										<button type="submit" class="btn btn-primary btn-md" title="Pesquisar">Pesquisar <i class="fas fa-search"></i></button>
 									</div>
 
 									{!! Form::close() !!}
@@ -84,8 +86,8 @@
 
 								<div class="container">
 									<div class="row col-12">
-										<button class="btn btn-primary">
-											<a href="/farmacias/novo" style="text-decoration: none; color: #fff;">Novo registro</a>
+										<button class="btn btn-primary btn-md">
+											<a href="/farmacias/novo" style="text-decoration: none; color: #fff;" title="Novo Registro">Novo Registro <i class="fas fa-plus-circle"></i></a>
 										</button>
 
 									</div>
