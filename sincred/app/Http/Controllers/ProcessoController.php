@@ -103,15 +103,16 @@ class ProcessoController extends Controller
     }
     public function atualizarStatus(){
         $processos = Processo::all();
-        $data = date('d/m/y');
-        $data = implode("-",array_reverse(explode("/",$data)));
+        $today = new \DateTime("now");
         foreach ($processos as $processo){
-            if(strtotime($processo->inicio) < strtotime($data)){
+            $inicio = new \DateTime($processo->inicio);
+            $final = new \DateTime($processo->final);
+            if($today < $inicio){
                 $processo->status = 1;
                 $processo->save();
             }
             else{
-                if(strtotime($processo->final)<=strtotime($data)){
+                if($final >= $today){
                     $processo->status = 2;
                     $processo->save();
                 }

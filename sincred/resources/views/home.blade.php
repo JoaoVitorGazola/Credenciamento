@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    Você está logado!
+                    Você está logado! {{date('d/m/y')}}
                 </div>
             </div>
         </div>
