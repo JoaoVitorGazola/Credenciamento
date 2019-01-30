@@ -27,19 +27,19 @@
 							</div>
 							
 							<div class="col-sm-2 col-lg-2 col-md-2">
-								{!! Form::label('inicio', 'Data Início') !!}
+							<strong>{!! Form::label('inicio', 'Data Início') !!}</strong>
 
 							{!! Form::date('inicio', null, ['class' => 'form-control', 'autofocus', 'placeholder' => '00/00/0000']) !!}
 							</div>
 
 							<div class="col-sm-2 col-lg-2 col-md-2">
-								{!! Form::label('final', 'Data Final') !!}
+							<strong>{!! Form::label('final', 'Data Final') !!}</strong>
 							{!! Form::date('final', null, ['class' => 'form-control', 'autofocus', 'placeholder' => '00/00/0000']) !!}
 
 
 							</div>
 							<div class="col-sm-3 col-lg-3 col-md-3">
-								{!! Form::label('status', 'Status') !!}
+							<strong>{!! Form::label('status', 'Status') !!}</strong>
 							{!! Form::select('status', ['1'=> 'Aguardando', '2'=>'Em Andamento', '3'=>'Finalizado'], null, ['class'=>'form-control', 'placeholder' => 'Selecione']) !!}
 
 							</div>

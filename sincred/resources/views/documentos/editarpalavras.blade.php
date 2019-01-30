@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-sm-12 col-lg-12">
                 <div class="card">
-                    <div class="card-header"> <h2>Cadastrar Palavras </h2>
+                    <div class="card-header"> <h2>Editar Palavras </h2>
                         <br>
 
 
@@ -73,16 +73,12 @@
 
                                 </tr>
                                 </thead>
-                                <?php
-                                foreach ($documentos as $documento){
-                                    $palavras = \App\Palavra::where('documentos_id', $documento->id)->get();
-                                    foreach ($palavras as $palavra){
-                                ?>
+                                
                                     <tbody>
                                     <tr>
-                                        <td class=""> {{$documento->tipo}} </td>
-                                        <td> {{$palavra->palavra}} </td>
-                                        <td> {{$palavra->quantidade}} </td>
+                                        <td class="">  </td>
+                                        <td>  </td>
+                                        <td>  </td>
                                         <td> <a href="#" onclick="return confirm(\'Tem certeza que deseja excluir esse processo?\');" class="btn btn-danger btn-sm">
                                                 <i class="fas fa-trash-alt" title="Excluir"></i>
                                             </a>
@@ -92,10 +88,7 @@
                                     </tr>
 
                                     </tbody>
-                               <?php
-                               }
-                                }
-                                ?>
+                            
 
                             </table>
                         </div>
@@ -110,16 +103,16 @@
                         <br>
 
 
-                        {!!Form::open(['url'=>'/'.$id.'/documentos/palavras/salvar'])!!}
+                        {!!Form::open(['url'=>'/'])!!}
                         <div class="row">
 
                             <div class="col-lg-5 col-sm-5 col-md-5">
                                 <strong>{!! Form::label('documentos_id', 'Documento Requisitado *') !!}</strong>
                                 <select name="documentos_id" class="form-control">
                                     <option value="">Selecione o documento</option>
-                                    @foreach($documentos as $documento)
-                                        <option value="{{$documento->id}}">{{$documento->tipo}}</option>
-                                    @endforeach
+                                 
+                                        <option value=""></option>
+                                   
                                 </select>
                             </div>
 

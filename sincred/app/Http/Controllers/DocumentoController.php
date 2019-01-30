@@ -40,4 +40,14 @@ class DocumentoController extends Controller
         $documento->delete();
         return redirect()->back();
     }
+
+    public function editarDoc()
+    {
+        return view('documentos.editardoc');
+    }
+
+     public function editarPalavra()
+    {
+        return view('documentos.editarpalavras');
+    }
 }

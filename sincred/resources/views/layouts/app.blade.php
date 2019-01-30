@@ -67,11 +67,16 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">
+                                    <i class="fas fa-user"></i>
+                                    {{ __('Login') }}
+                                </a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">
+                                        <i class="fas fa-user-plus"></i>
+                                    {{ __('Registrar') }}</a>
                                 </li>
                             @endif
                         @else
@@ -84,7 +89,9 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Logout') }} 
+                                        <i class="fas fa-sign-out-alt" style="float: right; margin-top: 5px;"></i>
+
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -101,6 +108,21 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+
     </div>
+    <!-- Footer --> <div class="container">
+<footer class="card-footer bg-light footer-font-style text-muted footer-position">
+   
+
+  <!-- Copyright -->
+  <div class="footer-marginr" style="text-align: center;"> <strong> © 2018 Copyright: </strong>
+    <a href="#"> www.infortechms.com.br </a>
+  </div>
+  <!-- Copyright -->
+</footer>
+</div>
+
+<!-- Footer -->
 </body>
 </html>

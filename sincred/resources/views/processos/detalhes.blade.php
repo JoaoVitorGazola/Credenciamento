@@ -103,7 +103,8 @@
 							<button class="btn btn-primary"><a href="/processos" style="color: #fff; text-decoration: none;">Voltar</a></button>
 							<?php
 							if($processo->status == 1){
-							echo '<button class="btn btn-primary"><a href="#" style="color: #fff; text-decoration: none;">Editar</a></button>';
+							echo '<button class="btn btn-primary">
+							<a href="/processos/editar-processo" style="color: #fff; text-decoration: none;">Editar</a></button>';
 							}
 							?>
 						</div>

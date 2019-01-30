@@ -24,6 +24,7 @@ Route::any('/processos/{Processo}/excluir', 'ProcessoController@excluir');
 Route::any('/processos/{Processo}/verificar', 'ProcessoController@verificar');
 Route::any('/processos/{Processo}/verificar/{Envio}', 'ProcessoController@verificar');
 Route::any('/processos/novo', 'ProcessoController@novo');
+Route::any('/processos/editar-processo', 'ProcessoController@editarProcesso');
 Route::any('/processos/novo/salvar', 'ProcessoController@salvar');
 Route::any('/processos/andamento', 'ProcessoController@andamento');
 Route::any('/processos/andamento/busca', 'ProcessoController@buscaAndamento');
@@ -32,8 +33,10 @@ Route::any('/processos/andamento/busca', 'ProcessoController@buscaAndamento');
 
 Route::any('/{id}/documentos/novo', 'DocumentoController@novo')->name('/{id}/documentos/novo');
 Route::any('/{id}/documentos/novo/salvar', 'DocumentoController@salvar');
+Route::any('/documentos/editar-doc', 'DocumentoController@editarDoc');
 Route::any('/documentos/{Documento}/excluir', 'DocumentoController@excluir');
 Route::any('{id}/documentos/palavras', 'DocumentoController@palavras');
+Route::any('/documentos/editar-palavras', 'DocumentoController@editarPalavra');
 Route::any('{id}/documentos/palavras/salvar', 'DocumentoController@palavrassalvar');
 
 Route::any('/farmacias', 'FarmaciaController@farmacia');

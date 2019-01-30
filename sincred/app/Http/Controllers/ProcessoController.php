@@ -50,6 +50,10 @@ class ProcessoController extends Controller
         $processo->delete();
         return redirect('/processos');
     }
+    public function editarProcesso(){
+
+        return view('processos.editarprocesso');
+    }
 
     public function verificar($id){
         $this->atualizarStatus();

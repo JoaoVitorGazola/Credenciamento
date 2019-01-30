@@ -28,7 +28,7 @@
 							
 
 							<div class="col-sm-3 col-lg-3 col-md-3">
-								{!! Form::label('final', 'Data Final') !!}
+							<strong>{!! Form::label('final', 'Data Final') !!}</strong>
 							{!! Form::date('final', null, ['class' => 'form-control', 'autofocus', 'placeholder' => '00/00/0000']) !!}
 
 
