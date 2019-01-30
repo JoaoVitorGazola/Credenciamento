@@ -50,4 +50,6 @@ Route::any('/farmacias/{id}/excluir', 'FarmaciaController@excluirResponsavel');
 
 
 
-Route::any('/envios/novo', 'EnvioController@novo');
+Route::any('{id}/envios/novo', 'EnvioController@novo');
+Route::any('{id}/envios/novo/salvar', 'EnvioController@salvar');
+Route::get('envios/fetch', 'EnvioController@fetch');

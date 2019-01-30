@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12 col-sm-12 col-lg-12">
             <div class="card">
-                <div class="card-header"> <h2> Verificar Processo </h2></div>
+                <div class="card-header"> <h2> Verificar Processo: {{$processo->nome}} </h2></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -161,27 +161,27 @@
 							    </tr>
 							  </thead>
 							  <!--- Tabela Aguardando --->
-							
+							@foreach($envios as $envio)
+								<?php
+								$farmacia = \App\Farmacia::findOrFail($envio->farmacias_id);
+								$responsavel = \App\Responsavei::findOrFail($envio->responsaveis_id);
+								?>
 							  <tbody>
 							    <tr>
-							      <td scope="row"> exemple</td>
-							      <td> exemple</td>
+							      <td scope="row"> {{$farmacia->razaoSocial}}</td>
+							      <td> {{$responsavel->nome}}</td>
 							      
-							      <td>Aprovado, Reprovado, erro </td>
+							      <td>{{\App\Http\Controllers\EnvioController::checar($envio->id)}} </td>
 									
 									<td>
-										<?php 
-										echo '<button> 
-											<a href="/processos/relatorio"> Verificar </a> 
-											
-										</button>'
-										?>
+											<a href="#" class="btn btn-success btn-sm"> <i class="fas fa-check" title="Verificar"></i> </a>
+
 									</td>	
 
 							    </tr>
 							  
 							  </tbody>
-						
+						@endforeach
 
 						</table>
 					</div>

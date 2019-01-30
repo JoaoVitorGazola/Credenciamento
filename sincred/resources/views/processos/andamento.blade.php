@@ -81,11 +81,12 @@
 									 <button class="btn btn-warning btn-sm" style="pointer-events: none;" type="button">Em Andamento</button>
 									</span>
 							      <td>
-							      		
-							      			<a href="{{url('envios/novo')}}" class="btn btn-primary btn-sm" title="Enviar">
-							      				<i class="fas fa-share-square"></i> </a>
-							      		
-							       </td>
+
+                                        <a href="{{url('/'.$processo->id.'/envios/novo')}}" class="btn btn-primary btn-sm" title="Enviar">
+                                            <i class="fas fa-share-square"></i> </a>
+
+
+                                    </td>
 
 
 							    </tr>

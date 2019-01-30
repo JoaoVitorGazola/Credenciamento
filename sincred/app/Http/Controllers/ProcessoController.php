@@ -60,7 +60,9 @@ class ProcessoController extends Controller
         $processo = Processo::findOrFail($id);
         $documentos = Documento::where('processos_id', $id)->get();
         $farmacias = Farmacia::all();
-        return view('processos.verificar', ['processo' => $processo, 'documentos' => $documentos, 'farmacias'=>$farmacias]);
+        $envio = Envio::query();
+        $envios = $envio->where('processos_id', $id)->get();
+        return view('processos.verificar', ['processo' => $processo, 'documentos' => $documentos, 'farmacias'=>$farmacias, 'envios'=>$envios]);
     }
 
     public function novo()
