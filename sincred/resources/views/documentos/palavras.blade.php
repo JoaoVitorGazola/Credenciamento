@@ -130,7 +130,7 @@
 
                             <div class="col-sm-1 col-lg-1 col-md-1">
                                 {!! Form::label('quantidade', 'Qtde *') !!}
-                                {!! Form::number('quantidade', null, ['class' => 'form-control']) !!}
+                                {!! Form::number('quantidade', null, ['class' => 'form-control', 'min'=>'1']) !!}
                             </div>
 
                             <div class="col-md-12 col-sm-12 col-lg-1">
@@ -156,7 +156,7 @@
                         <br>
                         <div class="float-right">
 
-                            <button class="btn btn-primary btn-md"><a href="{{url('/processos')}}" style="color: #fff; text-decoration: none;">Finalizar</a>
+                            <button class="btn btn-primary btn-md" onclick="window.location.href='/processos'"><a style="color: #fff; text-decoration: none;">Finalizar</a>
                             </button>
 
 
