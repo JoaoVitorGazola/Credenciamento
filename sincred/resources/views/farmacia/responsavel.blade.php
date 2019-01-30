@@ -26,7 +26,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12 col-sm-12 col-lg-12">
             <div class="card">
-                <div class="card-header"> <h2> Cadastrar Farmácia </h2>
+                <div class="card-header"> <h2> Cadastrar Responsável </h2>
                 	<br>
                    
                     <div class="panel with-nav-tabs panel-primary">
@@ -114,7 +114,7 @@
 
                    
 
-                    <h2> Cadastrar Responsável </h2>
+                    <h2> Dados do Responsável </h2>
 
                     <li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> </li>
                     <br>

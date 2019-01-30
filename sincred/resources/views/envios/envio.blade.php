@@ -35,9 +35,9 @@
                             <ul class="nav nav-tabs" style="margin-bottom: -13px;">
                                 <li class="active nav-link">
                             
-                                    <a href="{{url('/')}}" style="text-decoration: none; color: #212529;"> 
-                                            <i class="fas fa-share-square"></i> 
-                                    Envio </a>
+                                     
+                                   <i class="fas fa-share-square"></i> 
+                                    Envio 
                             
                                 </li>
                                 
@@ -68,7 +68,8 @@
                         <div class="row">
                             
                             <div class="col-lg-3 col-sm-3 col-md-3">
-                            {!! Form::label('farmacias_id', 'Farmácia') !!}
+                            <strong> {!! Form::label('farmacias_id', 'Farmácia') !!}
+                             </strong>
                             <select name="farmacias_id" class="form-control" id="farmacias_id" onchange="myFunction()" required>
                                 <option value="{{null}}">Selecione a farmacia</option>
                                 @foreach($farmacias as $farmacia)
@@ -79,14 +80,15 @@
                             </div>
                             
                             <div class="col-sm-3 col-lg-3 col-md-3">
-                                {!! Form::label('responsaveis_id', 'Responsável') !!}
+                            <strong>{!! Form::label('responsaveis_id', 'Responsável') !!}
+                            </strong>
                                 <select name="responsaveis_id" id="responsaveis_id" class="form-control" required>
                                     <option value="{{null}}">Selecione o responsavel</option>
                                 </select>
                             </div>
 
                             <div class="col-sm-6 col-lg-6 col-md-6">
-                                {!! Form::label('obs', 'Observações') !!}
+                             <strong> {!! Form::label('obs', 'Observações') !!}</strong>
                             {!! Form::input('text', 'obs', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Observações']) !!}
 
 							<br>
@@ -142,7 +144,7 @@
 					
 					
 					<br>
-                        {!! Form::file('file_name[]', ['multiple', 'accept'=>".pdf", 'class'=>'col-6 form-control form-control-file', 'min'=>count($documentos)]) !!}
+                        {!! Form::file('file_name[]', ['multiple', 'accept'=>".pdf", 'class'=>'col-6 form-control form-control-file', 'required', 'min'=>count($documentos)]) !!}
                         <div class="float-right">
 
                             <button class="btn btn-primary"><a href="/processos/andamento" style="color: #fff; text-decoration: none;">Cancelar</a>
