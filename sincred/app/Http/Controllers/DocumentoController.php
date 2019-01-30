@@ -25,16 +25,12 @@ class DocumentoController extends Controller
     {
         $documento = Documento::query();
         $documentos = $documento->where('processos_id', $id)->orderBy('tipo')->get();
-        $palavra = Palavra::query();
-        foreach ($documentos as $doc){
-            $palavras = $palavra->where('documentos_id', $doc->id)->get();
-        }
-        return view('documentos.palavras', ['documentos'=>$documentos, 'palavras'=>$palavras]);
+        return view('documentos.palavras', ['documentos'=>$documentos, 'id'=>$id]);
     }
-    public function palavrassalvar(Request $request){
+    public function palavrassalvar(Request $request, $id){
         $palavra = new Palavra($request->all());
         $palavra->save();
-        return redirect()->back();
+        return redirect('/'.$id.'/documentos/palavras');
     }
     public function excluir($id)
     {
@@ -42,6 +38,6 @@ class DocumentoController extends Controller
         $documento = Documento::findOrFail($id);
         \Session::flash('excluir', $documento->tipo.' excluido com sucesso');
         $documento->delete();
-        return redirect('/documentos/novo');
+        return redirect()->back();
     }
 }

@@ -73,10 +73,11 @@
 
                                 </tr>
                                 </thead>
-                                @foreach($palavras as $palavra)
-                                    <?php
-                                    $documento = \App\Documento::findOrFail($palavra->documentos_id);
-                                    ?>
+                                <?php
+                                foreach ($documentos as $documento){
+                                    $palavras = \App\Palavra::where('documentos_id', $documento->id)->get();
+                                    foreach ($palavras as $palavra){
+                                ?>
                                     <tbody>
                                     <tr>
                                         <td class=""> {{$documento->tipo}} </td>
@@ -91,7 +92,10 @@
                                     </tr>
 
                                     </tbody>
-                                @endforeach
+                               <?php
+                               }
+                                }
+                                ?>
 
                             </table>
                         </div>
@@ -106,7 +110,7 @@
                         <br>
 
 
-                        {!!Form::open(['url'=>'/documentos/palavras/salvar'])!!}
+                        {!!Form::open(['url'=>'/'.$id.'/documentos/palavras/salvar'])!!}
                         <div class="row">
 
                             <div class="col-lg-5 col-sm-5 col-md-5">

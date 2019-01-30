@@ -34,7 +34,7 @@ Route::any('/{id}/documentos/novo', 'DocumentoController@novo')->name('/{id}/doc
 Route::any('/{id}/documentos/novo/salvar', 'DocumentoController@salvar');
 Route::any('/documentos/{Documento}/excluir', 'DocumentoController@excluir');
 Route::any('{id}/documentos/palavras', 'DocumentoController@palavras');
-Route::any('/documentos/palavras/salvar', 'DocumentoController@palavrassalvar');
+Route::any('{id}/documentos/palavras/salvar', 'DocumentoController@palavrassalvar');
 
 Route::any('/farmacias', 'FarmaciaController@farmacia');
 Route::get('farmacias/fetch', 'CidadeController@fetch');
