@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Documento;
 use App\Envio;
 use App\Farmacia;
+use App\Palavra;
 use App\Processo;
 use App\Responsavei;
 use Illuminate\Http\Request;
 use Storage;
+use Smalot\PdfParser\Parser;
 
 class EnvioController extends Controller
 {
@@ -48,17 +50,63 @@ class EnvioController extends Controller
     public static function checar($id){
         $envio = Envio::findOrFail($id);
         $doc = Documento::query();
-        $documentos = $doc->where('processos_id', $envio->processos_id);
+        $documentos = $doc->where('processos_id', $envio->processos_id)->get();
         $files = Storage::disk('public')->allFiles('/'.$envio->pasta);
         $count = 0;
+        $documentosqtd = 0;
         foreach ($documentos as $documento){
-            foreach($files as $file){
+            foreach ($files as $file){
                 $path = pathinfo($file);
                 if($documento->tipo == $path['filename']){
                     $count++;
+                    $relatorio = self::geraRelatorio($file, $documento, $envio->pasta);
                 }
             }
+            $documentosqtd++;
+        }
+        if($count<$documentosqtd){
+            return 0;
+        }
+        else{
+
         }
         return $count;
+    }
+
+    public static function geraRelatorio($file, $documento, $pasta){
+        $handle = fopen(storage_path('app/public/'.$pasta.'/relatorio.txt'), 'a');
+        fwrite($handle, "Resultado de ".$documento->tipo.":\n");
+        $pal = Palavra::query();
+        $palavras = $pal->where('documentos_id', $documento->id)->get();
+        $relatorio = "";
+        $check = 0;
+        foreach ($palavras as $palavra){
+            $count = self::conta($file, $palavra);
+            $relatorio .= $palavra->palavra." encontrada ".$count."vezes, esperado: ".$palavra->quantidade;
+            if($count < $palavra->quantidade){
+                $relatorio .= " Reprovado\n";
+                $check = -1;
+            }
+            else{
+                $relatorio .= " Aprovado\n";
+            }
+        }
+        return;
+    }
+    public static function conta($path, $palavra){
+        $file = \Storage::disk('public')->path($path);
+        $result = 0;
+        $parser = new Parser();
+        $palavra = str_replace(' ', '', strtolower($palavra));
+        try {
+            $pdf = $parser->parseFile($file);
+            $text = $pdf->getText();
+            $text = str_replace(' ', '', strtolower($text));
+            $result += substr_count($text, $palavra);
+            return $result;
+        }catch (\Exception $exception)
+        {
+            return -1;
+        }
     }
 }

@@ -171,7 +171,20 @@
 							      <td scope="row"> {{$farmacia->razaoSocial}}</td>
 							      <td> {{$responsavel->nome}}</td>
 							      
-							      <td>{{\App\Http\Controllers\EnvioController::checar($envio->id)}} </td>
+							      <td>
+									  <?php
+									  $resultado = \App\Http\Controllers\EnvioController::checar($envio->id);
+									  if($resultado == 0){
+									      echo 'Erro';
+									  }
+									  elseif ($resultado == 1){
+									      echo 'Reprovado';
+									  }
+									  else{
+									      echo 'Aprovado';
+									  }
+									  ?>
+								  </td>
 									
 									<td>
 											<a href="#" class="btn btn-success btn-sm"> <i class="fas fa-check" title="Verificar"></i> </a>

@@ -6,6 +6,7 @@ use App\Documento;
 use App\Farmacia;
 use Illuminate\Http\Request;
 use App\Processo;
+use App\Envio;
 
 class ProcessoController extends Controller
 {
