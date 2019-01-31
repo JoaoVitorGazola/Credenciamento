@@ -32,20 +32,34 @@ class EnvioController extends Controller
     }
     public function salvar(Request $request, $id){
         $dirname = uniqid();
-        for($i=0; $i<count($request->file('file_name'));$i++){
-            $file=$request->file('file_name')[$i];
-            $destination_path= storage_path('app/public/'.$dirname);
-            $fileName = $file->getClientOriginalName();
-            $file->move($destination_path,$fileName);
+        $destination_path = storage_path('app/public/' . $dirname);
+        if (Envio::where([['farmacias_id', $request->farmacias_id], ['processos_id', $id],])->doesntExist()) {
+            $envio = new Envio();
+            $envio->processos_id = $id;
+            $envio->obs = $request->obs;
+            $envio->farmacias_id = $request->farmacias_id;
+            $envio->responsaveis_id = $request->responsaveis_id;
+            $envio->pasta = $dirname;
+            $envio->save();
         }
-        $envio = new Envio();
-        $envio->processos_id = $id;
-        $envio->farmacias_id = $request->farmacias_id;
-        $envio->responsaveis_id = $request->responsaveis_id;
-        $envio->pasta = $dirname;
-        $envio->save();
+        else{
+            $env = Envio::query();
+            $envio = $env->where([['farmacias_id', $request->farmacias_id], ['processos_id', $id],])->first();
+            $pasta = $envio->pasta;
+            Storage::disk('public')->deleteDirectory($pasta);
+            $envio->update(['responsaveis_id'=>$request->responsaveis_id, 'pasta'=>$dirname, 'obs'=>$request->obs]);
+        }
 
-        return redirect('processos/andamento');
+        for($i=0; $i<count($request->file('file_name'));$i++) {
+            $file = $request->file('file_name')[$i];
+                $fileName = $file->getClientOriginalName();
+                $file->move($destination_path, $fileName);
+                if(pathinfo(storage_path($destination_path.'/'.$fileName), PATHINFO_EXTENSION) != "pdf"){
+                    Storage::disk('public')->delete('/'.$dirname.'/'.$fileName);
+                }
+            }
+
+         return redirect('processos/andamento');
     }
     public static function checar($id){
         $envio = Envio::findOrFail($id);

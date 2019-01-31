@@ -22,6 +22,7 @@ class CreateEnviosTable extends Migration
             $table->unsignedInteger('responsaveis_id');
             $table->foreign('responsaveis_id')->references('id')->on('responsaveis')->onDelete('cascade');
             $table->string('pasta');
+            $table->string('obs');
             $table->timestamps();
         });
     }

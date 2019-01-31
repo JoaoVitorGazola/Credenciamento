@@ -10,6 +10,7 @@ class Envio extends Model
         'processos_id',
         'farmacias_id',
         'responsaveis_id',
-        'pasta'
+        'pasta',
+        'obs',
     ];
 }

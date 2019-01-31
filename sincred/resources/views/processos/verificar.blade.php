@@ -113,7 +113,7 @@
 					  		<div class="col-lg-4 col-sm-4 col-md-4">
 
 							    {!! Form::open([])!!}
-							    {!! Form::label('farm', 'Farmácia') !!}
+							    {!! Form::label('farmacia', 'Farmácia') !!}
 								<select name="farmacia" class="form-control">
 									<option value="">Selecione a farmácia</option>
 									@foreach($farmacias as $farmacia)
