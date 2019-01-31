@@ -86,7 +86,7 @@
                             <div class="col-sm-4 col-lg-4 col-md-4">
                           <strong>  {!! Form::label('cnpj', 'CNPJ *') !!}</strong>
                              
-                             {!! Form::input('text', 'cnpj', null, ['class' => 'form-control', 'required', 'placeholder' => '00.000.000/0000-00', 'data-mask' => '00.000.000/0000-00']) !!}
+                             {!! Form::input('text', 'cnpj', null, ['class' => 'form-control', 'required', 'placeholder' => '00.000.000/0000-00']) !!}
                             </div>
                           
 
@@ -204,17 +204,4 @@
         </div>
     </div>
 </div>
-<!--JQUERY MASK --> 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
-
-<script type="text/javascript">
-
-    
-   $('input[name="date"]').mask('00/00/0000');
-   $('.your-field').mask('00/00/0000', {'translation': {0: {pattern: /[0-9*]/}}});
-  </script>
-
-
-
-  
 @endsection

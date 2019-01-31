@@ -152,7 +152,7 @@
 						
 						<div class="table-responsive">
 						<table class="table table-hover table-bordered"> 
-							<thead style="background-color: rgba(0,0,0,.03);">
+							<thead style="background-color: rgba(0,0,0,.03); text-align: center;">
 							    <tr>
 							      <th scope="col-6">Farmácia</th>
 							      <th scope="col-6">Responsável</th>
@@ -166,7 +166,7 @@
 								$farmacia = \App\Farmacia::findOrFail($envio->farmacias_id);
 								$responsavel = \App\Responsavei::findOrFail($envio->responsaveis_id);
 								?>
-							  <tbody>
+							  <tbody style="text-align: center;">
 							    <tr>
 							      <td scope="row"> {{$farmacia->razaoSocial}}</td>
 							      <td> {{$responsavel->nome}}</td>
@@ -175,19 +175,26 @@
 									  <?php
 									  $resultado = \App\Http\Controllers\EnvioController::checar($envio->id);
 									  if($resultado == 0){
-									      echo 'Erro';
+									      echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Erro">
+									 <button class="btn btn-secondary btn-sm" style="pointer-events: none;" type="button">Erro</button>
+									</span>';
 									  }
 									  elseif ($resultado == 1){
-									      echo 'Reprovado';
+									      echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Reprovado">
+									 <button class="btn btn-danger btn-sm" style="pointer-events: none;" type="button">Reprovado</button>
+									</span>';
 									  }
 									  else{
-									      echo 'Aprovado';
+									      echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Aprovado">
+									 <button class="btn btn-success btn-sm" style="pointer-events: none;" type="button">Aprovado</button>
+									</span>';
 									  }
 									  ?>
 								  </td>
 									
 									<td>
-											<a href="#" class="btn btn-success btn-sm"> <i class="fas fa-check" title="Verificar"></i> </a>
+									<a href="#" class="btn btn-success btn-sm"> <i class="fas fa-check" title="Verificar"></i>
+									 </a>
 
 									</td>	
 
