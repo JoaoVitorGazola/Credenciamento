@@ -65,8 +65,8 @@
                         <li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> </li>
                         <br>
 
-
                         {!!Form::open(['url'=>'/processos/novo/salvar'])!!}
+
                         <div class="row">
 
                             <div class="col-lg-6 col-sm-6 col-md-6">

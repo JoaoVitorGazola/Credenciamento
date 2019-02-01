@@ -24,11 +24,11 @@ Route::any('/processos/{Processo}/excluir', 'ProcessoController@excluir');
 Route::any('/processos/{Processo}/verificar', 'ProcessoController@verificar');
 Route::any('/processos/{Processo}/verificar/{Envio}', 'ProcessoController@verificar');
 Route::any('/processos/novo', 'ProcessoController@novo');
-Route::any('/processos/editar-processo', 'ProcessoController@editarProcesso');
 Route::any('/processos/novo/salvar', 'ProcessoController@salvar');
 Route::any('/processos/andamento', 'ProcessoController@andamento');
 Route::any('/processos/andamento/busca', 'ProcessoController@buscaAndamento');
-
+Route::any('/processos/{Processo}/editar-processo', 'ProcessoController@editarProcesso');
+Route::patch('/processos/{Processo}', 'ProcessoController@atualizar');
 
 
 Route::any('/{id}/documentos/novo', 'DocumentoController@novo')->name('/{id}/documentos/novo');

@@ -104,7 +104,7 @@
 							<?php
 							if($processo->status == 1){
 							echo '<button class="btn btn-primary">
-							<a href="/processos/editar-processo" style="color: #fff; text-decoration: none;">Editar</a></button>';
+							<a href="/processos/'.$processo->id.'/editar-processo" style="color: #fff; text-decoration: none;">Editar</a></button>';
 							}
 							?>
 						</div>

@@ -51,10 +51,22 @@ class ProcessoController extends Controller
         $processo->delete();
         return redirect('/processos');
     }
-    public function editarProcesso(){
+    
+     public function editarProcesso($id)
+    {
+        $processo = Processo::findOrFail($id);
+        return view('processos.editarprocesso', ['processo' => $processo]);
+    }  
 
-        return view('processos.editarprocesso');
-    }
+
+     public function atualizar($id, Request $request)
+    
+    {
+         $processo = Processo::findOrFail($id);
+         $processo->update($request->all());
+         \Session::flash('mensagem_sucesso', 'Processo atualizado com sucesso!');
+         return Redirect($processo->id.'/documentos/novo');
+    } 
 
     public function verificar($id){
         $this->atualizarStatus();
