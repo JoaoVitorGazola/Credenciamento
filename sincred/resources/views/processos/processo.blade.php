@@ -15,6 +15,12 @@
                         </div>
                     @endif
 
+                     @if (session('errodata'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('errodata') }}
+                        </div>
+                    @endif
+
 
                     <div class="jumbotron jumbotron-fluid" style="background-color: rgba(0,0,0,.03);">
 					  <div class="container">
