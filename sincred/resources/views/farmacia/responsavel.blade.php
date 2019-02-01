@@ -57,6 +57,7 @@
                 <div class="card-body">
                     @if (session('excluirrespon'))
                         <div class="alert alert-success" role="alert">
+                           <i class="fas fa-check-circle"></i>
                             {{ session('excluirrespon') }}
                         </div>
                     @endif

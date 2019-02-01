@@ -43,9 +43,10 @@
                     </div>
 
                     <div class="card-body">
-                        @if (session('status'))
+                        @if (session('excluirPalavra'))
                             <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
+                                <i class="fas fa-check-circle"></i>
+                                {{ session('excluirPalavra') }}
                             </div>
                         @endif
 
@@ -83,9 +84,13 @@
                                         <td class=""> {{$documento->tipo}} </td>
                                         <td> {{$palavra->palavra}} </td>
                                         <td> {{$palavra->quantidade}} </td>
-                                        <td> <a href="#" onclick="return confirm(\'Tem certeza que deseja excluir esse processo?\');" class="btn btn-danger btn-sm">
-                                                <i class="fas fa-trash-alt" title="Excluir"></i>
-                                            </a>
+                                        <td> 
+                                            <?php
+
+                                            echo '<a href="/documentos/palavras/'.$palavra->id.'/excluir" onclick="return confirm(\'Tem certeza que deseja excluir essa palavra?\');" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash-alt" title="Excluir"></i>
+                                            </a>'
+                                            ?>
                                         </td>
 
 

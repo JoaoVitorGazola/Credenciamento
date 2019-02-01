@@ -32,11 +32,19 @@ class DocumentoController extends Controller
         $palavra->save();
         return redirect('/'.$id.'/documentos/palavras');
     }
+    public function excluirPalavra($id)
+    {
+
+        $palavra = Palavra::findOrFail($id);
+        \Session::flash('excluirPalavra', $palavra->palavra.' excluido com sucesso.');
+        $palavra->delete();
+        return redirect()->back();
+    }
     public function excluir($id)
     {
 
         $documento = Documento::findOrFail($id);
-        \Session::flash('excluir', $documento->tipo.' excluido com sucesso');
+        \Session::flash('excluir', $documento->tipo.' excluido com sucesso.');
         $documento->delete();
         return redirect()->back();
     }

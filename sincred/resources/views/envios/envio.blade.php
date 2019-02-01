@@ -109,7 +109,7 @@
 
                      <div class="table-responsive">
 						<table class="table table-hover table-bordered"> 
-							<thead style="background-color: rgba(0,0,0,.03);">
+							<thead style="background-color: rgba(0,0,0,.03); text-align: center;">
 							    <tr>
 							      <th scope="col-6" style="width: 200px;">Tipo de Processo</th>
 							      <th scope="col-6">Descrição</th>
@@ -122,12 +122,12 @@
                                 $documentos = \App\Documento::where('processos_id', $processo->id)->get();
                                 foreach ($documentos as $documento){
                             ?>
-							  <tbody>
+							  <tbody style="text-align: center;">
 							    <tr>
 							      <td scope="row"> {{$documento->tipo}}</td>
 							      <td>{{$documento->descrição}}</td>
 							      <td>
-							      O arquivo referente a este documento deve estar nomeado como {{$documento->tipo}}.pdf, arquivos com nome ou extensão diferentes serão desconsiderados
+                                     O arquivo referente a este documento deve estar nomeado como {{$documento->tipo}}.pdf, arquivos com nome ou extensão diferentes serão desconsiderados.
                                   </td>
 							      
 
@@ -141,10 +141,13 @@
 
 						</table>
 					</div>
-					
-					
-					<br>
+                    	<br>
                         {!! Form::file('file_name[]', ['multiple', 'accept'=>".pdf", 'class'=>'col-6 form-control form-control-file', 'required', 'min'=>count($documentos)]) !!}
+
+                        <br>
+                        <li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> </li>
+                        <br>
+
                         <div class="float-right">
 
                             <button class="btn btn-primary"><a href="/processos/andamento" style="color: #fff; text-decoration: none;">Cancelar</a>

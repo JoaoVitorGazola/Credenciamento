@@ -34,7 +34,7 @@ class ProcessoController extends Controller
             $processo->where('status', $request->status);
         }
         $processos = $processo->orderBy('nome')->get();
-        \Session::flash('encontrado', count($processos).' resultados encontrados ');
+        \Session::flash('encontrado', count($processos).' resultados encontrados. ');
         return view('processos.processo', ['processos' => $processos]);
 
     }
@@ -47,7 +47,7 @@ class ProcessoController extends Controller
     public function excluir($id){
 
         $processo = Processo::findOrFail($id);
-        \Session::flash('encontrado', $processo->nome.' excluido com sucesso');
+        \Session::flash('encontrado', $processo->nome.' excluido com sucesso.');
         $processo->delete();
         return redirect('/processos');
     }
@@ -75,11 +75,11 @@ class ProcessoController extends Controller
         $final = new \DateTime($request->final);
         $today = new \DateTime("now");
         if($inicio <= $today){
-            \Session::flash('errodata', "A data de inicial do processo precisa ser depois de hoje");
+            \Session::flash('errodata', "A data inicial do processo precisa ser depois de hoje.");
             return redirect()->back();
         }
         if($final < $inicio){
-            \Session::flash('errodata', "A data inicial não pode ser depois da final");
+            \Session::flash('errodata', "A data inicial não pode ser depois da final.");
             return redirect()->back();
         }
         $processo = new Processo();

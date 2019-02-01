@@ -34,7 +34,7 @@ class FarmaciaController extends Controller
         $farmacias = $farmacia->orderBy('razaoSocial')->get();
         $estado = State::query();
         $estados = $estado->orderBy('abbreviation')->get();
-        \Session::flash('encontradofarma', count($farmacias).' resultados encontrados ');
+        \Session::flash('encontradofarma', count($farmacias).' resultados encontrados. ');
         return view('farmacia.farmacia', ['farmacias' => $farmacias, 'estados'=>$estados]);
     }
     public function novo()
@@ -66,7 +66,7 @@ class FarmaciaController extends Controller
     public function excluirResponsavel($id){
 
         $responsavel = Responsavei::findOrFail($id);
-        \Session::flash('excluirrespon', $responsavel->nome.' excluido com sucesso');
+        \Session::flash('excluirrespon', $responsavel->nome.' excluido com sucesso.');
         $responsavel->delete();
         return redirect()->back();
     }

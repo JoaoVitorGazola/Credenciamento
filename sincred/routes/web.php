@@ -38,6 +38,7 @@ Route::any('/documentos/{Documento}/excluir', 'DocumentoController@excluir');
 Route::any('{id}/documentos/palavras', 'DocumentoController@palavras');
 Route::any('/documentos/editar-palavras', 'DocumentoController@editarPalavra');
 Route::any('{id}/documentos/palavras/salvar', 'DocumentoController@palavrassalvar');
+Route::any('/documentos/palavras/{Palavra}/excluir', 'DocumentoController@excluirPalavra');
 
 Route::any('/farmacias', 'FarmaciaController@farmacia');
 Route::get('farmacias/fetch', 'CidadeController@fetch');

@@ -11,6 +11,7 @@
                 <div class="card-body">
                     @if (session('encontrado'))
                         <div class="alert alert-success" role="alert">
+                            <i class="fas fa-check-circle"></i>
                             {{ session('encontrado') }}
                         </div>
                     @endif

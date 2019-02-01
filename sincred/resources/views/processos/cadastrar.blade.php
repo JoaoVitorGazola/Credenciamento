@@ -47,13 +47,14 @@
                     <div class="card-body">
 
                         @if (session('errodata'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('errodata') }}
+                            <div class="alert alert-danger" role="alert">
+                              <i class="fas fa-exclamation-triangle"></i>
+                               {{ session('errodata') }} 
                             </div>
                         @endif
 
                         <div class="alert alert-primary" role="alert">
-                            Os campos marcados com * são de preenchimento obrigatório.
+                            Os campos marcados com <strong> * </strong> são de preenchimento obrigatório.
                         </div>
                         <br>
 
