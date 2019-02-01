@@ -56,9 +56,10 @@
                 </div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                    @if (session('manoel'))
+                        <div class="alert alert-danger" role="alert">
+                           <i class="fas fa-exclamation-triangle"></i>
+                            {{ session('manoel') }}
                         </div>
                     @endif
 

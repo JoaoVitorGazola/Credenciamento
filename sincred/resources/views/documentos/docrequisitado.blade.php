@@ -50,6 +50,13 @@
                             </div>
                         @endif
 
+                        @if (session('erro'))
+                            <div class="alert alert-danger" role="alert">
+                             <i class="fas fa-exclamation-triangle"></i>
+                              {{ session('erro') }}
+                            </div>
+                        @endif
+
                         <div class="alert alert-primary" role="alert">
                             Os campos marcados com * são de preenchimento obrigatório.
                         </div>

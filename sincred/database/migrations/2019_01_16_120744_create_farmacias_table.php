@@ -15,7 +15,7 @@ class CreateFarmaciasTable extends Migration
     {
         Schema::create('farmacias', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cnpj');
+            $table->string('cnpj')->unique();
             $table->string('razaoSocial');
             $table->string('email');
             $table->string('fixo');

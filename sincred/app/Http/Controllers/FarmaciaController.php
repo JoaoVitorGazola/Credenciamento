@@ -44,7 +44,17 @@ class FarmaciaController extends Controller
 
         return view('farmacia.cadastrar', ['estados'=>$estados]);
     }
-    public function farmacianovo(Request $request){
+    public function farmacianovo(Request $request)
+    {
+        $farma = Farmacia::all();
+        foreach ($farma as $farmas) {
+            if ($farmas->cnpj == $request->cnpj) {
+                \Session::flash('manoel', 'Farmacia ja cadastrada.');
+                return redirect()->back();
+            }
+        }
+
+
         $farmacia = new Farmacia($request->all());
         $farmacia->save();
         return redirect()->route('/farmacias/{id}/responsavel', $farmacia->id);
@@ -57,7 +67,16 @@ class FarmaciaController extends Controller
         $responsaveis = $responsavel->where('farmacias_id', $id)->orderBy('nome')->get();
         return view('farmacia.responsavel', ['id'=>$id,'estados'=> $estados, 'responsaveis'=>$responsaveis]);
     }
-    public function responsavelNovo(Request $request){
+    public function responsavelNovo(Request $request)
+    {   
+        $respon = Responsavei::all();
+        foreach ($respon as $respons) {
+            if ($respons->cpf == $request->cpf) {
+                \Session::flash('responerro', 'Responsável já cadastrado.');
+                return redirect()->back();
+            }
+        }
+
         $responsavel = new Responsavei($request->all());
         $responsavel->save();
         return redirect()->back();
