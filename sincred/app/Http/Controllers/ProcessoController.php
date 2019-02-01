@@ -73,8 +73,8 @@ class ProcessoController extends Controller
     public function salvar(Request $request){
         $inicio = new \DateTime($request->inicio);
         $final = new \DateTime($request->final);
-        $today = new \DateTime("now");
-        if($inicio <= $today){
+        $today = new \DateTime("today");
+        if($inicio < $today){
             \Session::flash('errodata', "A data inicial do processo precisa ser depois de hoje.");
             return redirect()->back();
         }
@@ -121,8 +121,7 @@ class ProcessoController extends Controller
     }
     public function atualizarStatus(){
         $processos = Processo::all();
-        $tomorrow = new \DateTime("tomorrow");
-        $today = new \DateTime("now");
+        $today = new \DateTime("today");
         foreach ($processos as $processo){
             $inicio = new \DateTime($processo->inicio);
             $final = new \DateTime($processo->final);
@@ -131,7 +130,7 @@ class ProcessoController extends Controller
                 $processo->save();
             }
             else{
-                if($final >= $tomorrow){
+                if($final >= $today){
                     $processo->status = 2;
                     $processo->save();
                 }
