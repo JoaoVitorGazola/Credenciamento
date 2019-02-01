@@ -71,6 +71,17 @@ class ProcessoController extends Controller
         return view('processos.cadastrar');
     }
     public function salvar(Request $request){
+        $inicio = new \DateTime($request->inicio);
+        $final = new \DateTime($request->final);
+        $today = new \DateTime("now");
+        if($inicio <= $today){
+            \Session::flash('errodata', "A data de inicio do processo precisa ser depois de hoje");
+            return redirect()->back();
+        }
+        if($final < $inicio){
+            \Session::flash('errodata', "A data inicial não pode ser depois da final");
+            return redirect()->back();
+        }
         $processo = new Processo();
         $processo->nome = $request->nome;
         $processo->descrição = $request->descrição;

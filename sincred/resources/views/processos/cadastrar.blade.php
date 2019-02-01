@@ -11,6 +11,7 @@
                     </h2>
                         <br>
 
+
                         <div class="panel with-nav-tabs panel-primary">
                             <div class="panel-heading">
                                 <ul class="nav nav-tabs" style="margin-bottom: -13px;">
@@ -44,9 +45,10 @@
                     </div>
 
                     <div class="card-body">
-                        @if (session('status'))
+
+                        @if (session('errodata'))
                             <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
+                                {{ session('errodata') }}
                             </div>
                         @endif
 
