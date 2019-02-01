@@ -49,13 +49,15 @@
 									<strong>	{!! Form::label('razaoSocial', 'Nome / Razão Social') !!} </strong>
 										{!! Form::input('text', 'razaoSocial', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Razão Social']) !!}
 
-									</div>
+										
 
+									</div>
+						
 									<div class="col-sm-3 col-lg-3 col-md-3">
 									<strong>{!! Form::label('cnpj', 'CNPJ') !!}</strong>
 										{!! Form::input('text', 'cnpj', null, ['class' => 'form-control', 'placeholder' => '00.000.000/0000-00']) !!}
 									</div>
-								
+									
 									<div class="col-sm-2 col-lg-2 col-md-2">
 									<strong>{!! Form::label('states', 'Estado') !!}
 									</strong>
