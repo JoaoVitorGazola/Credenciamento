@@ -193,7 +193,7 @@
 								  </td>
 									
 									<td>
-									<a href="/envios/relatorio/".{{$envio->id}}	class="btn btn-success btn-sm"> <i class="fas fa-check" title="Verificar"></i>
+									<a href="/envios/relatorio/{{$envio->id}}"	class="btn btn-success btn-sm"> <i class="fas fa-check" title="Verificar"></i>
 									 </a>
 
 									</td>	
