@@ -22,7 +22,6 @@ Route::post('/processos/busca', 'ProcessoController@busca');
 Route::any('/processos/{Processo}/detalhes', 'ProcessoController@detalhes');
 Route::any('/processos/{Processo}/excluir', 'ProcessoController@excluir');
 Route::any('/processos/{Processo}/verificar', 'ProcessoController@verificar');
-Route::any('/processos/{Processo}/verificar/{Envio}', 'ProcessoController@verificar');
 Route::any('/processos/novo', 'ProcessoController@novo');
 Route::any('/processos/novo/salvar', 'ProcessoController@salvar');
 Route::any('/processos/andamento', 'ProcessoController@andamento');

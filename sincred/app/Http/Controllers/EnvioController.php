@@ -63,49 +63,79 @@ class EnvioController extends Controller
     }
     public static function checar($id){
         $envio = Envio::findOrFail($id);
-        $doc = Documento::query();
-        $documentos = $doc->where('processos_id', $envio->processos_id)->get();
-        $files = Storage::disk('public')->allFiles('/'.$envio->pasta);
-        $count = 0;
-        $documentosqtd = 0;
-        foreach ($documentos as $documento){
-            foreach ($files as $file){
-                $path = pathinfo($file);
-                if($documento->tipo == $path['filename']){
-                    $count++;
-                    $relatorio = self::geraRelatorio($file, $documento, $envio->pasta);
+        $newPath = storage_path('app/public/'.$envio->pasta.'/relatorio.txt');
+        if(!file_exists($newPath)) {
+            $doc = Documento::query();
+            $documentos = $doc->where('processos_id', $envio->processos_id)->get();
+            $files = Storage::disk('public')->allFiles('/'.$envio->pasta);
+            $count = 0;
+            $documentosqtd = 0;
+            $erro = 0;
+            $handle = fopen(storage_path('app/public/' . $envio->pasta . '/relatorio.txt'), 'w');
+            foreach ($documentos as $documento) {
+                foreach ($files as $file) {
+                    $path = pathinfo($file);
+                    if ($documento->tipo == $path['filename']) {
+                        $count++;
+                        $check = 0;
+                        if($envio->status ==1){
+                            $check = 1;
+                        }
+                        $envio->status = self::geraRelatorio($file, $documento, $handle);
+                        if($envio->status == 0){
+                            $erro = 1;
+                        }
+                        if($check==1){
+                            $envio->status = 1;
+                        }
+                    }
                 }
+                $documentosqtd++;
             }
-            $documentosqtd++;
-        }
-        if($count<$documentosqtd){
-            return 0;
-        }
-        else{
+            if ($count < $documentosqtd) {
+                fwrite($handle, "Algum documento está faltando, analise manual necessária\n\n");
+                $envio->status = 0;
 
-        }
-        return $count;
-    }
-
-    public static function geraRelatorio($file, $documento, $pasta){
-        $handle = fopen(storage_path('app/public/'.$pasta.'/relatorio.txt'), 'a');
-        fwrite($handle, "Resultado de ".$documento->tipo.":\n");
-        $pal = Palavra::query();
-        $palavras = $pal->where('documentos_id', $documento->id)->get();
-        $relatorio = "";
-        $check = 0;
-        foreach ($palavras as $palavra){
-            $count = self::conta($file, $palavra);
-            $relatorio .= $palavra->palavra." encontrada ".$count."vezes, esperado: ".$palavra->quantidade;
-            if($count < $palavra->quantidade){
-                $relatorio .= " Reprovado\n";
-                $check = -1;
+                return $envio->status;
+            } else if($erro == 0){
+                return $envio->status;
             }
             else{
-                $relatorio .= " Aprovado\n";
+                $envio->status = 0;
+                return $envio->status;
             }
         }
-        return;
+        else {
+            return $envio->status;
+        }
+    }
+
+    public static function geraRelatorio($file, $documento, $handle){
+        fwrite($handle, "Resultado de ".$documento->tipo.":\n");
+        $pal = Palavra::query();
+        $palavras = $pal->where('documentos_id', $documento->id)->orderBy('palavra')->get();
+
+        $check = 2;
+        foreach ($palavras as $palavra) {
+            $relatorio = "";
+            $count = self::conta($file, $palavra->palavra);
+            if ($count == -1 && $check!=0) {
+                fwrite($handle, "Arquivo não compativel, analise manual necessária\n");
+                $check = 0;
+            }
+            if ($check != 0) {
+                $relatorio .= '"'.$palavra->palavra . '" encontrada ' . $count . " vez(es), esperado: " . $palavra->quantidade. ". Status:";
+                if ($count < $palavra->quantidade) {
+                    $relatorio .= " Reprovado\n";
+                    $check = 1;
+                } else {
+                    $relatorio .= " Aprovado\n";
+                }
+                fwrite($handle, $relatorio);
+            }
+        }
+        fwrite($handle, "\n");
+        return $check;
     }
     public static function conta($path, $palavra){
         $file = \Storage::disk('public')->path($path);
