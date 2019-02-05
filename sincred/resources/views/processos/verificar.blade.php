@@ -111,29 +111,34 @@
 					  <div class="container">
 					  	<div class="row"> 
 					  		<div class="col-lg-4 col-sm-4 col-md-4">
-
-							    {!! Form::open([])!!}
-							    {!! Form::label('farmacia', 'Farmácia') !!}
+								@if (session('envios'))
+									<div class="alert alert-success" role="alert">
+										{{ session('envios') }}
+									</div>
+								@endif
+							    {!! Form::open(['url'=>'/envios/busca'])!!}
+							    {!! Form::hidden('processo', $processo->id) !!}
+									{!! Form::label('farmacia', 'Farmácia') !!}
 								<select name="farmacia" class="form-control">
 									<option value="">Selecione a farmácia</option>
 									@foreach($farmacias as $farmacia)
-										<option value="{{$farmacia->id}}">{{$farmacia->razaoSocial}}</option>
+										<option value="{!! $farmacia->id!!}">{!! $farmacia->razaoSocial!!}</option>
 										@endforeach
 								</select>
 
 
+									{!! Form::label('status', 'Status') !!}
+									{!! Form::select('status', ['1'=> 'Aprovado', '2'=>'Reprovado', '3'=>'Erro'], null, ['class'=>'form-control', 'placeholder' => 'Selecione']) !!}
+									{!! Form::submit('Pesquisar', ['class'=>'btn btn-primary']) !!}
+									{!! Form::close() !!}
 		                 		</div>
 		                 		<div class="col-lg-3 col-sm-3 col-md-3">
-							    
-							    {!! Form::label('status', 'Status') !!}
-		                 		{!! Form::select('status', ['1'=> 'Aprovado', '2'=>'Reprovado', '3'=>'Erro'], null, ['class'=>'form-control', 'placeholder' => 'Selecione']) !!}
 
 		                 		
 		                 		</div>
 		                 		<div class="col-lg-2 col-sm-2 col-md-2" style="margin-top: 30px;">
 
-							  	{!! Form::submit('Pesquisar', ['class'=>'btn btn-primary']) !!}
-		                 		{!! Form::close() !!}
+
 		                 		</div>
 		                  		
                   		</div>
@@ -174,6 +179,8 @@
 							      <td>
 									  <?php
 									  $resultado = \App\Http\Controllers\EnvioController::checar($envio->id);
+									  $envio->status = $resultado;
+                                      $envio->save();
 									  if($resultado == 0){
 									      echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Erro">
 									 <button class="btn btn-secondary btn-sm" style="pointer-events: none;" type="button">Erro</button>

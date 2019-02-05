@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12 col-sm-12 col-lg-12">
             <div class="card">
-                <div class="card-header"> <h2>Relatório </h2>
+                <div class="card-header"> <h2>Relatório do envio da {{$farmacia->razaoSocial}} </h2>
                 	<br>
                    
                     
@@ -13,15 +13,33 @@
                 </div>
 
                 <div class="card-body">
-                    @if (session('status'))
+                    @if (session('relatorio'))
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                            {{ session('relatorio') }}
                         </div>
                     @endif
 
                    <br>
 
-                    <h2> Relatório Final</h2>
+                    <h2> Relatório Final: <?php
+                        $resultado = $envio->status;
+                        $envio->save();
+                        if($resultado == 0){
+                            echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Erro">
+									 <button class="btn btn-secondary" style="pointer-events: none;" type="button">Erro</button>
+									</span>';
+                        }
+                        elseif ($resultado == 1){
+                            echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Reprovado">
+									 <button class="btn btn-danger" style="pointer-events: none;" type="button">Reprovado</button>
+									</span>';
+                        }
+                        else{
+                            echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Aprovado">
+									 <button class="btn btn-success" style="pointer-events: none;" type="button">Aprovado</button>
+									</span>';
+                        }
+                        ?></h2>
 
                     <li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> </li>
                     <br>
@@ -29,43 +47,23 @@
                     
 
                      <div class="row">
-                     	<div class="col-lg-3 col-sm-12">
-                     		<nav id="navarVertical" class="navbar navbar-light bg-light">
-                     			<nav class="nav nav-pills flex-column">
-                     				
-                     				<a href="#item1" class="nav-link"> Documento 1</a>
-                     				<a href="#item2" class="nav-link"> Documento 2</a>
-                     				<a href="#item3" class="nav-link"> Documento 3</a>
-                     				<a href="#item4" class="nav-link"> Documento 4</a>
-                     			</nav>
-                     		</nav>
-                     		
-                     	</div>
+
                      	<div class="col-lg-9 col-sm-12">
                      		<div data-spy="scroll" data-targget="#navbarVertical" data-offset="0" style="height: 160px; position: relative; overflow: auto;">
-                     			<h4 id="item1"> Documento 1 </h4>
-                     			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus scelerisque lacus, quis fringilla purus vehicula eget. Cras at dignissim est. Aliquam bibendum porta bibendum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus scelerisque lacus, quis fringilla purus vehicula eget. Cras at dignissim est. Aliquam bibendum porta bibendum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus scelerisque lacus, quis fringilla purus vehicula eget. Cras at dignissim est. Aliquam bibendum porta bibendum. </p>
+                     			<h4 id="item1"> Resultados: </h4>
+                     			<p>{!! $text !!} </p>
 
-                     			<h4 id="item2"> Documento 2 </h4>
-                     			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus scelerisque lacus, quis fringilla purus vehicula eget. Cras at dignissim est. Aliquam bibendum porta bibendum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus scelerisque lacus, quis fringilla purus vehicula eget. Cras at dignissim est. Aliquam bibendum porta bibendum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus scelerisque lacus, quis fringilla purus vehicula eget. Cras at dignissim est. Aliquam bibendum porta bibendum. </p>
-
-                     			<h4 id="item3"> Documento 3 </h4>
-                     			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus scelerisque lacus, quis fringilla purus vehicula eget. Cras at dignissim est. Aliquam bibendum porta bibendum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus scelerisque lacus, quis fringilla purus vehicula eget. Cras at dignissim est. Aliquam bibendum porta bibendum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus scelerisque lacus, quis fringilla purus vehicula eget. Cras at dignissim est. Aliquam bibendum porta bibendum. </p>
-
-                     			<h4 id="item4"> Documento 4 </h4>
-                     			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus scelerisque lacus, quis fringilla purus vehicula eget. Cras at dignissim est. Aliquam bibendum porta bibendum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus scelerisque lacus, quis fringilla purus vehicula eget. Cras at dignissim est. Aliquam bibendum porta bibendum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus scelerisque lacus, quis fringilla purus vehicula eget. Cras at dignissim est. Aliquam bibendum porta bibendum. </p>
-                     			
                      		</div>
                      	</div>
                      	
 
                      </div>
                      <br>
-                     <button class="btn btn-primary"><a href="" style="color: #fff; text-decoration: none;">Download</a>
+                     <button class="btn btn-primary"><a href="/envios/relatorio/{{$envio->id}}/download" style="color: #fff; text-decoration: none;">Download</a>
                      </button>
-                     <button class="btn btn-danger"><a href="" style="color: #fff; text-decoration: none;">Reprovar</a>
+                     <button class="btn btn-danger"><a href="/envios/relatorio/{{$envio->id}}/reprovar" style="color: #fff; text-decoration: none;">Reprovar</a>
                      </button>
-                      <button class="btn btn-success"><a href="" style="color: #fff; text-decoration: none;">Aprovar</a>
+                      <button class="btn btn-success"><a href="/envios/relatorio/{{$envio->id}}/aprovar" style="color: #fff; text-decoration: none;">Aprovar</a>
                      </button>
                      <br>
                      <br>
@@ -101,19 +99,27 @@
                                     <tr>
                                       <th>Nome / Razão Social</th>
                                       <th> CNPJ </th>
-                                       <th> Telefone </th>
+                                       <th> Telefone fixo </th>
+                                       <th> Telefone celular </th>
                                         <th> E-mail </th>
 
 
                                     </tr>
                                  </thead>
-                              
                               <tbody style="text-align: center;">
                                     <tr>
-                                      <td class=""> Exemplo  </td>
-                                      <td> 11111111 </td>
-                                       <td> 1111111 </td>
-                                        <td> exemplo@exemplo </td>
+                                      <td class=""> {{$farmacia->razaoSocial}}</td>
+                                      <td> {{$farmacia->cnpj}} </td>
+                                       <td> {{$farmacia->fixo}} </td>
+                                       <td>
+                                           <?php
+                                       if($farmacia->celular == null){echo 'Sem registro';}
+                                       else{
+                                           echo $farmacia->celular;
+                                       }
+                                       ?>
+                                       </td>
+                                        <td> {{$farmacia->email}} </td>
                                     </tr>
 
                               </tbody>
@@ -162,13 +168,23 @@
                               
                               <tbody style="text-align: center;">
                                     <tr>
-                                      <td class=""> 790600-300 </td>
-                                      <td> Rua Doutor Werneck </td>
-                                       <td> Vila Albuquerque </td>
-                                        <td> testeeeeeeeeeeeeeee </td>
-                                        <td>11 </td>
-                                        <td> MS </td>
-                                        <td> Campo Grande </td>
+                                      <td class=""> {{$farmacia->cep}} </td>
+                                      <td> {{$farmacia->logradouro}} </td>
+                                       <td> {{$farmacia->bairro}} </td>
+                                        <td> {{$farmacia->complemento}} </td>
+                                        <td>{{$farmacia->numero}} </td>
+                                        <td>
+                                        <?php
+                                            $estado = \App\State::findOrFail($farmacia->states_id);
+                                            echo $estado->name;
+                                            ?>
+                                        </td>
+                                        <td>
+                                        <?php
+                                            $cidade = \App\Citie::findOrFail($farmacia->cities_id);
+                                            echo $cidade->name;
+                                            ?>
+                                        </td>
                                     </tr>
 
                               </tbody>
@@ -218,10 +234,10 @@
                               
                               <tbody style="text-align: center;">
                                     <tr>
-                                      <td class=""> Exemplo  </td>
-                                      <td> 11111111 </td>
-                                       <td> 1111111 </td>
-                                        <td> exemplo@exemplo </td>
+                                      <td class=""> {{$responsavel->nome}} </td>
+                                      <td> {{$responsavel->cpf}} </td>
+                                       <td> {{$responsavel->celular}} </td>
+                                        <td> {{$responsavel->email}} </td>
                                     </tr>
 
                               </tbody>
@@ -269,15 +285,25 @@
                                  </thead>
                               
                               <tbody style="text-align: center;">
-                                    <tr>
-                                      <td class=""> 790600-300 </td>
-                                      <td> Rua Doutor Werneck </td>
-                                       <td> Vila Albuquerque </td>
-                                        <td> testeeeeeeeeeeeeeee </td>
-                                        <td>11 </td>
-                                        <td> MS </td>
-                                        <td> Campo Grande </td>
-                                    </tr>
+                              <tr>
+                                  <td class=""> {{$responsavel->cep}} </td>
+                                  <td> {{$responsavel->logradouro}} </td>
+                                  <td> {{$responsavel->bairro}} </td>
+                                  <td> {{$responsavel->complemento}} </td>
+                                  <td>{{$responsavel->numero}} </td>
+                                  <td>
+                                      <?php
+                                      $estado = \App\State::findOrFail($responsavel->states_id);
+                                      echo $estado->name;
+                                      ?>
+                                  </td>
+                                  <td>
+                                      <?php
+                                      $cidade = \App\Citie::findOrFail($responsavel->cities_id);
+                                      echo $cidade->name;
+                                      ?>
+                                  </td>
+                              </tr>
 
                               </tbody>
                             
@@ -303,7 +329,7 @@
                             <li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> </li>
                      <br>
 						<div class="float-right">
-                            <button class="btn btn-primary"><a href="#" style="color: #fff; text-decoration: none;">Voltar</a>
+                            <button class="btn btn-primary"><a href="/processos/{{$envio->processos_id}}/verificar" style="color: #fff; text-decoration: none;">Voltar</a>
                             </button>
 							
 						</div>

@@ -11,6 +11,10 @@ use App\Responsavei;
 use Illuminate\Http\Request;
 use Storage;
 use Smalot\PdfParser\Parser;
+use ZipArchive;
+use RecursiveIteratorIterator;
+use RecursiveDirectoryIterator;
+
 
 class EnvioController extends Controller
 {
@@ -21,9 +25,14 @@ class EnvioController extends Controller
     	return view('envios.envio', ['processo'=>$processo, 'farmacias'=>$farmacias]);
     }
 
-    public function relatorio()
+    public function relatorio($id)
     {
-        return view('processos.relatorio');
+        $envio = Envio::findOrFail($id);
+        $farmacia = Farmacia::findOrFail($envio->farmacias_id);
+        $responsavel = Responsavei::findOrFail($envio->responsaveis_id);
+        $text = file_get_contents(storage_path('app/public/'.$envio->pasta.'/relatorio.txt'));
+        $text = nl2br($text);
+        return view('processos.relatorio', ['envio'=>$envio, 'farmacia'=>$farmacia, 'responsavel'=>$responsavel, 'text'=>$text]);
     }
 
 
@@ -99,16 +108,18 @@ class EnvioController extends Controller
                 }
                 $documentosqtd++;
             }
+            $envio->save();
             if ($count < $documentosqtd) {
                 fwrite($handle, "Algum documento está faltando, analise manual necessária\n\n");
                 $envio->status = 0;
-
+                $envio->save();
                 return $envio->status;
             } else if($erro == 0){
                 return $envio->status;
             }
             else{
                 $envio->status = 0;
+                $envio->save();
                 return $envio->status;
             }
         }
@@ -159,5 +170,70 @@ class EnvioController extends Controller
         {
             return -1;
         }
+    }
+    public function download($id){
+        $envio = Envio::findOrFail($id);
+        $processo = Processo::findOrFail($envio->processos_id);
+        $farmacia = Farmacia::findOrFail($envio->farmacias_id);
+        self::createZip(storage_path('app/public/'.$envio->pasta));
+        return response()->download(storage_path('app/public/'.$envio->pasta.'/arquivos.zip'), "Arquivos do processo:".$processo->nome." enviado por:".$farmacia->razaoSocial.".zip")->deleteFileAfterSend();
+    }
+    public function busca(Request $request){
+        $processo = Processo::findOrFail($request->processo);
+        $documentos = Documento::where('processos_id', $request->processo)->get();
+        $farmacias = Farmacia::all();
+        $envio = Envio::query();
+        if($request->farmacia !=null){
+            $envio->where('farmacias_id', $request->farmacia);
+        }
+        if($request->status !=null && $request->status != 3){
+            $envio->where('status', $request->status);
+        }
+        if($request->status !=null && $request->status == 3){
+            $envio->where('status', 0);
+        }
+        $envios = $envio->get();
+        \Session::flash('envios', count($envios).' resultados encontrados. ');
+        return view('processos.verificar', ['envios' => $envios, 'processo'=>$processo, 'documentos'=>$documentos, 'farmacias'=>$farmacias]);
+
+
+    }
+    public function aprovar($id){
+        $envio = Envio::findOrFail($id);
+        $envio->status = 2;
+        $envio->save();
+
+        \Session::flash('relatorio', 'Envio aprovado');
+        return redirect()->back();
+    }
+    public function reprovar($id){
+        $envio = Envio::findOrFail($id);
+        $envio->status = 1;
+        $envio->save();
+
+        \Session::flash('relatorio', 'Envio reprovado');
+        return redirect()->back();
+    }
+    public function createZip($path){
+        $rootPath = realpath($path);
+        $zip = new ZipArchive();
+        $zip->open($path.'/arquivos.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
+
+        $files = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($rootPath),
+            RecursiveIteratorIterator::LEAVES_ONLY
+        );
+
+        foreach ($files as $name => $file)
+        {
+            $path = pathinfo($file);
+            if (!$file->isDir() && $path['extension']!= 'zip')
+            {
+                $filePath = $file->getRealPath();
+                $relativePath = substr($filePath, strlen($rootPath) + 1);
+                $zip->addFile($filePath, $relativePath);
+            }
+        }
+        $zip->close();
     }
 }

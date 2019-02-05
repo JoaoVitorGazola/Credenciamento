@@ -51,6 +51,10 @@ Route::any('/farmacias/{id}/excluir', 'FarmaciaController@excluirResponsavel');
 
 
 Route::any('{id}/envios/novo', 'EnvioController@novo');
+Route::any('/envios/busca', 'EnvioController@busca');
 Route::any('{id}/envios/novo/salvar', 'EnvioController@salvar');
 Route::get('envios/fetch', 'EnvioController@fetch');
 Route::any('envios/relatorio/{Envio}', 'EnvioController@relatorio');
+Route::any('envios/relatorio/{Envio}/download', 'EnvioController@download');
+Route::any('envios/relatorio/{Envio}/reprovar', 'EnvioController@reprovar');
+Route::any('envios/relatorio/{Envio}/aprovar', 'EnvioController@aprovar');
