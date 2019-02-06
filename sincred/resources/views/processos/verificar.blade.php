@@ -128,7 +128,7 @@
 
 
 									{!! Form::label('status', 'Status') !!}
-									{!! Form::select('status', ['1'=> 'Aprovado', '2'=>'Reprovado', '3'=>'Erro'], null, ['class'=>'form-control', 'placeholder' => 'Selecione']) !!}
+									{!! Form::select('status', ['2'=> 'Aprovado', '1'=>'Reprovado', '3'=>'Erro'], null, ['class'=>'form-control', 'placeholder' => 'Selecione']) !!}
 									{!! Form::submit('Pesquisar', ['class'=>'btn btn-primary']) !!}
 									{!! Form::close() !!}
 		                 		</div>
