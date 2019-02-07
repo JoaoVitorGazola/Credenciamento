@@ -12,18 +12,18 @@
                         @csrf
 
                         <div class="form-group row">
-                        <label for="email" class="col-md-4 col-form-label text-md-right">
-                    
-                                <i class="fas fa-envelope" title="E-mail"></i>
+                        <label for="user" class="col-md-4 col-form-label text-md-right">
+
+                            <i class="fas fa-user" title="Usuário"></i>
                                 
                             </label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                <input id="user" type="user" class="form-control{{ $errors->has('user') ? ' is-invalid' : '' }}" name="user" value="{{ old('user') }}" required autofocus>
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('user'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('user') }}</strong>
                                     </span>
                                 @endif
                             </div>

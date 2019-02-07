@@ -38,6 +38,19 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="user" class="col-md-4 col-form-label text-md-right">{{ __('Usuário') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="user" type="user" class="form-control{{ $errors->has('user') ? ' is-invalid' : '' }}" name="user" value="{{ old('user') }}" required>
+
+                                @if ($errors->has('user'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('user') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Senha') }}</label>
