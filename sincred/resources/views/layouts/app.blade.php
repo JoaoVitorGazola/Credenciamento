@@ -147,7 +147,7 @@
 
   <!-- Copyright --><br>
   <div class="footer-marginr" style="text-align: center;"> <strong> © 2018 Copyright: </strong>
-    <a href="#"> www.infortechms.com.br </a>
+      <a href="http://www.infortechms.com.br" target="_blank"> www.infortechms.com.br </a>
   </div>
   <!-- Copyright -->
 </footer>
