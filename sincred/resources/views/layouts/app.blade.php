@@ -99,7 +99,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">
                                     <i class="fas fa-user"></i>
-                                    {{ __('Login') }}
+                                    {{ __('Entrar') }}
                                 </a>
                             </li>
                             @if (Route::has('register'))
