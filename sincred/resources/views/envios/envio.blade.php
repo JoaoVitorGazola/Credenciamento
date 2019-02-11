@@ -131,7 +131,7 @@
 							      <td scope="row"> {{$documento->tipo}}</td>
 							      <td>{{$documento->descrição}}</td>
 							      <td>
-                                     O arquivo referente a este documento deve estar nomeado como {{$documento->tipo}}.pdf, arquivos com nome ou extensão diferentes serão desconsiderados.
+                                     O arquivo referente a este documento deve estar nomeado como <u>{{$documento->tipo}}.pdf</u>, arquivos com nome ou extensão diferentes serão desconsiderados.
                                   </td>
 							      
 
