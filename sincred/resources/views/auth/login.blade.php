@@ -19,7 +19,7 @@
                             </label>
 
                             <div class="col-md-6">
-                                <input id="user" type="user" class="form-control{{ $errors->has('user') ? ' is-invalid' : '' }}" name="user" value="{{ old('user') }}" required autofocus>
+                                <input id="user" type="user" class="form-control{{ $errors->has('user') ? ' is-invalid' : '' }}" name="user" value="{{ old('user') }}" required autofocus placeholder="Usuário">
 
                                 @if ($errors->has('user'))
                                     <span class="invalid-feedback" role="alert">
@@ -34,7 +34,7 @@
                                 <i class="fas fa-unlock" title="Senha"></i></label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Senha">
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">

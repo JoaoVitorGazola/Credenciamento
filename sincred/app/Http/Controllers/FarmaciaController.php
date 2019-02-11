@@ -78,8 +78,8 @@ class FarmaciaController extends Controller
         }
 
         $responsavel = new Responsavei($request->all());
-        $responsavel->save();
-        return redirect()->back();
+       
+        return view('farmacia.responsavel');
         
     }
     public function excluirResponsavel($id){

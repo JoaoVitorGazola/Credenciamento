@@ -32,11 +32,7 @@
                     <div class="panel with-nav-tabs panel-primary">
                         <div class="panel-heading">
                             <ul class="nav nav-tabs" style="margin-bottom: -13px;">
-                                <li class="disabled nav-link">
-                               <i class="fas fa-hospital-alt"></i>
-                                    Farmácia 
-                            
-                                </li>
+                                
                                 <li class=" active nav-link">
                                 
                                     <a href="{{url('farmacias/responsavel')}}" style="text-decoration: none; color: #212529;">
@@ -74,52 +70,6 @@
 					</div>
                     <br>
 
-                    <h2> Responsáveis </h2>
-
-                    <li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> </li>
-                    <br>
-
-                    <div class="table-responsive">
-							<table class="table table-hover table-bordered">
-								<thead style="background-color: rgba(0,0,0,.03); text-align: center;">
-								    <tr>
-								      <th>Nome Responsável </th>
-										<th> CPF </th>
-										<th>E-mail </th>
-								        <th>Telefone </th>
-                                        <th> Ação </th>
-
-								    </tr>
-							 	 </thead>
-							 @foreach($responsaveis as $responsavel)
-							  <tbody style="text-align: center;">
-								    <tr>
-								      <td scope="row">{{$responsavel->nome}}</td>
-										<td >{{$responsavel->cpf}}</td>
-										<td> {{$responsavel->email}}</td>
-								      <td>  {{$responsavel->celular}} </td>
-                                      <td> 
-                                        <?php 
-                                        echo 
-                    '<a href="/farmacias/'.$responsavel->id.'/excluir" onclick="return confirm(\'Tem certeza que deseja excluir esse responsável?\');" class="btn btn-danger btn-sm">
-                <i class="fas fa-trash-alt" title="Excluir"></i>
-                 </a>'
-
-                                        ?>
-                                        </a>
-                                      </td>
-
-
-
-								    </tr>
-
-							  </tbody>
-						@endforeach
-							  
-							</table>
-						</div>
-						<BR>
-
                    
 
                     <h2> Dados do Responsável </h2>
@@ -132,7 +82,7 @@
                         <div class="row">
                             
                             <div class="col-lg-4 col-sm-4 col-md-4">
-                                {!! Form::input('hidden', 'farmacias_id', $id,['class'=>'form-control']) !!}
+                               
                          <strong> 
                             {!! Form::label('nome', 'Nome Responsável *') !!}
                          </strong>
@@ -199,9 +149,9 @@
                             <strong>{!! Form::label('states_id', 'Estado *') !!}</strong>
                                 <select class="form-control" id="states" name="states_id" onchange="myFunction();" required>
                                     <option value={{null}}>Selecione o estado</option>
-                                    @foreach($estados as $estado)
-                                        <option value="{{$estado->id}}">{{$estado->abbreviation}}</option>
-                                    @endforeach
+                                   
+                                        <option value=""></option>
+                                    
                                 </select>
                                 {{csrf_field(['id'=>'token'])}}
 
@@ -216,10 +166,7 @@
 
                             </div>
 
-                            <div class="col-2" style="margin-top: 30px;">
-                            	<button type="submit" class="btn btn-primary btn-sm"> Adicionar Responsável <i class="fas fa-plus"></i></button>
-
-                            </div>
+                            
 
                             {!! Form::close() !!}
                      </div>
@@ -236,8 +183,8 @@
 					<br>	
 						<div class="float-right">
                            
-						<button class="btn btn-primary" onclick="window.location.href='/farmacias'">
-                            <a href="{{url('/farmacias')}}" style="color: #fff; text-decoration: none;">Finalizar</a></button>
+						<button class="btn btn-primary" onclick="window.location.href='/'">
+                            <a href="#" style="color: #fff; text-decoration: none;">Cadastrar</a></button>
 
 
 

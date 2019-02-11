@@ -17,6 +17,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/lista-responsaveis', 'HomeController@lista');
 Route::any('/processos/andamento', 'ProcessoController@andamento');
 Route::any('/processos/andamento/busca', 'ProcessoController@buscaAndamento');
 Route::any('/processos', 'ProcessoController@index')->middleware('auth:fiscal');
@@ -45,7 +46,7 @@ Route::post('/farmacias/busca', 'FarmaciaController@busca')->middleware('auth:fi
 Route::any('/farmacias/novo', 'FarmaciaController@novo')->middleware('auth:fiscal');
 Route::any('/farmacias/novo/salvar', 'FarmaciaController@farmacianovo')->middleware('auth:fiscal');
 Route::any('/farmacias/{id}/responsavel', 'FarmaciaController@responsavel')->name('/farmacias/{id}/responsavel')->middleware('auth:fiscal');
-Route::any('/farmacias/responsavel/novo', 'FarmaciaController@responsavelnovo')->middleware('auth:fiscal');
+Route::any('/farmacias/responsavel/novo', 'FarmaciaController@responsavelnovo');
 Route::any('/farmacias/{id}/excluir', 'FarmaciaController@excluirResponsavel')->middleware('auth:fiscal');
 
 
