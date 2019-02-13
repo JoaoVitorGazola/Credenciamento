@@ -193,7 +193,8 @@
 								  </td>
 									
 									<td>
-									<a href="#" class="btn btn-success btn-sm"> <i class="fas fa-check" title="Verificar"></i>
+									<a href="/processos/{{$envios->processos_id}}/verificar/{{$envio->id}}" 
+										class="btn btn-success btn-sm"> <i class="fas fa-check" title="Verificar"></i>
 									 </a>
 
 									</td>	

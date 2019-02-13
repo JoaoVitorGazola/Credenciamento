@@ -111,7 +111,7 @@
 						<table class="table table-hover table-bordered"> 
 							<thead style="background-color: rgba(0,0,0,.03); text-align: center;">
 							    <tr>
-							      <th scope="col-6" style="width: 200px;">Tipo de Processo</th>
+							      <th scope="col-6" style="width: 200px;">Tipo do Documento</th>
 							      <th scope="col-6">Descrição</th>
 							     
 							      

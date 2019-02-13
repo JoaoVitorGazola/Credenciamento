@@ -127,7 +127,7 @@
 
                             <div class="col-lg-5 col-sm-5 col-md-5">
                                 <strong>{!! Form::label('documentos_id', 'Documento Requisitado *') !!}</strong>
-                                <select name="documentos_id" class="form-control">
+                                <select name="documentos_id" class="form-control" required>
                                     <option value="">Selecione o documento</option>
                                     @foreach($documentos as $documento)
                                         <option value="{{$documento->id}}">{{$documento->tipo}}</option>
@@ -138,13 +138,13 @@
                             <div class="col-sm-4 col-lg-4 col-md-4">
                             <strong>{!! Form::label('palavra', 'Palavra-Chave *') !!}
                             </strong>
-                                {!! Form::input('text', 'palavra', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Palavra-Chave']) !!}
+                                {!! Form::input('text', 'palavra', null, ['class' => 'form-control', 'required', 'placeholder' => 'Palavra-Chave']) !!}
                             </div>
 
                             <div class="col-sm-1 col-lg-1 col-md-1">
                             <strong> {!! Form::label('quantidade', 'Qtde *') !!}
                             </strong>
-                                {!! Form::number('quantidade', null, ['class' => 'form-control', 'min'=>'1']) !!}
+                                {!! Form::number('quantidade', null, ['class' => 'form-control', 'min'=>'1', 'required']) !!}
                             </div>
 
                             <div class="col-md-12 col-sm-12 col-lg-1">

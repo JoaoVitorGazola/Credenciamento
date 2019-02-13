@@ -52,12 +52,13 @@
 										
 
 									</div>
-						
+
 									<div class="col-sm-3 col-lg-3 col-md-3">
 									<strong>{!! Form::label('cnpj', 'CNPJ') !!}</strong>
-										{!! Form::input('text', 'cnpj', null, ['class' => 'form-control', 'placeholder' => '00.000.000/0000-00']) !!}
+										{!! Form::input('text', 'cnpj', null, ['class' => 'form-control', 'placeholder' => '00.000.000/0000-00', 'maxlength' => '14']) !!}
 									</div>
 									
+						
 									<div class="col-sm-2 col-lg-2 col-md-2">
 									<strong>{!! Form::label('states', 'Estado') !!}
 									</strong>

@@ -16,6 +16,10 @@
     jQuery(function($){
        
        $("#cnpj").mask("99.999.999/9999-99");
+       $("#fixo").mask("(99)9999-9999");
+       $("#celular").mask("(99)99999-9999");
+       $("#cep").mask("99999-999");
+       $("#cpf").mask("999.999.999-99");
 
     });
     </script>
@@ -54,20 +58,30 @@
                         <li> <a class="nav-link" href="{{url('/home')}}"> Home </a> </li>
                         <div class="btn-group">
                           <a  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           Processos
+                           Governo
                           </a>
                           <div class="dropdown-menu">
                             <li> 
                                 <a class="nav-link" href="{{url('/processos/')}}"> Processos </a></li>
                            
+                             <li> <a class="nav-link" href="{{url('/farmacias')}}"> Farmácias </a></li>
+                            
+                          </div>
+                        </div>
+                        <div class="btn-group">
+                          <a  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           Farmaceutico
+                          </a>
+                          <div class="dropdown-menu">
                             <li> 
-                                <a class= "nav-link" href="{{url('/processos/andamento')}}"> Processos em Andamento </a> </li>
+                                <a class="nav-link" href="{{url('/processos/andamento')}}"> Processos em Andamento </a></li>
+
                             
                           </div>
                         </div>
                         
 
-                        <li> <a class="nav-link" href="{{url('/farmacias')}}"> Farmácias </a></li>
+                       
 
                          
                         @endif
@@ -129,7 +143,7 @@
 <footer class="card-footer bg-light footer-font-style text-muted footer-position">
    
 
-  <!-- Copyright -->
+  <!-- Copyright --><br>
   <div class="footer-marginr" style="text-align: center;"> <strong> © 2018 Copyright: </strong>
     <a href="#"> www.infortechms.com.br </a>
   </div>

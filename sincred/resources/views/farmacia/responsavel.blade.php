@@ -143,7 +143,7 @@
                               <strong>
                                 {!! Form::label('cpf', 'CPF *') !!}
                             </strong>
-                            {!! Form::input('text', 'cpf', null, ['class' => 'form-control', 'required', 'placeholder' => '000.000.000-00']) !!}
+                            {!! Form::input('text', 'cpf', null, ['class' => 'form-control', 'required', 'placeholder' => '000.000.000-00', 'maxlength' => '11']) !!}
                             </div>
 
                             <div class="col-sm-3 col-lg-3 col-md-3">

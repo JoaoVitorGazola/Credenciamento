@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
     <script>
         function myFunction()
         {
@@ -80,34 +80,38 @@
                         <div class="row">
                             
                             <div class="col-lg-4 col-sm-4 col-md-4">
-                          <strong>  {!! Form::label('razaoSocial', 'Nome / Razão Social *') !!}</strong>
+                          <strong>  
+                          {!! Form::label('razaoSocial', 'Nome / Razão Social *') !!}
+                        </strong>
                            {!! Form::input('text', 'razaoSocial', null, ['class' => 'form-control', 'required', 'placeholder' => 'Nome']) !!}
                             </div>
                             
                             <div class="col-sm-4 col-lg-4 col-md-4">
                           <strong>  {!! Form::label('cnpj', 'CNPJ *') !!}</strong>
                              
-                             {!! Form::input('text', 'cnpj', null, ['class' => 'form-control', 'required', 'placeholder' => '00.000.000/0000-00']) !!}
+                             {!! Form::input('text', 'cnpj', null, ['class' => 'form-control', 'required', 'placeholder' => '00.000.000/0000-00', 'maxlength' => '14']) !!}
                             </div>
                           
 
                             <div class="col-sm-4 col-lg-4 col-md-4">
-                           <strong>     {!! Form::label('email', 'E-mail *') !!}</strong>
+                           <strong>{!! Form::label('email', 'E-mail *') !!}</strong>
                             {!! Form::input('email', 'email', null, ['class' => 'form-control', 'required', 'placeholder' => 'example@example.com']) !!}
 
 
                             </div>
 
                             <div class="col-sm-3 col-lg-3 col-md-3"> <br>
-                             <strong>   {!! Form::label('fixo', 'N° Telefone Fixo *') !!} </strong>
-                               {!! Form::input('text', 'fixo', null, ['class' => 'form-control', 'required', 'placeholder' => '(00)0000-0000']) !!}
+                             <strong>  
+                             {!! Form::label('fixo', 'N° Telefone Fixo *') !!} 
+                           </strong>
+                               {!! Form::input('text', 'fixo', null, ['class' => 'form-control', 'required', 'placeholder' => '(00)0000-0000', 'maxlength' => '10']) !!}
                            
 
                             </div>
 
                             <div class="col-sm-3 col-lg-3 col-md-3"> <br>
                              <strong>   {!! Form::label('celular', 'N° Telefone Celular ') !!}</strong>
-                               {!! Form::input('text', 'celular', null, ['class' => 'form-control', '', 'placeholder' => '(00)0000-0000']) !!}
+                               {!! Form::input('text', 'celular', null, ['class' => 'form-control', '', 'placeholder' => '(00)00000-0000', 'maxlength' => '11']) !!}
                            
 
                             </div>
@@ -125,7 +129,7 @@
                             
                             <div class="col-lg-3 col-sm-3 col-md-3">
                          <strong>  {!! Form::label('cep', 'CEP *') !!} </strong>
-                            {!! Form::input('text', 'cep', null, ['class' => 'form-control', 'required', 'placeholder' => '00000-000']) !!}
+                            {!! Form::input('text', 'cep', null, ['class' => 'form-control', 'required', 'placeholder' => '00000-000' , 'maxlength' => '8']) !!}
                             <a href="#">Não sei meu CEP</a>
                             </div>
 

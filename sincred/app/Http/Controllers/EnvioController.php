@@ -20,6 +20,13 @@ class EnvioController extends Controller
         $farmacias = Farmacia::all();
     	return view('envios.envio', ['processo'=>$processo, 'farmacias'=>$farmacias]);
     }
+
+    public function relatorio()
+    {
+        return view('processos.relatorio');
+    }
+
+
     public function fetch(Request $request){
         $value = $request->get('value');
         $data = Responsavei::query();
