@@ -106,41 +106,42 @@
 
               		<li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> </li>
               		<br>
-
-					<div class="jumbotron jumbotron-fluid" style="background-color: rgba(0,0,0,.03);">
-					  <div class="container">
-					  	<div class="row"> 
-					  		<div class="col-lg-4 col-sm-4 col-md-4">
-								@if (session('envios'))
+              		@if (session('envios'))
 									<div class="alert alert-success" role="alert">
+										 <i class="fas fa-check-circle"></i>
 										{{ session('envios') }}
 									</div>
 								@endif
-							    {!! Form::open(['url'=>'/envios/busca'])!!}
+					<div class="jumbotron jumbotron-fluid" style="background-color: rgba(0,0,0,.03);">
+					  <div class="container">
+					  	{!! Form::open(['url'=>'/envios/busca'])!!}
+					  	<div class="row col-12"> 
+ 								<div class="col-lg-4"> 
+							    
+							   
 							    {!! Form::hidden('processo', $processo->id) !!}
-									{!! Form::label('farmacia', 'Farmácia') !!}
+								<strong> {!! Form::label('farmacias', 'Farmácia') !!}</strong>
 								<select name="farmacia" class="form-control">
 									<option value="">Selecione a farmácia</option>
 									@foreach($farmacias as $farmacia)
 										<option value="{!! $farmacia->id!!}">{!! $farmacia->razaoSocial!!}</option>
 										@endforeach
 								</select>
+								
 
-
-									{!! Form::label('status', 'Status') !!}
+								</div>
+								<div class="col-lg-3" >
+								
+									
+									<strong>{!! Form::label('status', 'Status') !!}</strong>
 									{!! Form::select('status', ['2'=> 'Aprovado', '1'=>'Reprovado', '3'=>'Erro'], null, ['class'=>'form-control', 'placeholder' => 'Selecione']) !!}
+									</div>
+									<div class="col-lg-2" style="margin-top: 30px;"> 
+							
 									{!! Form::submit('Pesquisar', ['class'=>'btn btn-primary']) !!}
-									{!! Form::close() !!}
-		                 		</div>
-		                 		<div class="col-lg-3 col-sm-3 col-md-3">
-
-		                 		
-		                 		</div>
-		                 		<div class="col-lg-2 col-sm-2 col-md-2" style="margin-top: 30px;">
-
-
-		                 		</div>
-		                  		
+									
+		                 	</div>
+		                  		{!! Form::close() !!}
                   		</div>
 
                   		<br>

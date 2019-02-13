@@ -56,10 +56,14 @@
                         </div>
                     @endif
 
-                   <br>
+                   
 
+                    <div class="alert alert-primary" role="alert">
+                              Os campos marcados com * são de preenchimento obrigatório.
+                            </div>
+                            <br>    
                     <h2> Dados do Envio </h2>
-
+                    
                     <li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> </li>
                     <br>
 
@@ -68,7 +72,7 @@
                         <div class="row">
                             
                             <div class="col-lg-3 col-sm-3 col-md-3">
-                            <strong> {!! Form::label('farmacias_id', 'Farmácia') !!}
+                            <strong> {!! Form::label('farmacias_id', 'Farmácia *') !!}
                              </strong>
                             <select name="farmacias_id" class="form-control" id="farmacias_id" onchange="myFunction()" required>
                                 <option value="{{null}}">Selecione a farmacia</option>
@@ -80,7 +84,7 @@
                             </div>
                             
                             <div class="col-sm-3 col-lg-3 col-md-3">
-                            <strong>{!! Form::label('responsaveis_id', 'Responsável') !!}
+                            <strong>{!! Form::label('responsaveis_id', 'Responsável *') !!}
                             </strong>
                                 <select name="responsaveis_id" id="responsaveis_id" class="form-control" required>
                                     <option value="{{null}}">Selecione o responsavel</option>

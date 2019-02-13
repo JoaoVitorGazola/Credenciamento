@@ -236,7 +236,8 @@
 					<br>	
 						<div class="float-right">
                            
-						<button class="btn btn-primary"><a href="{{url('/farmacias')}}" style="color: #fff; text-decoration: none;">Finalizar</a></button>
+						<button class="btn btn-primary" onclick="window.location.href='/farmacias'">
+                            <a href="{{url('/farmacias')}}" style="color: #fff; text-decoration: none;">Finalizar</a></button>
 
 
 

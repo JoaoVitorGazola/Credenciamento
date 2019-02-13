@@ -108,7 +108,7 @@
 
                         <br>
                         <div class="float-right">
-                            <button class="btn btn-primary"><a href="/processos" style="color: #fff; text-decoration: none;">Cancelar</a></button>
+                            <button class="btn btn-primary" onclick="window.location.href='/processos'"><a href="/processos" style="color: #fff; text-decoration: none;">Cancelar</a></button>
                             {!! Form::submit('Cadastrar', ['class'=>'btn btn-primary']) !!}
                             {!! Form::close() !!}
 

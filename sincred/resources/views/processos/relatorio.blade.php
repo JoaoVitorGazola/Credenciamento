@@ -5,41 +5,40 @@
     <div class="row justify-content-center">
         <div class="col-md-12 col-sm-12 col-lg-12">
             <div class="card">
-                <div class="card-header"> <h2>Relatório do envio da {{$farmacia->razaoSocial}} </h2>
-                	<br>
-                   
-                    
-
+                <div class="card-header">
+                 <h2>Relatório do envio da {{$farmacia->razaoSocial}} </h2>
+                	
                 </div>
 
                 <div class="card-body">
                     @if (session('relatorio'))
                         <div class="alert alert-success" role="alert">
+                          <i class="fas fa-check-circle"></i>
                             {{ session('relatorio') }}
                         </div>
                     @endif
 
                    <br>
 
-                    <h2> Relatório Final: <?php
+                    <h3> Relatório Final: <?php
                         $resultado = $envio->status;
                         $envio->save();
                         if($resultado == 0){
                             echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Erro">
-									 <button class="btn btn-secondary" style="pointer-events: none;" type="button">Erro</button>
+									 <button class="btn btn-secondary btn-sm" style="pointer-events: none;" type="button">Erro</button>
 									</span>';
                         }
                         elseif ($resultado == 1){
                             echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Reprovado">
-									 <button class="btn btn-danger" style="pointer-events: none;" type="button">Reprovado</button>
+									 <button class="btn btn-danger btn-sm" style="pointer-events: none;" type="button">Reprovado</button>
 									</span>';
                         }
                         else{
                             echo '<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Aprovado">
-									 <button class="btn btn-success" style="pointer-events: none;" type="button">Aprovado</button>
+									 <button class="btn btn-success btn-sm" style="pointer-events: none;" type="button">Aprovado</button>
 									</span>';
                         }
-                        ?></h2>
+                        ?></h3>
 
                     <li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> </li>
                     <br>
@@ -49,26 +48,47 @@
                      <div class="row">
 
                      	<div class="col-lg-9 col-sm-12">
-                     		<div data-spy="scroll" data-targget="#navbarVertical" data-offset="0" style="height: 160px; position: relative; overflow: auto;">
-                     			<h4 id="item1"> Resultados: </h4>
-                     			<p>{!! $text !!} </p>
+                     		<div data-spy="scroll" data-target="#navbar-example3" data-offset="0" 
+                        style="height: 140px; position: relative; overflow: auto;">
+                       
+                        <ul class="nav nav-tabs" role="tablist">
+
+                          <li>
+                            <h4 id="item1"> Resultados: </h4> 
+                           
+                            <p> {!! $text !!} </p>
+
+                            
+                          </li>
+                          
+                          
+                        </ul>
+                     			
 
                      		</div>
                      	</div>
-                     	
-
+                      <div class="col-lg-3">
+                     	<button class="btn btn-primary" onclick="window.location.href='/envios/relatorio/{{$envio->id}}/download'">
+                        <a href="/envios/relatorio/{{$envio->id}}/download" style="color: #fff; text-decoration: none;">Download</a>
+                     </button>
+                     <br>
+                     <br>
+                     <button class="btn btn-danger" onclick="window.location.href='/envios/relatorio/{{$envio->id}}/reprovar'">
+                      <a href="/envios/relatorio/{{$envio->id}}/reprovar" style="color: #fff; text-decoration: none;">Reprovar</a>
+                     </button>
+                     <br>
+                     <br>
+                      <button class="btn btn-success" onclick="window.location.href='/envios/relatorio/{{$envio->id}}/aprovar'">
+                        <a href="/envios/relatorio/{{$envio->id}}/aprovar" style="color: #fff; text-decoration: none;">Aprovar</a>
+                     </button>
+                     
+                     <li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;">
+                      </li>
+                    
+                     </div>
                      </div>
                      <br>
-                     <button class="btn btn-primary"><a href="/envios/relatorio/{{$envio->id}}/download" style="color: #fff; text-decoration: none;">Download</a>
-                     </button>
-                     <button class="btn btn-danger"><a href="/envios/relatorio/{{$envio->id}}/reprovar" style="color: #fff; text-decoration: none;">Reprovar</a>
-                     </button>
-                      <button class="btn btn-success"><a href="/envios/relatorio/{{$envio->id}}/aprovar" style="color: #fff; text-decoration: none;">Aprovar</a>
-                     </button>
-                     <br>
-                     <br>
-                     <li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> </li>
-                     <br>
+                     
                     
                    
 					 {!! Form::close() !!}	

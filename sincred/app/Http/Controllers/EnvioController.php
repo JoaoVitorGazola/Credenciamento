@@ -110,7 +110,7 @@ class EnvioController extends Controller
             }
             $envio->save();
             if ($count < $documentosqtd) {
-                fwrite($handle, "Algum documento está faltando, analise manual necessária\n\n");
+                fwrite($handle, "Algum documento está faltando, analise manual necesssária.\n\n");
                 $envio->status = 0;
                 $envio->save();
                 return $envio->status;
@@ -138,7 +138,7 @@ class EnvioController extends Controller
             $relatorio = "";
             $count = self::conta($file, $palavra->palavra);
             if ($count == -1 && $check!=0) {
-                fwrite($handle, "Arquivo não compativel, analise manual necessária\n");
+                fwrite($handle, "Arquivo não compativel, analise manual necessária.\n");
                 $check = 0;
             }
             if ($check != 0) {
@@ -203,7 +203,7 @@ class EnvioController extends Controller
         $envio->status = 2;
         $envio->save();
 
-        \Session::flash('relatorio', 'Envio aprovado');
+        \Session::flash('relatorio', 'Envio aprovado!');
         return redirect()->back();
     }
     public function reprovar($id){
@@ -211,7 +211,7 @@ class EnvioController extends Controller
         $envio->status = 1;
         $envio->save();
 
-        \Session::flash('relatorio', 'Envio reprovado');
+        \Session::flash('relatorio', 'Envio reprovado!');
         return redirect()->back();
     }
     public function createZip($path){

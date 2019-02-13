@@ -64,8 +64,8 @@
                     @endif
 
                     <div class="alert alert-primary" role="alert">
-					  Os campos marcados com * são de preenchimento obrigatório.
-					</div>
+          					  Os campos marcados com * são de preenchimento obrigatório.
+          					</div>
                     <br>
 
                    

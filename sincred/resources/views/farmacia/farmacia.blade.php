@@ -91,8 +91,12 @@
 
 								<div class="container">
 									<div class="row col-12">
-										<button class="btn btn-primary btn-md">
-											<a href="/farmacias/novo" style="text-decoration: none; color: #fff;" title="Novo Registro">Novo Registro <i class="fas fa-plus-circle"></i></a>
+										<button class="btn btn-primary btn-md" 
+										onclick="window.location.href='/farmacias/novo'">
+											<a href="/farmacias/novo" style="text-decoration: none; color: #fff;" title="Novo Registro">
+												Novo Registro
+												<i class="fas fa-plus-circle"></i>
+											</a>
 										</button>
 
 									</div>

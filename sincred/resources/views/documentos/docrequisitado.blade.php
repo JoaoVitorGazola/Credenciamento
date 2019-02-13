@@ -149,7 +149,10 @@
                         <br>
                         <div class="float-right">
 
-                            <button class="btn btn-primary btn-md"><a href="{{url('/'.$id.'/documentos/palavras')}}" style="color: #fff; text-decoration: none;">Cadastrar</a>
+                            <button class="btn btn-primary btn-md" onclick="window.location.href='/{{$id}}/documentos/palavras'">
+                                <a href="{{url('/'.$id.'/documentos/palavras')}}" style="color: #fff; text-decoration: none;">
+                                    Cadastrar
+                                </a>
                             </button>
 
 

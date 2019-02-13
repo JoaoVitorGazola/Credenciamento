@@ -61,7 +61,8 @@
 
 								<div class="container">
 			                  	<div class="row col-12">
-                                    <button class="btn btn-primary btn-md"><a href="/processos/novo" style="text-decoration: none; color: #fff;" title="Novo Processo">Novo Registro</a> <i class="fas fa-plus-circle"></i> </button>
+                                    <button class="btn btn-primary btn-md" onclick="window.location.href='/processos/novo'">
+                                    	<a href="/processos/novo" style="text-decoration: none; color: #fff;" title="Novo Processo">Novo Registro</a> <i class="fas fa-plus-circle"></i> </button>
 
 			                  	</div>
 			                  </div>
