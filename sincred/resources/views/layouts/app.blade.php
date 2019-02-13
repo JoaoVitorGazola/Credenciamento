@@ -22,7 +22,9 @@
        $("#cpf").mask("999.999.999-99");
 
     });
+
     </script>
+
     
 
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -70,7 +72,7 @@
                         </div>
                         <div class="btn-group">
                           <a  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           Farmaceutico
+                           Farmacêutico
                           </a>
                           <div class="dropdown-menu">
                             <li> 

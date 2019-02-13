@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-  
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12 col-sm-12 col-lg-12">
@@ -22,39 +21,12 @@
 
                    <br>
 
-                    <h2> Relatório Final </h2>
+                    <h2> Relatório Finalww </h2>
 
                     <li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> </li>
                     <br>
 
-                     
-                        {!!Form::open(['url'=>'/'])!!}
-                        <div class="row">
-                            
-                            <div class="col-lg-3 col-sm-3 col-md-3">
-                            {!! Form::label('farmacia', 'Farmácia') !!}
-                            {!! Form::input('text', 'farmacia', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Farmácia Popular','readonly' ]) !!}
-                            </div>
-                            
-                            <div class="col-sm-3 col-lg-3 col-md-3">
-                                {!! Form::label('nome', 'Responsável') !!}
-
-                            {!! Form::input('text', 'nome', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Luiz Marcelo', 'readonly']) !!}
-                            </div>
-
-                            <div class="col-sm-6 col-lg-6 col-md-6">
-                                {!! Form::label('obs', 'Observações') !!}
-                            {!! Form::input('text', 'obs', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Observações', 'readonly']) !!}
-
-							<br>
-                            </div>
-
-
-
-
-                     </div>
-                     <br>
-                     <br>
+                    
 
                      <div class="row">
                      	<div class="col-3">
@@ -101,16 +73,44 @@
                      <br>
                     
                    
-					
+					 {!! Form::close() !!}
 					
 					<br>	
+
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+                   
+                     <br>
+                     <br>
 						<div class="float-right">
                             <button class="btn btn-primary"><a href="#" style="color: #fff; text-decoration: none;">Voltar</a>
                             </button>
 
 							
 
-                            {!! Form::close() !!}
+                           
 
 
 							
@@ -120,5 +120,4 @@
         </div>
     </div>
 </div>
-
 @endsection
