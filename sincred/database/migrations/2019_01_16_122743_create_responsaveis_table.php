@@ -15,8 +15,6 @@ class CreateResponsaveisTable extends Migration
     {
         Schema::create('responsaveis', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('farmacias_id');
-            $table->foreign('farmacias_id')->references('id')->on('farmacias')->onDelete('cascade');
             $table->string('nome');
             $table->string('cpf');
             $table->string('email');
