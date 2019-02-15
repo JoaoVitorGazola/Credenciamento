@@ -40,19 +40,13 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-         'fiscal' => [
-                    'driver' => 'session',
-                    'provider' => 'fiscals',
-                ],
+
 
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
         ],
-        'fiscal-api' => [
-            'driver' => 'token',
-            'provider' => 'fiscals',
-        ],
+
     ],
 
     /*
@@ -77,10 +71,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-        'fiscals' => [
-            'driver' => 'eloquent',
-            'model' => App\Fiscal::class,
-        ],
+
 
         // 'users' => [
         //     'driver' => 'database',
@@ -106,11 +97,6 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-        ],
-        'fiscals' => [
-            'provider' => 'fiscals',
             'table' => 'password_resets',
             'expire' => 60,
         ],

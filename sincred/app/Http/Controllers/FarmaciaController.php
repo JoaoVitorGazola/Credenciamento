@@ -52,12 +52,30 @@ class FarmaciaController extends Controller
                 \Session::flash('manoel', 'Farmacia ja cadastrada.');
                 return redirect()->back();
             }
+            if ($farmas->email == $request->email) {
+                \Session::flash('manoel', 'Email ja cadastrado.');
+                return redirect()->back();
+            }
         }
 
 
-        $farmacia = new Farmacia($request->all());
+        $farmacia = new Farmacia();
+        $farmacia->razaoSocial = $request->razaoSocial;
+        $farmacia->cnpj = $request->cnpj;
+        $farmacia->cep = $request->cep;
+        $farmacia->email = $request->email;
+        $farmacia->fixo = $request->fixo;
+        $farmacia->celular = $request->celular;
+        $farmacia->logradouro = $request->logradouro;
+        $farmacia->bairro = $request->bairro;
+        $farmacia->numero = $request->numero;
+        $farmacia->complemento = $request->complemento;
+        $farmacia->states_id = $request->states_id;
+        $farmacia->cities_id = $request->cities_id;
         $farmacia->save();
-        return redirect()->route('/farmacias/{id}/responsavel', $farmacia->id);
+        $senha = UserController::criarFarmacia($request, $farmacia->id);
+        \Session::flash('manoel', $senha);
+        return redirect()->back();
     }
     public function responsavel($id)
     {
@@ -75,10 +93,17 @@ class FarmaciaController extends Controller
                 \Session::flash('responerro', 'Responsável já cadastrado.');
                 return redirect()->back();
             }
+            if ($respons->email == $request->email) {
+                \Session::flash('responerro', 'Email já cadastrado.');
+                return redirect()->back();
+            }
         }
 
         $responsavel = new Responsavei($request->all());
-       
+        $responsavel->save();
+        $senha = UserController::criarResponsavel($request, $responsavel->id);
+
+        \Session::flash('responerro', $senha);
         return view('farmacia.responsavel');
         
     }

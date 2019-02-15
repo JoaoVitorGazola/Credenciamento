@@ -58,7 +58,6 @@
 
                         @if (!Auth::guest())
                         <li> <a class="nav-link" href="{{url('/home')}}"> Home </a> </li>
-                        @if(\Illuminate\Support\Facades\Auth::guard('fiscal')->check())
                         <div class="btn-group">
                           <a  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            Governo
@@ -71,7 +70,6 @@
                             
                           </div>
                         </div>
-                            @endif
                         <div class="btn-group">
                           <a  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                            Farmacêutico
