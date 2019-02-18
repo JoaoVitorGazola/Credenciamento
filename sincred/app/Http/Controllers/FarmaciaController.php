@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Farmacia;
+use App\Farmtoresp;
 use App\Responsavei;
 use App\State;
 use Illuminate\Http\Request;
@@ -81,8 +82,12 @@ class FarmaciaController extends Controller
     {
         $estado = State::query();
         $estados = $estado->orderBy('abbreviation')->get();
+        $farma = Farmtoresp::where('farmacias_id', $id)->get();
         $responsavel = Responsavei::query();
-        $responsaveis = $responsavel->where('farmacias_id', $id)->orderBy('nome')->get();
+        foreach ($farma as $f) {
+            $responsavel = $responsavel->where('id', $f->responsaveis_id);
+        }
+        $responsaveis = $responsavel->orderBy('nome')->get();
         return view('farmacia.responsavel', ['id'=>$id,'estados'=> $estados, 'responsaveis'=>$responsaveis]);
     }
     public function responsavelNovo(Request $request)
@@ -104,14 +109,13 @@ class FarmaciaController extends Controller
         $senha = UserController::criarResponsavel($request, $responsavel->id);
 
         \Session::flash('responerro', $senha);
+        $farm = new Farmtoresp();
+        $farm->responsaveis_id = $responsavel->id;
+        $farm->farmacias_id = \Auth::user()->farmacias_id;
+        $today =  new \DateTime("today");
+        $farm->entrada =implode("-",array_reverse(explode("/",$today)));
+        $farm->save();
         return view('farmacia.responsavel');
         
-    }
-    public function excluirResponsavel($id){
-
-        $responsavel = Responsavei::findOrFail($id);
-        \Session::flash('excluirrespon', $responsavel->nome.' excluido com sucesso.');
-        $responsavel->delete();
-        return redirect()->back();
     }
 }

@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Documento;
 use App\Envio;
 use App\Farmacia;
+use App\Farmtoresp;
 use App\Palavra;
 use App\Processo;
 use App\Responsavei;
+use Egulias\EmailValidator\Exception\AtextAfterCFWS;
 use Illuminate\Http\Request;
 use Storage;
 use Smalot\PdfParser\Parser;
@@ -21,8 +23,13 @@ class EnvioController extends Controller
     public function novo($id)
     {
         $processo = Processo::findOrFail($id);
-        $farmacias = Farmacia::all();
-    	return view('envios.envio', ['processo'=>$processo, 'farmacias'=>$farmacias]);
+        $farma = Farmtoresp::where('responsaveis_id', \Auth::user()->responsaveis_id);
+    	$farmacias = Farmacia::query();
+    	foreach ($farma as $farmacia){
+    	    $farmacias = Farmacia::where('id', $farmacia->farmacias_id);
+        }
+        $farmacias->get();
+        return view('envios.envio', ['processo'=>$processo, 'farmacias'=>$farmacias]);
     }
 
     public function relatorio($id)
@@ -36,46 +43,43 @@ class EnvioController extends Controller
     }
 
 
-    public function fetch(Request $request){
-        $value = $request->get('value');
-        $data = Responsavei::query();
-        $responsaveis = $data->where('farmacias_id', $value)->orderBy('nome')->get();
-        $output = "<option value='".null."'>Selecione o responsavel</option>";
-        foreach ($responsaveis as $responsavel){
-            $output .= '<option value="'.$responsavel->id.'">'.$responsavel->nome.'</option>';
-        }
-        echo $output;
-    }
+
     public function salvar(Request $request, $id){
         $dirname = uniqid();
         $destination_path = storage_path('app/public/' . $dirname);
-        if (Envio::where([['farmacias_id', $request->farmacias_id], ['processos_id', $id],])->doesntExist()) {
-            $envio = new Envio();
-            $envio->processos_id = $id;
-            $envio->obs = $request->obs;
-            $envio->farmacias_id = $request->farmacias_id;
-            $envio->responsaveis_id = $request->responsaveis_id;
-            $envio->pasta = $dirname;
-            $envio->save();
-        }
-        else{
-            $env = Envio::query();
-            $envio = $env->where([['farmacias_id', $request->farmacias_id], ['processos_id', $id],])->first();
-            $pasta = $envio->pasta;
-            Storage::disk('public')->deleteDirectory($pasta);
-            $envio->update(['responsaveis_id'=>$request->responsaveis_id, 'pasta'=>$dirname, 'obs'=>$request->obs]);
-        }
+        $check = Farmtoresp::where([['farmacias_id', $request->farmacias_id], ['responsaveis_id', $request->responsaveis_id],])->orderBy('entrada', 'desc')->first();
+        if($check->status == 1) {
+            if (Envio::where([['farmacias_id', $request->farmacias_id], ['processos_id', $id],])->doesntExist()) {
+                $envio = new Envio();
+                $envio->processos_id = $id;
+                $envio->obs = $request->obs;
+                $envio->farmacias_id = $request->farmacias_id;
+                $envio->responsaveis_id = $request->responsaveis_id;
+                $envio->pasta = $dirname;
+                $envio->save();
+            } else {
+                $env = Envio::query();
+                $envio = $env->where([['farmacias_id', $request->farmacias_id], ['processos_id', $id],])->first();
+                $pasta = $envio->pasta;
+                Storage::disk('public')->deleteDirectory($pasta);
+                $envio->update(['responsaveis_id' => $request->responsaveis_id, 'pasta' => $dirname, 'obs' => $request->obs]);
+            }
 
-        for($i=0; $i<count($request->file('file_name'));$i++) {
-            $file = $request->file('file_name')[$i];
+            for ($i = 0; $i < count($request->file('file_name')); $i++) {
+                $file = $request->file('file_name')[$i];
                 $fileName = $file->getClientOriginalName();
                 $file->move($destination_path, $fileName);
-                if(pathinfo(storage_path($destination_path.'/'.$fileName), PATHINFO_EXTENSION) != "pdf"){
-                    Storage::disk('public')->delete('/'.$dirname.'/'.$fileName);
+                if (pathinfo(storage_path($destination_path . '/' . $fileName), PATHINFO_EXTENSION) != "pdf") {
+                    Storage::disk('public')->delete('/' . $dirname . '/' . $fileName);
                 }
             }
 
-         return redirect('processos/andamento');
+            return redirect('processos/andamento');
+        }
+        else{
+            \Session::flash('desativado', "Você não esta mais autorizado a realizar envios para esta farmácia");
+            return redirect()->back();
+        }
     }
     public static function checar($id){
         $envio = Envio::findOrFail($id);

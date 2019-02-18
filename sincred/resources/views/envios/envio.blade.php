@@ -1,28 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-    <script>
-        function myFunction()
-        {
-            var value = $('#farmacias_id').val();
 
-
-            $.ajax({
-                url:"{{url('/envios/fetch')}}",
-                method:"GET",
-                data:{value:value},
-                success:function (result) {
-                    $('#responsaveis_id').find("option").remove();
-                    $('#responsaveis_id').append(result);
-                },
-                error:function () {
-                    alert("erro")
-                }
-            })
-        }
-
-    </script>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12 col-sm-12 col-lg-12">
@@ -50,9 +29,9 @@
                 </div>
 
                 <div class="card-body">
-                    @if (session('status'))
+                    @if (session('desativado'))
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                            {{ session('desativado') }}
                         </div>
                     @endif
 
@@ -74,7 +53,7 @@
                             <div class="col-lg-3 col-sm-3 col-md-3">
                             <strong> {!! Form::label('farmacias_id', 'Farmácia *') !!}
                              </strong>
-                            <select name="farmacias_id" class="form-control" id="farmacias_id" onchange="myFunction()" required>
+                            <select name="farmacias_id" class="form-control" id="farmacias_id" required>
                                 <option value="{{null}}">Selecione a farmacia</option>
                                 @foreach($farmacias as $farmacia)
                                     <option value="{{$farmacia->id}}">{{$farmacia->razaoSocial}}</option>
@@ -87,7 +66,7 @@
                             <strong>{!! Form::label('responsaveis_id', 'Responsável *') !!}
                             </strong>
                                 <select name="responsaveis_id" id="responsaveis_id" class="form-control" required>
-                                    <option value="{{null}}">Selecione o responsavel</option>
+                                    <option value="{{Auth::user()->responsaveis_id}}"><?php $responsavel = \App\Responsavei::findOrFail(Auth::user()->responsaveis_id); echo $responsavel->nome?></option>
                                 </select>
                             </div>
 

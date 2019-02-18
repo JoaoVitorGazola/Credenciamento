@@ -19,6 +19,9 @@ class CreateFarmtorespTable extends Migration
             $table->unsignedInteger('farmacias_id');
             $table->foreign('responsaveis_id')->references('id')->on('responsaveis')->onUpdate('restrict')->onDelete('cascade');
             $table->foreign('farmacias_id')->references('id')->on('farmacias')->onUpdate('restrict')->onDelete('cascade');
+            $table->string('status')->default(1);
+            $table->date('entrada');
+            $table->date('saida')->nullable(true);
 
         });
     }
