@@ -59,3 +59,10 @@ Route::any('envios/relatorio/{Envio}', 'EnvioController@relatorio');
 Route::any('envios/relatorio/{Envio}/download', 'EnvioController@download');
 Route::any('envios/relatorio/{Envio}/reprovar', 'EnvioController@reprovar');
 Route::any('envios/relatorio/{Envio}/aprovar', 'EnvioController@aprovar');
+
+
+
+
+Route::any('/lista-responsavel', 'FarmaciaController@listarespon');
+Route::get('/dados/farm', 'HomeController@dadosfarm');
+Route::get('/editar-farm', 'HomeController@editarfarm');

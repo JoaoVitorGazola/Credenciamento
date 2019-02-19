@@ -66,7 +66,7 @@
                     </div>
 
                     
-                        <h2> Lista de Processos</h2>
+                        <h2> Responsáveis</h2>
                         
                         <li style="border-top: 2px #efefef solid; margin-top: 0px; margin-bottom: 0px; display: block;"> 
                         </li>
@@ -80,6 +80,9 @@
                                   <th scope="col-6">CPF</th>
                                   <th scope="col-6">E-mail</th>
                                   <th scope="col-6">Telefone</th>
+                                  <th scope="col-6">Status</th>
+                                  <th scope="col-6">Ação</th>
+                                  
                                 </tr>
                               </thead>
                               <!--- Tabela Aguardando --->
@@ -90,6 +93,12 @@
                                   <td>000.000.000-00</td>
                                   <td>example@example.com</td>
                                   <td>(00)00000-0000</td>
+                                   <td>Ativo</td>
+                                  <td>
+                                    <a href="#">
+                                   Desativar 
+                                 </a>
+                                 </td>
                                  
                                   
 

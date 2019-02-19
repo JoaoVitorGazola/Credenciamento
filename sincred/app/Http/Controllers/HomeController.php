@@ -30,4 +30,13 @@ class HomeController extends Controller
     {
         return view('listarespon');
     }
+
+     public function dadosfarm()
+    {
+        return view('dadosfarm');
+    }
+     public function editarfarm()
+    {
+        return view('editar-farm');
+    }
 }

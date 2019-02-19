@@ -75,7 +75,22 @@
                            Farmacêutico
                           </a>
                           <div class="dropdown-menu">
-                            <li> 
+                    
+                                <li>
+
+                                <a class="nav-link" href="/dados/farm"> Dados da Farmácia </a></li>
+                                 <li> 
+                                <a class="nav-link" href="/lista-responsavel"> Lista de Responsavéis </a></li>
+
+                            
+                          </div>
+                        </div>
+                        <div class="btn-group">
+                          <a  class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           Responsável
+                          </a>
+                          <div class="dropdown-menu">
+                           <li> 
                                 <a class="nav-link" href="{{url('/processos/andamento')}}"> Processos em Andamento </a></li>
 
                             

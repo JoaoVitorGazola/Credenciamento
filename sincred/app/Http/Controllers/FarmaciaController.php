@@ -118,4 +118,9 @@ class FarmaciaController extends Controller
         return view('farmacia.responsavel');
         
     }
+
+    public function listarespon()
+    {
+        return view('listarespon');
+    }
 }
