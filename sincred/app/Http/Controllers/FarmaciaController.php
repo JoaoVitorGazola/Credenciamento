@@ -78,17 +78,12 @@ class FarmaciaController extends Controller
         \Session::flash('manoel', $senha);
         return redirect()->back();
     }
-    public function responsavel($id)
+    public function responsavel()
     {
         $estado = State::query();
         $estados = $estado->orderBy('abbreviation')->get();
-        $farma = Farmtoresp::where('farmacias_id', $id)->get();
-        $responsavel = Responsavei::query();
-        foreach ($farma as $f) {
-            $responsavel = $responsavel->where('id', $f->responsaveis_id);
-        }
-        $responsaveis = $responsavel->orderBy('nome')->get();
-        return view('farmacia.responsavel', ['id'=>$id,'estados'=> $estados, 'responsaveis'=>$responsaveis]);
+
+        return view('farmacia.responsavel', ['estados'=> $estados]);
     }
     public function responsavelNovo(Request $request)
     {   
@@ -121,6 +116,14 @@ class FarmaciaController extends Controller
 
     public function listarespon()
     {
-        return view('listarespon');
+        $farmtoresp = Farmtoresp::all();
+        $responsavel = Responsavei::query();
+        foreach ($farmtoresp as $farm) {
+            if ($farm->farmacias_id == \Auth::user()->farmacias_id) {
+                $responsavel->where('id', $farm->responsaveis_id);
+            }
+        }
+        $responsavel->get();
+        return view('listarespon', ['responsaveis' =>$responsavel]);
     }
 }

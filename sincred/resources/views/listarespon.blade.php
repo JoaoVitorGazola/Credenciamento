@@ -58,7 +58,7 @@
                         <div class="container">
                                 <div class="row col-12">
                                     <button class="btn btn-primary btn-md" onclick="window.location.href='farmacias/responsavel/novo'">
-                                        <a href="farmacias/responsavel/novo" style="text-decoration: none; color: #fff;" title="Novo Responsável">Novo Registro</a> <i class="fas fa-plus-circle"></i> </button>
+                                        <a href="farmacias/responsavel" style="text-decoration: none; color: #fff;" title="Novo Responsável">Novo Registro</a> <i class="fas fa-plus-circle"></i> </button>
 
                                 </div>
                               </div>
@@ -86,14 +86,24 @@
                                 </tr>
                               </thead>
                               <!--- Tabela Aguardando --->
-                           
+                           @foreach($responsaveis as $responsavel)
                               <tbody style="text-align: center;">
                                 <tr>
-                                  <td scope="row">Luiz Marcelo</td>
-                                  <td>000.000.000-00</td>
-                                  <td>example@example.com</td>
-                                  <td>(00)00000-0000</td>
-                                   <td>Ativo</td>
+                                  <td scope="row">{{$responsavel->nome}}</td>
+                                  <td>{{$responsavel->cpf}}</td>
+                                  <td>{{$responsavel->email}}</td>
+                                  <td>{{$responsavel->telefone}}</td>
+                                   <td>
+                                       <?php
+                                       if ($responsavel->status == 1){
+                                           echo 'Ativo';
+                                       }
+                                       else{
+                                           echo 'Inativo';
+                                       }
+                                       ?>
+
+                                   </td>
                                   <td>
                                     <a href="#">
                                    Desativar 
@@ -106,7 +116,7 @@
                                 </tr>
                               
                               </tbody>
-                           
+                           @endforeach
 
                         </table>
                     </div>

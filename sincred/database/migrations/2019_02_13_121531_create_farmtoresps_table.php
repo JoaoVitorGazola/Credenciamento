@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFarmtorespTable extends Migration
+class CreateFarmtorespsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateFarmtorespTable extends Migration
      */
     public function up()
     {
-        Schema::create('farmtoresp', function (Blueprint $table) {
+        Schema::create('farmtoresps', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('responsaveis_id');
             $table->unsignedInteger('farmacias_id');
@@ -33,6 +33,6 @@ class CreateFarmtorespTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('farmtoresp');
+        Schema::dropIfExists('farmtoresps');
     }
 }

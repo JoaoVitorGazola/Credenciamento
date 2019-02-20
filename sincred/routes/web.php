@@ -46,7 +46,7 @@ Route::post('/farmacias/busca', 'FarmaciaController@busca');
 Route::any('/farmacias/novo', 'FarmaciaController@novo');
 Route::any('/farmacias/novo/salvar', 'FarmaciaController@farmacianovo');
 Route::any('/farmacias/{id}/responsavel', 'FarmaciaController@responsavel')->name('/farmacias/{id}/responsavel');
-Route::any('/farmacias/responsavel/novo', 'FarmaciaController@responsavelnovo');
+Route::any('/farmacias/responsavel/', 'FarmaciaController@responsavel');
 Route::any('/farmacias/{id}/excluir', 'FarmaciaController@excluirResponsavel');
 
 
