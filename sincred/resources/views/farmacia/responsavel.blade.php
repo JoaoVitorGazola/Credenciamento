@@ -149,8 +149,9 @@
                             <strong>{!! Form::label('states_id', 'Estado *') !!}</strong>
                                 <select class="form-control" id="states" name="states_id" onchange="myFunction();" required>
                                     <option value={{null}}>Selecione o estado</option>
-                                   
-                                        <option value=""></option>
+                                    @foreach($estados as $estado)
+                                        <option value="{{$estado->id}}">{{$estado->abbreviation}}</option>
+                                        @endforeach
                                     
                                 </select>
                                 {{csrf_field(['id'=>'token'])}}

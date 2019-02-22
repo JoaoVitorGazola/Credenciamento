@@ -57,8 +57,8 @@
 
                         <div class="container">
                                 <div class="row col-12">
-                                    <button class="btn btn-primary btn-md" onclick="window.location.href='farmacias/responsavel/novo'">
-                                        <a href="farmacias/responsavel" style="text-decoration: none; color: #fff;" title="Novo Responsável">Novo Registro</a> <i class="fas fa-plus-circle"></i> </button>
+                                    <button class="btn btn-primary btn-md" onclick="window.location.href='farmacias/responsavel'">
+                                        <a style="text-decoration: none; color: #fff;" title="Novo Responsável">Novo Registro</a> <i class="fas fa-plus-circle"></i> </button>
 
                                 </div>
                               </div>
